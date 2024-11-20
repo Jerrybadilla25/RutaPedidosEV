@@ -19,3 +19,98 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navPer {
+  width: 100%; /* Ajusta el ancho según sea necesario */
+  //background-color: #f4f4f4; /* Fondo del menú */
+  //border: 1px solid #ccc; /* Borde opcional */
+  padding: 10px;
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+.navPer ul li {
+  margin: 25px; /* Espacio entre elementos */
+}
+
+/* Estilo de los enlaces */
+.linkPer {
+  display: block; /* Hace que los enlaces ocupen todo el ancho */
+  text-decoration: none;
+  color: white; /* Color del texto */
+  margin: 10px 15px; /* Espaciado interno */
+  padding-left: 15px;
+
+  //background-color: #eaeaea; /* Fondo de los enlaces */
+  //border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.linkPer:hover {
+  color: #84eb07;
+  //background-color: #171616;
+  border-left: 2px solid #84eb07;
+}
+
+.text-color-green{
+  display: block; /* Hace que los enlaces ocupen todo el ancho */
+  text-decoration: none;
+  margin: 10px 15px; /* Espaciado interno */
+  padding-left: 15px;
+  color:#84eb07;
+  border-left: 2px solid #84eb07;
+}
+.borderPerLef {
+  border-left: solid 20px  #3b5c14;
+  border-top-left-radius: 5px; /* Redondea la esquina superior izquierda */
+  border-bottom-left-radius: 5px; /* Redondea la esquina inferior izquierda */
+
+}
+
+.borderPerLef:hover{
+  border-left: solid 20px  #8a1c1f;
+}
+.borderPerAll{
+  border: solid 2px  #3b5c14;
+  border-radius: 10px;
+}
+
+.borderPerAll:hover{
+  border: solid 2px  #8a1c1f;
+  border-radius: 10px;
+}
+
+.bg-per-WhiteHueso {
+  background: #F5F5F5;
+  border-radius: 5px
+}
+
+.text-per-red div p  {
+  color: #de0d1f;
+  font-size: 12px;
+}
+
+.text-per-white {
+  color: #F5F5F5;
+  
+  
+}
+.bolt-per{
+  font-weight: bold;
+}
+.font-per-sm{
+  font-size: 12px;
+}
+
+.font-per-sl{
+  font-size: 15px;
+}
+
+
+
+
+

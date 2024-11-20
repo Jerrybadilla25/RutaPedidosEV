@@ -15,6 +15,8 @@ const newCliente = new Schema({
   },
   createdAt: { type: Date, default: Date.now },
   userCreator: { type: String, required: true },
+  status: { type: String, default: 'Activo' },
+  typePay: { type: String, default: 'Credito' },
 });
 
 export default models.Cliente || model("Cliente", newCliente);
