@@ -4,10 +4,9 @@ import Cliente from '@/model/Cliente'
 
 
 export async function getClientePedido(query){
-    console.log(query)
    try {
     await connectDB()
-    const clientes = await Cliente.find({ name: { $regex: query, $options: 'i' } });
+    const clientes = await Cliente.find({ name: { $regex: query, $options: 'i' } }).lean();
     return clientes
    } catch (error) {
       return {message: "error"}

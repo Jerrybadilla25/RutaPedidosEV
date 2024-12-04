@@ -53,7 +53,7 @@ nav ul {
 .linkPer:hover {
   color: #84eb07;
   //background-color: #171616;
-  border-left: 2px solid #84eb07;
+  border-left: 2px solid #41a31a;
 }
 
 .text-color-green{
@@ -62,40 +62,41 @@ nav ul {
   margin: 10px 15px; /* Espaciado interno */
   padding-left: 15px;
   color:#84eb07;
-  border-left: 2px solid #84eb07;
+  border-left: 2px solid #41a31a;
 }
 .borderPerLef {
-  border-left: solid 20px  #3b5c14;
-  border-top-left-radius: 5px; /* Redondea la esquina superior izquierda */
-  border-bottom-left-radius: 5px; /* Redondea la esquina inferior izquierda */
+  border-left: solid 7px  #0a0a0a;
+  //border-top-left-radius: 5px; /* Redondea la esquina superior izquierda */
+  //border-bottom-left-radius: 5px; /* Redondea la esquina inferior izquierda */
 
 }
 
 .borderPerLef:hover{
-  border-left: solid 20px  #8a1c1f;
+  border-left: solid 7px  #0919ed;
 }
 .borderPerAll{
-  border: solid 2px  #3b5c14;
-  border-radius: 10px;
+  background-color: #f5f5f5;
+  border: solid 2px #0a0a0a;
+  //border-radius: 10px;
 }
 
 .borderPerAll:hover{
-  border: solid 2px  #8a1c1f;
-  border-radius: 10px;
+  border: solid 2px  #0a0a0a; 
+  background-color: #f2e1e1;
 }
 
 .bg-per-WhiteHueso {
-  background: #F5F5F5;
-  border-radius: 5px
+  background: #020800;
+  //border-radius: 5px
 }
 
-.text-per-red div p  {
-  color: #de0d1f;
+.text-per-azul div p  {
+  color: #0919ed;
   font-size: 12px;
 }
 
 .text-per-white {
-  color: #F5F5F5;
+  color: #020800;
   
   
 }
@@ -110,6 +111,13 @@ nav ul {
   font-size: 15px;
 }
 
+.header-per{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-evenly;
+  border-bottom: solid 1px  #3bf507; 
+
+}
 
 
 
