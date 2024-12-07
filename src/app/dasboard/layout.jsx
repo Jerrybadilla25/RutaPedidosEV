@@ -47,6 +47,8 @@ export default async function  DasboardLayout({ children }) {
     );
   }
 
- return null
+ return (
+  <div>No tiene permiso</div>
+ )
   
 }

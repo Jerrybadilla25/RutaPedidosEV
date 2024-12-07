@@ -1,8 +1,10 @@
 import Link from 'next/link'
+import {getUser} from '@/utils/dal'
 
 
-export default function Homepage() {
-   
+export default   function Homepage() {
+   //const user = getUser()
+   //console.log(user)
   
 
   return (

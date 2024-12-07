@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import BotonLogOut from '@/components/botonLogOut'
+
 
 export default function NavPrincipal() {
   const pathname = usePathname();
@@ -27,6 +29,9 @@ export default function NavPrincipal() {
         </li>
         <li className="linkPer">
         <Link href="#">Crear Artículo</Link>
+        </li>
+        <li className="linkPer">
+        <BotonLogOut/>
         </li>
       </ul>
     </nav>
