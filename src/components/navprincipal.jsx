@@ -22,10 +22,10 @@ export default function NavPrincipal() {
             pathname === "/form/pedido" ? "text-color-green" : "linkPer"
           }`}
         >
-           <Link href="/dasboard/form/pedido">Crear Pedido</Link>
+           <Link href="/dashboard/form/pedido">Crear Pedido</Link>
         </li>
         <li className="linkPer">
-        <Link href="#">Crear Cliente</Link>
+        <Link href="/dashboard/form/cliente">Crear Cliente</Link>
         </li>
         <li className="linkPer">
         <Link href="#">Crear Artículo</Link>

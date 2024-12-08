@@ -11,11 +11,11 @@ export const verifySession = cache(async () => {
   try {
     const cookie = (await cookies()).get("session")?.value;
     if (!cookie) {
-      redirect("/singin");
+      redirect("/login");
     }
     const session = await decrypt(cookie);
     if (!session.userId) {
-      redirect("/singin");
+      redirect("/login");
     }
 
     return { isAuth: true, userId: session.userId };
@@ -26,8 +26,7 @@ export const verifySession = cache(async () => {
 });
 
 export const getUser = cache(async () => {
-  const session = await verifySession();
-  console.log(session)
+  const session = await verifySession()
   if (!session) return null;
 
   try {

@@ -1,4 +1,4 @@
-import FormUserIn from '@/app/singin/formIn'
+import FormUserIn from '@/app/login/formIn'
 
 
 

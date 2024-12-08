@@ -41,5 +41,5 @@ export async function signIn(state, formData) {
   //crear sesscion
   const idUser = dataUser[0]._id.toString()
   await createSession({ userId: idUser});
-  redirect("/dasboard");
+  redirect("/dashboard");
 }

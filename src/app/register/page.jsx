@@ -2,7 +2,7 @@
 
 //import { signup } from "@/app/signup/actions";
 //import { useActionState } from "react";
-import FormUser from '@/app/signup/form'
+import FormUser from '@/app/register/form'
 
 
 
