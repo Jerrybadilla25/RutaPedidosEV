@@ -1,7 +1,12 @@
 "use server"
 import {addClientDbFormSchema} from '@/utils/definiciones'
+import {getUser} from '@/utils/dal'
+import Cliente from '@/model/Cliente'
+import { nanoid } from "nanoid"
+import {redirect} from 'next/navigation'
 
 export async function addClientBd(state, formData) {
+  console.log(formData)
     const validatedFields = addClientDbFormSchema.safeParse({
         name: formData.get('name'),
         email: formData.get('email'),
@@ -20,5 +25,25 @@ export async function addClientBd(state, formData) {
           errors: validatedFields.error.flatten().fieldErrors,
         }
       }
-      console.log(validatedFields)
+      const user = await getUser()
+      const userCreator = user.user
+      const clientId = nanoid(10);
+      const {name, email, contact, cel, cedJuridica, provincia, canton, distrito, direccion}=validatedFields.data
+      const newCliente = new Cliente({
+        name,
+        email,
+        contact,
+        cel,
+        cedJuridica,
+        userCreator,
+        clientId,
+        address:{
+          provincia,
+          canton,
+          distrito,
+          direccion
+        }
+      })
+      await newCliente.save()
+      redirect('/dashboard/form/pedido')
 }

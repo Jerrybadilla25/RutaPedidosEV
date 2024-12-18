@@ -1,12 +1,85 @@
 "use client";
 import { useActionState, useFormStatus } from "react";
 import { addClientBd } from "@/app/dashboard/form/cliente/actions";
+import './local.addcliente.css'
 
 export default function ClientForm() {
   const [state, formAction, pending] = useActionState(addClientBd, undefined);
 
   return (
-    <div className="contenedor-form">
+    <div class="form-container">
+  <h1>Agregar cliente</h1>
+  <form action={formAction}>
+    <div class="form-row">
+      <label for="name">Nombre del comercio</label>
+      <input type="text" id="name" name="name" autocomplete="off" />
+      <p class="error-message">{state?.errors?.name && state.errors.name}</p>
+    </div>
+
+    <div class="form-row">
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" autocomplete="off" />
+      <p class="error-message">{state?.errors?.email && state.errors.email}</p>
+    </div>
+
+    <div class="form-row">
+      <label for="contact">Nombre de contacto</label>
+      <input type="text" id="contact" name="contact" autocomplete="off" />
+      <p class="error-message">{state?.errors?.contact && state.errors.contact}</p>
+    </div>
+
+    <div class="form-row">
+      <label for="phone">Número de teléfono</label>
+      <input type="text" id="phone" name="cel" autocomplete="off" />
+      <p class="error-message">{state?.errors?.cel && state.errors.cel}</p>
+    </div>
+
+    <div class="form-row">
+      <label for="cedJuridica">Cédula Jurídica</label>
+      <input type="text" id="cedJuridica" name="cedJuridica" autocomplete="off" />
+      <p class="error-message">{state?.errors?.cedJuridica && state.errors.cedJuridica}</p>
+    </div>
+
+    <div class="form-row">
+      <label for="provincia">Provincia</label>
+      <input type="text" id="provincia" name="provincia" autocomplete="off" />
+      <p class="error-message">{state?.errors?.provincia && state.errors.provincia}</p>
+    </div>
+
+    <div class="form-row">
+      <label for="canton">Cantón</label>
+      <input type="text" id="canton" name="canton" autocomplete="off" />
+      <p class="error-message">{state?.errors?.canton && state.errors.canton}</p>
+    </div>
+
+    <div class="form-row">
+      <label for="distrito">Distrito</label>
+      <input type="text" id="distrito" name="distrito" autocomplete="off" />
+      <p class="error-message">{state?.errors?.distrito && state.errors.distrito}</p>
+    </div>
+
+    <div class="form-row">
+      <label for="direccion">Dirección</label>
+      <input type="text" id="direccion" name="direccion" autocomplete="off" />
+      <p class="error-message">{state?.errors?.direccion && state.errors.direccion}</p>
+    </div>
+
+    <div class="form-button">
+      <button disabled={pending}>
+        {pending ? "Enviando datos..." : "Guardar cliente"}
+      </button>
+     
+    </div>
+  </form>
+</div>
+
+  );
+}
+
+
+/*
+
+<div className="contenedor-form ">
       <h1>Agregar cliente</h1>
       <form action={formAction}>
         <div className="form-renglon-per">
@@ -172,84 +245,4 @@ export default function ClientForm() {
         </div>
       </form>
     </div>
-  );
-}
-
-/*
-  const handleSubmit = (event) => {
-      event.preventDefault(); // Prevenir recarga de página
-      const formData = new FormData(event.target);
-      const data = Object.fromEntries(formData.entries());
-      console.log(data); // Aquí puedes enviar los datos a tu backend
-    };
-    
-
-    
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
-        <h1 className="text-2xl font-bold mb-4 text-center text-gray-700">
-          Crear clientes
-        </h1>
-        <form  className="space-y-4">
-         
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-600"
-            >
-              Nombre completo
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            />
-          </div>
-  
-         
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-600"
-            >
-              Correo electrónico
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            />
-          </div>
-  
-         
-          <div>
-            <label
-              htmlFor="phone"
-              className="block text-sm font-medium text-gray-600"
-            >
-              Número de teléfono
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            />
-          </div>
-  
-       
-          <div className="flex justify-end">
-            <button
-              type="submit"
-              className="w-full px-4 py-2 bg-indigo-600 text-white font-medium rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Guardar Cliente
-            </button>
-          </div>
-        </form>
-      </div>
-      */
+    */

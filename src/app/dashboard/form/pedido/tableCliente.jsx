@@ -1,4 +1,5 @@
-import { getClientePedido } from "@/utils/fechData";
+import { getClientePedido } from "@/app/dashboard/form/pedido/actions";
+import SelectClient from '@/app/dashboard/form/pedido/selectClient'
 
 
 export default async function TableCliente({query}) {
@@ -59,7 +60,11 @@ export default async function TableCliente({query}) {
                   </div>
                 </div>
               </div>
+              <SelectClient ids={itm._id.toString()}/>
+              
+              
             </div>
+            
           </div>
         </div>
       ))}

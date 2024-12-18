@@ -17,6 +17,34 @@ export const SignupFormSchema = z.object({
     .trim(),
 });
 
+export const addProduct = z.object({
+  name: z
+    .string()
+    .min(2, { message: "Digite el nombre del artículo" })
+    .trim(),
+  description: z
+    .string()
+    .min(2, { message: "Digite una descripción válida" })
+    .trim(),
+  price: z
+    .number({ invalid_type_error: "El precio debe ser un número válido" })
+    .positive({ message: "El precio debe ser un número positivo" }),
+  category: z
+    .string()
+    .min(2, { message: "Escoja una categoría" })
+    .trim(),
+  stock: z
+    .number({ invalid_type_error: "El inventario debe ser un número válido" })
+    .int({ message: "El inventario debe ser un número entero" })
+    .positive({ message: "El inventario debe ser un número positivo" }),
+});
+
+
+
+
+
+
+
 export const addClientDbFormSchema = z.object({
   name: z
     .string()

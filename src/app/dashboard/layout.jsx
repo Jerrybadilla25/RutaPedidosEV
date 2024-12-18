@@ -30,17 +30,23 @@ export default async function  DasboardLayout({ children }) {
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950`}
         >
-          <div className="mx-2">
+          <div className=" bg-slate-350">
+
             <div className="grid grid-rows-1">
               <Header />
             </div>
-            <div className="grid grid-cols-4">
-              <div className="col-span-1">
+
+            <div className="container-per">
+              <div className="column">
                 {" "}
                 <NavPrincipal />{" "}
               </div>
-              <div className="col-span-3">{children} </div>
+              <div className="column">{children} </div>
+              <div className="column" >
+                <h1>espacio vacio</h1>
             </div>
+            </div>
+            
           </div>
         </body>
       </html>

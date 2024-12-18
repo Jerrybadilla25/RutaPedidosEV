@@ -14,6 +14,7 @@ export default function Search() {
       params.set("query", e);
     } else {
       params.delete("query");
+      params.delete("searchid");
     }
     replace(`${pathname}?${params.toString()}`);
   }, 300);

@@ -28,7 +28,10 @@ export default function NavPrincipal() {
         <Link href="/dashboard/form/cliente">Crear Cliente</Link>
         </li>
         <li className="linkPer">
-        <Link href="#">Crear Artículo</Link>
+        <Link href="/dashboard/form/articulo">Crear Artículo</Link>
+        </li>
+        <li className="linkPer">
+        <Link href="/dashboard/products">Productos</Link>
         </li>
         <li className="linkPer">
         <BotonLogOut/>

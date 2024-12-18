@@ -12,7 +12,7 @@
     flex-direction: column;
     justify-content: flex-start;
     padding: 15px;
-    margin-top: 20px;
+    margin: 5% 10% 10% 1%;
 }
 .contenedor-form h1{
     text-align: center;
@@ -73,4 +73,6 @@
     background-color: var(--background2);
     padding: 10px 15px;
   }
+  
+
   

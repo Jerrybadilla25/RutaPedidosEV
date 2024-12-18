@@ -7,12 +7,12 @@ export default async  function Homepage() {
    
   return (
     <div className="grid grid-rows">
-      <header className="bg-gray-800 text-white shadow">
+      <header className=" text-white shadow">
   <div className="container mx-auto flex justify-between items-center py-4 px-6">
     
     <div className="text-2xl font-bold">
       {
-        cookie ? <Link href="/dasboard" className="hover:text-gray-300">Mi Aplicacion</Link> :
+        cookie ? <Link href="/dashboard" className="hover:text-gray-300">Mi Aplicacion</Link> :
         <div>Logo</div>
       }
     

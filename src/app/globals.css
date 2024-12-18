@@ -5,12 +5,17 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --backgroundBox: #242424;
+  --textblue: #3BAAFF;
+  --textOrange: #F57B27;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #050708;
     --foreground: #ededed;
+    
+
   }
 }
 
@@ -18,6 +23,29 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-per {
+  display: grid;
+  grid-template-columns: 15% 70% 15%; /* Primera columna 25%, segunda 50%, tercera 25% */
+  gap: 16px; /* Espacio entre columnas */
+  padding: 0 10%;
+}
+
+@media (max-width: 768px) { /* Para pantallas pequeñas */
+  .container-per {
+    grid-template-columns: 15% 85%; /* Dos columnas, cada una con 50% */
+    padding: 0 0.25%;
+  }
+
+  .column:nth-child(3) { /* Oculta la tercera columna */
+    display: none;
+  }
+}
+
+
+.contenedor{
+  padding: 0 5%;
 }
 
 nav ul {
@@ -120,5 +148,16 @@ nav ul {
 }
 
 
+.buton-per{
+  width: 95px;
+  color: var(--textOrange);
+  background-color: var(--backgroundBox);
+  padding: 1px 5px;
+  border-radius: 5px;
+  margin: 2px;
+}
+.buton-per::placeholder {
+  color: var(--textOrange);
+}
 
 
