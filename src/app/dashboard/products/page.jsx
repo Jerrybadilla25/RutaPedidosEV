@@ -4,6 +4,7 @@ import Cargando from '@/components/cargando'
 import {getUser} from '@/utils/dal'
 import { redirect } from 'next/navigation'
 import Products from '@/model/Product'
+import './local.css'
 
 export default async function AllProducts() {
     const user = await getUser()

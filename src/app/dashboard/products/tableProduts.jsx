@@ -1,10 +1,11 @@
 //import "../../globals.css";
-import "../../dashboard/local.css";
+//import "../../dashboard/local.css";
 
 export default function TableProducts({ productos }) {
   return (
     <div className="table-per">
       <table >
+      <thead>
       <tr className="table-tr">
         <th>Id</th>
         <th>Producto</th>
@@ -12,6 +13,8 @@ export default function TableProducts({ productos }) {
         <th>Categoria</th>
         <th>Precio</th>
       </tr>
+      </thead>
+      <tbody>
       {productos.map((itm) => (
         <tr className="table-per-td" key={itm._id}>
           <td>{itm.productId}</td>
@@ -21,6 +24,7 @@ export default function TableProducts({ productos }) {
           <td>{itm.price}</td>
         </tr>
       ))}
+      </tbody>
     </table>
     </div>
   );

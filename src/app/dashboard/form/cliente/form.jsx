@@ -11,55 +11,55 @@ export default function ClientForm() {
   <h1>Agregar cliente</h1>
   <form action={formAction}>
     <div class="form-row">
-      <label for="name">Nombre del comercio</label>
+      <label htmlFor="name">Nombre del comercio</label>
       <input type="text" id="name" name="name" autocomplete="off" />
       <p class="error-message">{state?.errors?.name && state.errors.name}</p>
     </div>
 
     <div class="form-row">
-      <label for="email">Correo electrónico</label>
+      <label htmlFor="email">Correo electrónico</label>
       <input type="email" id="email" name="email" autocomplete="off" />
       <p class="error-message">{state?.errors?.email && state.errors.email}</p>
     </div>
 
     <div class="form-row">
-      <label for="contact">Nombre de contacto</label>
+      <label htmlFor="contact">Nombre de contacto</label>
       <input type="text" id="contact" name="contact" autocomplete="off" />
       <p class="error-message">{state?.errors?.contact && state.errors.contact}</p>
     </div>
 
     <div class="form-row">
-      <label for="phone">Número de teléfono</label>
+      <label htmlFor="phone">Número de teléfono</label>
       <input type="text" id="phone" name="cel" autocomplete="off" />
       <p class="error-message">{state?.errors?.cel && state.errors.cel}</p>
     </div>
 
     <div class="form-row">
-      <label for="cedJuridica">Cédula Jurídica</label>
+      <label htmlFor="cedJuridica">Cédula Jurídica</label>
       <input type="text" id="cedJuridica" name="cedJuridica" autocomplete="off" />
       <p class="error-message">{state?.errors?.cedJuridica && state.errors.cedJuridica}</p>
     </div>
 
     <div class="form-row">
-      <label for="provincia">Provincia</label>
+      <label htmlFor="provincia">Provincia</label>
       <input type="text" id="provincia" name="provincia" autocomplete="off" />
       <p class="error-message">{state?.errors?.provincia && state.errors.provincia}</p>
     </div>
 
     <div class="form-row">
-      <label for="canton">Cantón</label>
+      <label htmlFor="canton">Cantón</label>
       <input type="text" id="canton" name="canton" autocomplete="off" />
       <p class="error-message">{state?.errors?.canton && state.errors.canton}</p>
     </div>
 
     <div class="form-row">
-      <label for="distrito">Distrito</label>
+      <label htmlFor="distrito">Distrito</label>
       <input type="text" id="distrito" name="distrito" autocomplete="off" />
       <p class="error-message">{state?.errors?.distrito && state.errors.distrito}</p>
     </div>
 
     <div class="form-row">
-      <label for="direccion">Dirección</label>
+      <label htmlFor="direccion">Dirección</label>
       <input type="text" id="direccion" name="direccion" autocomplete="off" />
       <p class="error-message">{state?.errors?.direccion && state.errors.direccion}</p>
     </div>

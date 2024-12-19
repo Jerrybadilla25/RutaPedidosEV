@@ -1,53 +1,180 @@
-table {
-    border-collapse : collapse;
+/* General Styles */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.row-1 {
+  display: none;
+}
+
+/* Column Layout */
+.colunma {
+  display: flex;
+  width: 100%;
+}
+
+.colunm-1 {
+  flex: 0 0 15%;
+  max-width: 15%;
+  background-color: transparent; /* Example background */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.colunm-2 {
+  flex: 0 0 70%;
+  max-width: 70%;
+  background-color: transparent; /* Example background */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.column-1 {
+  flex: 1;
+  background-color: transparent; /* Example background */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .colunm-1 {
+    display: none; /* Hide column-1 on small screens */
+  }
+
+  .colunm-2 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .row-1 {
     width: 100%;
-}
-
-th, td {
-    padding: 15px;
-    text-align: left;
-}
-
-.table-per{
-    padding: 10px 10px 25px 10px;
-    width:90%;
-    heigth: 100%;
-    margin: 20px;
-    
-    border-radius: 15px;
-   
-}
-
-
-
-@media (max-width: 768px) { /* Para pantallas pequeñas */
-    .table-per{
-        padding: 10px 10px 25px 10px;
-        width:96%;
-        margin: 20px;
-        
-        border-radius: 15px; 
-    }
-    th, td {
-        padding: 10px;
-        text-align: left;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
   }
-
-
-
-.table-tr{
-    margin: 15px 0;
-    //padding-top: 15px;
 }
 
-.table-tr th{
+.header-per {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-bottom: solid 1px #3bf507;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navPer {
+  width: 100%; /* Ajusta el ancho según sea necesario */
+  //background-color: #f4f4f4; /* Fondo del menú */
+  //border: 1px solid #ccc; /* Borde opcional */
+  padding: 10px;
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+
+
+.navPer ul li {
+  margin: 25px; /* Espacio entre elementos */
+}
+
+/* Estilo de los enlaces */
+.linkPer {
+  display: block; /* Hace que los enlaces ocupen todo el ancho */
+  text-decoration: none;
+  color: white; /* Color del texto */
+  margin: 10px 15px; /* Espaciado interno */
+  padding-left: 15px;
+
+  //background-color: #eaeaea; /* Fondo de los enlaces */
+  //border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.linkPer:hover {
+  color: #84eb07;
+  //background-color: #171616;
+  border-left: 2px solid #41a31a;
+}
+
+.text-color-green {
+  display: block; /* Hace que los enlaces ocupen todo el ancho */
+  text-decoration: none;
+  margin: 10px 15px; /* Espaciado interno */
+  padding-left: 15px;
+  color: #84eb07;
+  border-left: 2px solid #41a31a;
+}
+
+
+
+/* General Styles for Navigation */
+.navSecundario {
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--backgroundSutil);
+    padding: 10px 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .navSecundario ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navSecundario li {
+    margin: 0 2px;
+    //background-color: var(--background);
+  }
+  
+  .navSecundario a {
+    text-decoration: none;
+    color: #ccc; /* Default text color */
+    font-size: 14px;
+    //transition: color 0.3s ease;
+  }
+  
+  .navSecundario .text-color-green {
+    color: green; /* Active link color */
+  }
+  
+  .navSecundario a:hover {
     color: var(--textOrange);
-    margin: 15px 0;
+    //padding-right: 6px;
   }
 
-.table-per-td td{
-    //padding: 5px;
-    border-bottom: solid 1px var(--textOrange);
-
-}
+  .linkPer2 {
+    display: block; /* Hace que los enlaces ocupen todo el ancho */
+    text-decoration: none;
+    color: white; /* Color del texto */
+    margin: 10px 15px; /* Espaciado interno */
+    padding: 5px 10px;
+    //border-bottom: 2px solid var(--backgroundSutil);
+    border-radius: 5px; /* Bordes redondeados */
+    //transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .linkPer2:hover {
+    background-color: #171616;
+    //border-bottom: 1px solid var(--textOrange);
+  }
+  
+  
+  
