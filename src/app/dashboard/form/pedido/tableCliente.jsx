@@ -11,7 +11,7 @@ export default async function TableCliente({query}) {
         <div key={itm._id}>
           <div className="grid grid-cols-1  my-3 border-2 borderPerAll">
             <div className="borderPerLef">
-              <div className="flex justify-between mx-5 py-4 text-per-azul text-per-white">
+              <div className="flex justify-between mx-5 py-4 text-white text-per-white">
                 <div className="">
                   <p className=" ">Nombre del comercio</p>
                   <span className="text-per-white bolt-per font-per-sl">
@@ -39,7 +39,7 @@ export default async function TableCliente({query}) {
               </div>
 
               <div className="">
-                <div className="mx-5 border-t-2 border-slate-900"></div>
+                <div className="border-top"></div>
 
                 <div className="flex justify-between mx-5 text-per-azul ">
                   <div>

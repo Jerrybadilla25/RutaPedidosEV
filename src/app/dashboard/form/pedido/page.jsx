@@ -6,7 +6,7 @@ import Search from '@/app/dashboard/form/pedido/search'
 import {Suspense} from 'react'
 import Cliente from '@/model/Cliente'
 import Productos from '@/model/Product'
-import '../pedido/local.pedido.css'
+import './local.pedido.css'
 
 
 export default async function FormPedidoCliente({ searchParams }) {
@@ -14,8 +14,12 @@ export default async function FormPedidoCliente({ searchParams }) {
   const query = data?.query || ""
   const seachid = data?.searchid || ""
   if(seachid){
-    const clientId = await Cliente.findById(seachid).lean()
-    const products = await Productos.find()
+    //const clientId1 = await Cliente.findById(seachid).lean()
+    //const clientId = JSON.parse(JSON.stringify(clientId1))
+    const clientId = JSON.parse(JSON.stringify(await Cliente.findById(seachid).lean ())); //esta linea de codigo unifica las dos de arriba, se necesita documentos no serializados para pasar como props al cliente
+    //const products1 = await Productos.find().lean()
+    const products = JSON.parse(JSON.stringify(await Productos.find().lean()));
+    
     
 
     return(

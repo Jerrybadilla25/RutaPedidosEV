@@ -53,7 +53,7 @@ p {
 }
 
 .table-row {
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid var(--textOrange);
 }
 
 .table-row td {
@@ -119,3 +119,84 @@ p {
     padding: 8px;
   }
 }
+
+
+/* estilos tabla cliente */
+
+
+.borderPerLef {
+  border-left: solid 7px  #0a0a0a;
+  border-right: solid 7px  #0a0a0a;
+  //border-top-left-radius: 5px; /* Redondea la esquina superior izquierda */
+  //border-bottom-left-radius: 5px; /* Redondea la esquina inferior izquierda */
+
+}
+
+.borderPerLef:hover{
+  border-left: solid 7px var(--textOrange);
+  border-right: solid 7px  var(--backgroundSutil);
+}
+.borderPerAll{
+  background-color: transparent;
+  border: solid 1px #ccc;
+  //border-radius: 10px;
+}
+
+.borderPerAll:hover{
+  border: solid 1px  var(--textOrange); 
+  background-color: var(--backgroundSutil);
+}
+
+.border-top{
+  border: solid 1px var(--textWhite);
+}
+
+
+.bg-per-WhiteHueso {
+  background: #020800;
+  //border-radius: 5px
+}
+
+.text-white div p  {
+  color: var(--textWhite);
+  font-size: 12px;
+  background-color: var(--backgroundSutil);
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+
+.text-per-white {
+  color: var(--textWhite);
+  
+  
+}
+.bolt-per{
+  font-weight: bold;
+}
+.font-per-sm{
+  font-size: 12px;
+}
+
+.font-per-sl{
+  font-size: 15px;
+}
+
+
+
+
+.buton-per{
+  width: 95px;
+  color: var(--textOrange);
+  background-color: var(--backgroundBox);
+  padding: 1px 5px;
+  border-radius: 5px;
+  margin: 2px;
+}
+.buton-per::placeholder {
+  color: var(--textOrange);
+}
+
+.display-none{
+  display:none;
+}
+

@@ -19,7 +19,7 @@ export default function ClientForm() {
               type="text"
               id="name"
               name="name"
-              autoComplete="off"
+             
             />
             <div className="form-renglon-error">
               {state?.errors?.name && <p>{state.errors.name}</p>}
@@ -37,7 +37,7 @@ export default function ClientForm() {
               type="description"
               id="description"
               name="description"
-              autoComplete="off"
+              
             />
             <div className="form-renglon-error">
               {state?.errors?.description && <p>{state.errors.description}</p>}
@@ -55,7 +55,7 @@ export default function ClientForm() {
               type="number"
               id="price"
               name="price"
-              autoComplete="off"
+              
             />
             <div className="form-renglon-error">
               {state?.errors?.price && <p>{state.errors.price}</p>}
