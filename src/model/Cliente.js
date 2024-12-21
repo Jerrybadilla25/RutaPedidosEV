@@ -7,6 +7,8 @@ const newCliente = new Schema({
   contact: { type: String, required: true},
   cel: { type: String , required: true},
   cedJuridica: { type: String , required: false},
+  items: [{ type: Schema.Types.ObjectId,
+    ref: "Pedido"}],
   address: {
     provincia: String,
     canton: String,
@@ -17,6 +19,8 @@ const newCliente = new Schema({
   userCreator: { type: String, required: true },
   status: { type: String, default: 'Activo' },
   typePay: { type: String, default: 'Credito' },
-});
+  
+},
+{ timestamps: true });
 
 export default models.Cliente || model("Cliente", newCliente);

@@ -7,53 +7,53 @@ export default function ClientForm() {
   const [state, formAction, pending] = useActionState(addClientBd, undefined);
 
   return (
-    <div class="form-container">
+    <div className="form-container">
       <h1>Agregar cliente</h1>
       <form action={formAction}>
-        <div class="form-row">
+        <div className="form-row">
           <label htmlFor="name">Nombre del comercio</label>
           <input type="text" id="name" name="name"  />
-          <p class="error-message">
+          <p className="error-message">
             {state?.errors?.name && state.errors.name}
           </p>
         </div>
 
-        <div class="form-row">
+        <div className="form-row">
           <label htmlFor="email">Correo electrónico</label>
           <input type="email" id="email" name="email"  />
-          <p class="error-message">
+          <p className="error-message">
             {state?.errors?.email && state.errors.email}
           </p>
         </div>
 
-        <div class="form-row">
+        <div className="form-row">
           <label htmlFor="contact">Nombre de contacto</label>
           <input type="text" id="contact" name="contact" />
-          <p class="error-message">
+          <p className="error-message">
             {state?.errors?.contact && state.errors.contact}
           </p>
         </div>
 
-        <div class="form-row">
+        <div className="form-row">
           <label htmlFor="phone">Número de teléfono</label>
           <input type="text" id="phone" name="cel"  />
-          <p class="error-message">{state?.errors?.cel && state.errors.cel}</p>
+          <p className="error-message">{state?.errors?.cel && state.errors.cel}</p>
         </div>
 
-        <div class="form-row">
+        <div className="form-row">
           <label htmlFor="cedJuridica">Cédula Jurídica</label>
           <input
             type="text"
             id="cedJuridica"
             name="cedJuridica"
-            autocomplete="off"
+            
           />
-          <p class="error-message">
+          <p className="error-message">
             {state?.errors?.cedJuridica && state.errors.cedJuridica}
           </p>
         </div>
 
-        <div class="form-row">
+        <div className="form-row">
           <label htmlFor="provincia">Provincia</label>
           <input
             type="text"
@@ -61,28 +61,28 @@ export default function ClientForm() {
             name="provincia"
             
           />
-          <p class="error-message">
+          <p className="error-message">
             {state?.errors?.provincia && state.errors.provincia}
           </p>
         </div>
 
-        <div class="form-row">
+        <div className="form-row">
           <label htmlFor="canton">Cantón</label>
           <input type="text" id="canton" name="canton"  />
-          <p class="error-message">
+          <p className="error-message">
             {state?.errors?.canton && state.errors.canton}
           </p>
         </div>
 
-        <div class="form-row">
+        <div className="form-row">
           <label htmlFor="distrito">Distrito</label>
           <input type="text" id="distrito" name="distrito"  />
-          <p class="error-message">
+          <p className="error-message">
             {state?.errors?.distrito && state.errors.distrito}
           </p>
         </div>
 
-        <div class="form-row">
+        <div className="form-row">
           <label htmlFor="direccion">Dirección</label>
           <input
             type="text"
@@ -90,12 +90,12 @@ export default function ClientForm() {
             name="direccion"
             
           />
-          <p class="error-message">
+          <p className="error-message">
             {state?.errors?.direccion && state.errors.direccion}
           </p>
         </div>
 
-        <div class="form-button">
+        <div className="form-button">
           <button disabled={pending}>
             {pending ? "Enviando datos..." : "Guardar cliente"}
           </button>

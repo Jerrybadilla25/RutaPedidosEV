@@ -14,7 +14,7 @@ export default function NavPrincipal() {
         </li>
 
         <li className="linkPer2">
-        <Link href="#">Dashboard</Link>
+        <Link href="/dashboard">Dashboard</Link>
         </li>
 
         <li

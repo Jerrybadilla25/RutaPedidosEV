@@ -123,6 +123,17 @@ p {
 
 /* estilos tabla cliente */
 
+.flex-justify-between{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center
+}
+
+.flex-justify-between div{
+  margin: 10px;
+}
+
 
 .borderPerLef {
   border-left: solid 7px  #0a0a0a;
@@ -139,7 +150,11 @@ p {
 .borderPerAll{
   background-color: transparent;
   border: solid 1px #ccc;
+  margin-bottom: 10px;
   //border-radius: 10px;
+}
+.container-data-cliente{
+  background-color: transparent;
 }
 
 .borderPerAll:hover{
@@ -165,11 +180,22 @@ p {
   border-radius: 5px;
 }
 
+.text-orange div p  {
+  color: var(--textOrange);
+  font-size: 12px;
+  background-color: var(--backgroundSutil);
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+
 .text-per-white {
   color: var(--textWhite);
-  
-  
 }
+
+.text-per-orange {
+  color: var(--textOrange);
+}
+
 .bolt-per{
   font-weight: bold;
 }
@@ -178,7 +204,7 @@ p {
 }
 
 .font-per-sl{
-  font-size: 15px;
+  font-size: 16px;
 }
 
 

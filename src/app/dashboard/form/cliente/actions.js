@@ -3,10 +3,10 @@ import {addClientDbFormSchema} from '@/utils/definiciones'
 import {getUser} from '@/utils/dal'
 import Cliente from '@/model/Cliente'
 import { nanoid } from "nanoid"
+import {createIdClient} from '@/utils/creteSku'
 import {redirect} from 'next/navigation'
 
 export async function addClientBd(state, formData) {
-  console.log(formData)
     const validatedFields = addClientDbFormSchema.safeParse({
         name: formData.get('name'),
         email: formData.get('email'),
@@ -27,7 +27,7 @@ export async function addClientBd(state, formData) {
       }
       const user = await getUser()
       const userCreator = user.user
-      const clientId = nanoid(10);
+      const clientId = await createIdClient();
       const {name, email, contact, cel, cedJuridica, provincia, canton, distrito, direccion}=validatedFields.data
       const newCliente = new Cliente({
         name,

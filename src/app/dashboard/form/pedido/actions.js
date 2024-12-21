@@ -1,66 +1,85 @@
-'use server'
-import {connectDB} from '@/utils/dbserver'
-import Cliente from '@/model/Cliente'
+"use server";
+import { connectDB } from "@/utils/dbserver";
+import Cliente from "@/model/Cliente";
+import { getUser } from "@/utils/dal";
+import Pedido from "@/model/Pedido";
+import { createDelivery } from "@/utils/creteSku";
+import { redirect } from "next/navigation";
 
-
-export async function getClientePedido(query){
-   try {
-    await connectDB()
-    const clientes = await Cliente.find({ name: { $regex: query, $options: 'i' } }).lean();
-    const clientesReverse = clientes.reverse()
-    return clientesReverse
-   } catch (error) {
-      return {message: "error"}
-   }
+export async function getClientePedido(query) {
+  try {
+    await connectDB();
+    const clientes = await Cliente.find({
+      name: { $regex: query, $options: "i" },
+    }).lean();
+    const clientesReverse = clientes.reverse();
+    return clientesReverse;
+  } catch (error) {
+    return { message: "error" };
+  }
 }
 
 export async function addPedidotBd(state, formData) {
-   // Convertir FormData a un array de entradas
-   const entries = Array.from(formData.entries());
- 
-   // Filtrar las claves internas generadas por Next.js
-   const filteredData = entries.filter(([key]) => !key.startsWith('$'));
- 
-   // Convertir a un objeto plano
-   const data = Object.fromEntries(filteredData);
- 
-   // Aquí puedes realizar cualquier lógica adicional, como validaciones o transformaciones
-   //console.log('Datos procesados:', data);
- 
-   // Simulación de guardar los datos en la base de datos (reemplaza con tu lógica real)
-   const pedido = {
-     idCliente: data.idCliente,
-     productos: [],
-   };
- 
-   // Agrupar los productos según los campos (sku, nombre, category, etc.)
-   const productosKeys = ['sku', 'nombre', 'category', 'prece', 'cantidad'];
-   let productoTemp = {};
- 
-   filteredData.forEach(([key, value]) => {
-     if (productosKeys.includes(key)) {
-       productoTemp[key] = value;
-     }
- 
-     // Cuando todos los datos de un producto están listos, verifica si son válidos
-     if (Object.keys(productoTemp).length === productosKeys.length) {
-       // Excluir productos donde `cantidad` o cualquier otro campo sea ''
-       if (productoTemp.cantidad !== '' && productoTemp.sku !== '' && productoTemp.nombre !== '') {
-         pedido.productos.push(productoTemp);
-       }
-       productoTemp = {};
-     }
-   });
- 
-   console.log('Pedido estructurado:', pedido);
- 
-   // Guardar en la base de datos (reemplaza con tu función de guardado)
-   try {
-     // Ejemplo de guardado:
-     // await PedidoModel.create(pedido);
-     console.log('Pedido guardado exitosamente en la BD');
-   } catch (error) {
-     console.error('Error al guardar el pedido:', error);
-   }
- }
- 
+  const entries = Array.from(formData.entries());
+  const filteredData = entries.filter(([key]) => !key.startsWith("$"));
+  const data = Object.fromEntries(filteredData);
+  const pedido = {
+    idCliente: data.idCliente,
+    productos: [],
+  };
+  const productosKeys = ["sku", "nombre", "category", "price", "cantidad"];
+  let productoTemp = {};
+
+  filteredData.forEach(([key, value]) => {
+    if (productosKeys.includes(key)) {
+      productoTemp[key] = value;
+    }
+    if (Object.keys(productoTemp).length === productosKeys.length) {
+      if (
+        productoTemp.cantidad !== "" &&
+        productoTemp.sku !== "" &&
+        productoTemp.nombre !== ""
+      ) {
+        pedido.productos.push(productoTemp);
+      }
+      productoTemp = {};
+    }
+  });
+
+  const IdCliente = await Cliente.findById(pedido.idCliente);
+  //console.log(IdCliente)
+  const shippingAddress = IdCliente.address;
+  const userCreator = await getUser();
+  const vendedor = userCreator.user;
+  const delivery = await createDelivery();
+  let totalAmount = 0;
+
+  for (let i = 0; i < pedido.productos.length; i++) {
+    let precio = pedido.productos[i].price;
+    let cantidad = pedido.productos[i].cantidad;
+    let total = precio * cantidad;
+    totalAmount = totalAmount + total;
+  }
+
+  // Guardar en la base de datos (reemplaza con tu función de guardado)
+  try {
+    const newPedido = Pedido({
+      orderId: delivery,
+      vendedor: vendedor,
+      productos: pedido.productos,
+      totalAmount,
+      shippingAddress,
+    });
+    IdCliente.items.push(newPedido._id);
+    await Cliente.findByIdAndUpdate(IdCliente._id, {
+      $set: {
+        items: IdCliente.items,
+      },
+    });
+    await newPedido.save();
+    console.log("Pedido guardado exitosamente en la BD");
+    //redirect("/dashboard");
+  } catch (error) {
+    console.error("Error al guardar el pedido:", error);
+  }
+}

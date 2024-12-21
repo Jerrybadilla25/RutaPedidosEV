@@ -52,7 +52,7 @@ export default function Table2({products, id}) {
                       type="text"
                       className="input-field"
                       value={itm.price}
-                      name="prece"
+                      name="price"
                       readOnly
                     />
                   </td>
@@ -63,7 +63,7 @@ export default function Table2({products, id}) {
               ))}
             </tbody>
           </table>
-          <input type="text" name="idCliente" value={id} className="display-none" />
+          <input type="text" name="idCliente" defaultValue={id} className="display-none" />
           <button className="button-full">Guardar pedido</button>
         </form>
   )

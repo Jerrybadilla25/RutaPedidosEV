@@ -9,7 +9,7 @@ export default async function TableCliente({query}) {
     <div>
       {clientes.map((itm) => (
         <div key={itm._id}>
-          <div className="grid grid-cols-1  my-3 border-2 borderPerAll">
+          <div className="borderPerAll">
             <div className="borderPerLef">
               <div className="flex justify-between mx-5 py-4 text-white text-per-white">
                 <div className="">
