@@ -180,7 +180,7 @@ nav ul {
   /* clases de dasboard pedidos*/
 
   .pedido{
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     padding: 7px;
     width: 100%;
     border: 1px solid var(--textWhite)
@@ -190,6 +190,14 @@ nav ul {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    
+  }
+  .pedido-col-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     flex-wrap: wrap;
     padding-bottom: 10px;
     
@@ -253,6 +261,18 @@ nav ul {
     padding: 2px 5px;
     background-color: var(--backgroundSutil);
     border-radius: 5px;
+    cursor: pointer;
+  }
+  .button-nota{
+    background-color: var(--background);
+    color: var(--textblue);
+    padding: 2px 5px;
+  }
+  .button-nota:hover{
+    padding: 2px 5px;
+    color: var(--textblue);
+    background-color: var(--backgroundSutil);
+    cursor: pointer;
   }
   .pedido-select{
     background-color: var(--background);
@@ -287,6 +307,10 @@ nav ul {
     background-color: var(--backgroundBox);
     color: var(--textblue);
     border: 1px solid var(--textblue);
+    cursor: pointer;
+  }
+  .notas-center{
+    padding: 0 10px;
   }
 
 
@@ -334,4 +358,55 @@ nav ul {
 
 .progress-bar-red {
   background-color: var(--textRed);
+}
+
+/*tabla notas*/
+
+.pedido-table-notas{
+  display: flex;
+  flex-direction: colunm;
+  padding: 10px;
+  background-color: var(--backgroundSutil);
+  border-radius: 0 30px 0 0;
+  margin: 5px;
+}
+
+
+
+
+
+table {
+  margin: 5px 10px auto; /* Centra la tabla horizontalmente */
+  border-collapse: collapse; /* Elimina el espacio entre celdas */
+  width: 80%; /* Ajusta el ancho según sea necesario */
+  background-color: transparent; /* Fondo transparente */
+  font-family: Arial, sans-serif;
+  text-align: center; /* Centra el texto en las celdas */
+}
+
+thead {
+  background-color: var(--background); /* Fondo claro para el encabezado */
+}
+
+th, td {
+  font-size: 14px;
+  border: 1px solid #ccc; /* Borde cuadriculado */
+  padding: 3px 10px; /* Espaciado interno */
+}
+
+th {
+  font-weight: bold; /* Texto en negrita para encabezados */
+}
+
+tbody tr:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.05); /* Fila impar con un fondo sutil */
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.1); /* Fila par con un fondo más intenso */
+}
+
+tbody tr:hover {
+  background-color: rgba(0, 128, 255, 0.2); /* Efecto hover en las filas */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
 }

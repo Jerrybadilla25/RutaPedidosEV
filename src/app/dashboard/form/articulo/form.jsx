@@ -114,12 +114,3 @@ export default function ClientForm() {
 }
 
 
-/*
- <input
-              className="custom-input"
-              type="category"
-              id="category"
-              name="category"
-              autoComplete="off"
-            />
-            */

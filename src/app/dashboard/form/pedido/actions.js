@@ -78,6 +78,7 @@ export async function addPedidotBd(state, formData) {
       totalAmount,
       shippingAddress,
       statusUpdateDate,
+      notas: [],
     });
     IdCliente.items.push(newPedido._id);
     await Cliente.findByIdAndUpdate(IdCliente._id, {

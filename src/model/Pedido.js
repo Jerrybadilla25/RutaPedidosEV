@@ -19,6 +19,13 @@ const newPedido = new Schema({
       cantidad: {type: Number},
     },
   ],
+  notas: [
+    {
+      nota: {type: String},
+      creador: {type: String},
+      fechaCracion: {type: Date}
+    },
+  ],
   totalAmount: { type: Number, required: true },
   status: {
     type: String,
