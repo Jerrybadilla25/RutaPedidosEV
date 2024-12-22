@@ -9,12 +9,20 @@ export default function TablePedido({ pedido }) {
   const [state, formAction, pending] = useActionState(upDateStatus, undefined);
 
   const [dNone, setdNone] = useState("pedido-oculto");
+  const [dNone2, setdNone2] = useState("pedido-oculto");
   const [status, setStatus] = useState(pedido.status);
   function displayNone() {
     if (dNone === "pedido-oculto") {
-      setdNone("");
+      setdNone("pedido-table-notas");
     } else {
       setdNone("pedido-oculto");
+    }
+  }
+  function displayNone2() {
+    if (dNone2 === "pedido-oculto") {
+      setdNone2("");
+    } else {
+      setdNone2("pedido-oculto");
     }
   }
 
@@ -121,30 +129,21 @@ export default function TablePedido({ pedido }) {
               onClick={() => displayNone()}
               className="font-sl pedido-button"
             >
-              {dNone === "pedido-oculto" ? "Ver detalle..." : "Ocultar detalle"}
+              {dNone === "pedido-oculto" ? "Ver detalle..." : "...ocultar detalle"}
             </strong>
           </p>
           <p>
-            <strong className="font-sl pedido-button">
-              {dNone === "pedido-oculto" ? "Ver notas..." : "Ocultar notas"}
+            <strong 
+            onClick={() => displayNone2()}
+            className="font-sl pedido-button">
+              {dNone2 === "pedido-oculto" ? "Ver notas..." : "...ocultar notas"}
             </strong>
           </p>
         </div>
 
-        <div className={` pedido-col pedido-box-list`}>
-          <p>
-            <strong>Notas:</strong>
-          </p>
-          <ul className="pedido-ul ">
-            {pedido.notas.map((itm, index) => (
-              <li key={index}>
-                
-              </li>
-            ))}
-          </ul>
-        </div>
+        
 
-        <div className={`${dNone} pedido-table-notas`}>
+        <div className={`${dNone} `}>
           <p>
             <strong>Pedido:</strong>
           </p>
@@ -175,7 +174,20 @@ export default function TablePedido({ pedido }) {
             </tbody>
           </table>
         </div>
+        <div className={`${dNone2} pedido-col pedido-box-list`}>
+          <p>
+            <strong>Notas:</strong>
+          </p>
+          <ul className="pedido-ul ">
+            {pedido.notas.map((itm, index) => (
+              <li key={index}>
+                
+              </li>
+            ))}
+          </ul>
+        </div>
       </form>
+      <p className="font-sm">Vendedor:  <strong>{}</strong>{pedido.vendedor} </p>
     </div>
   );
 }
