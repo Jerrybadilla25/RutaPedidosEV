@@ -12,8 +12,13 @@ export default async function Homepage() {
   const pedidos = JSON.parse (JSON.stringify(await Pedido.find().lean())) 
   console.log(pedidos[0])
   return (
-    <Suspense key={idKey}>
-      <TablaPedido pedidos={pedidos}/>
+    <Suspense  fallback={<p>Cargando pedidos...</p>} >
+      {
+        pedidos.map((pedido)=>(
+          <TablaPedido key={pedido._id} pedido={pedido}/>
+        ))
+      }
+      
     </Suspense>
   );
 }

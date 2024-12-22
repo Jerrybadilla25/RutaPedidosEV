@@ -30,30 +30,14 @@ body {
  
 }
 
-/*
-.container-per {
-  display: grid;
-  grid-template-columns: 15% 70% 15%; 
-  gap: 16px; 
-  padding: 0 10%;
+.font-sm{
+  font-size: 10px;
 }
-
-@media (max-width: 768px) { 
-  .container-per {
-    grid-template-columns: 15% 85%; 
-    padding: 0 0.25%;
-  }
-
-  .column:nth-child(3) { 
-    display: none;
-  }
+.font-sl{
+  font-size: 12px;
 }
-
-
-.contenedor{
-  padding: 0 5%;
+.font-sx{
+  font-size: 14px;
 }
-*/
-
 
 

@@ -67,6 +67,11 @@ export async function addPedidotBd(state, formData) {
       orderId: delivery,
       vendedor: vendedor,
       productos: pedido.productos,
+      idCliente: IdCliente.clientId,
+      name: IdCliente.name,
+      email: IdCliente.email,
+      cel: IdCliente.cel,
+      contact: IdCliente.contact,
       totalAmount,
       shippingAddress,
     });

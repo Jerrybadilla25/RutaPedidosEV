@@ -176,5 +176,93 @@ nav ul {
     //border-bottom: 1px solid var(--textOrange);
   }
   
+
+  /* clases de dasboard pedidos*/
+
+  .pedido{
+    margin-bottom: 5px;
+    padding: 7px;
+    width: 100%;
+    border: 1px solid var(--textWhite)
+  }
+
+  .pedido-col{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    
+  }
+
+
+  .pedido-sub{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    padding: 5px;
+    background-color: var(--backgroundSutil)
+    
+  }
+  .pedido-sub strong{
+    color: var(--textOrange)
+  }
+
+  .pedido-sub p{
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .w-1{
+    width: 80px;
+    
+  }
+  .w-2{
+    width: 120px;
+    
+  }
+  .w-3{
+    width: 100px;
+    
+  }
+  .w-4{
+    width: 150px;
+    
+  }
+
+  .pedido-oculto{
+    display: none;
+  }
+
+  .pedido-ul{
+    margin-left: 30px;
+    list-style-type: disc;
+    
+  }
+  .pedido-box-list {
+    background-color: var(--backgroundSutil);
+    padding: 5px 10px;
+    border-radius: 0 20px 0 0;
+  }
+  .pedido-button{
+    color: var(--textblue);
+    padding: 2px 5px;
+  }
+  .pedido-button:hover{
+    padding: 2px 5px;
+    background-color: var(--backgroundSutil);
+    border-radius: 5px;
+  }
+  .pedido-select{
+    background-color: var(--background);
+    border: none;
+    outline: none;
+  }
+  .pedido-input option{
+    color: var(--textOrange);
+    border: none;
+    outline: none;
+  }
   
   

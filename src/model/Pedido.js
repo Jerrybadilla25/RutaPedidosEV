@@ -4,6 +4,11 @@ import { Schema, model, models } from "mongoose";
 
 const newPedido = new Schema({
   orderId: { type: String, unique: true, required: true},
+  idCliente:{type: Number, required: true},
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: false },
+  contact: { type: String, required: true},
+  cel: { type: String , required: true},
   vendedor: { type: String},
   productos: [
     {
@@ -20,6 +25,7 @@ const newPedido = new Schema({
     enum: ["pending", "shipped", "delivered", "cancelled"],
     default: "pending",
   },
+  
   shippingAddress: {
     provincia: String,
     canton: String,
