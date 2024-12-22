@@ -10,7 +10,6 @@ export default async function Homepage() {
   connectDB()
   const idKey = 1
   const pedidos = JSON.parse (JSON.stringify(await Pedido.find().lean())) 
-  console.log(pedidos[0])
   return (
     <Suspense  fallback={<p>Cargando pedidos...</p>} >
       {

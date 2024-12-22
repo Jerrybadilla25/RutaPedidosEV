@@ -1,10 +1,12 @@
 "use client";
 import React from "react";
 import { useState } from "react";
+import BarraProgreso from '@/app/dashboard/barraprogreso'
 
 export default function TablePedido({ pedido }) {
   const [dNone, setdNone]=useState("pedido-oculto")
   const [status, setStatus]=useState(pedido.status)
+  const endDateVariable = null
   function displayNone() {
     if(dNone==="pedido-oculto"){
       setdNone('')
@@ -81,9 +83,11 @@ export default function TablePedido({ pedido }) {
         </div>
         {
           status !== 'pending' ? (
-            <div className="pedido-sub">
-              <p>Guardar</p>
-              <button>Aplicar cambios</button>
+            <div className="pedido-sub-button">
+              <p className=""></p>
+              <button
+              className="pedido-botton bold"
+              >Aplicar cambios</button>
             </div>
           ) : null
         }
@@ -93,6 +97,12 @@ export default function TablePedido({ pedido }) {
           <strong>Dirección de Envío:</strong>{" "}
           {`${pedido.shippingAddress.direccion}, ${pedido.shippingAddress.distrito}, ${pedido.shippingAddress.canton}, ${pedido.shippingAddress.provincia}`}
         </p>
+      </div>
+      <div className="pedido-col">
+          <BarraProgreso 
+          startDate={pedido.createdAt} 
+          endDate={pedido.statusUpdateDate} 
+          />
       </div>
       <div className="pedido-col" >
             <p >
@@ -105,6 +115,7 @@ export default function TablePedido({ pedido }) {
               </button>
             </p>
       </div>
+     
       <div className={`${dNone} pedido-col pedido-box-list`}>
         <p>
           <strong>Productos:</strong>
@@ -121,6 +132,7 @@ export default function TablePedido({ pedido }) {
           ))}
         </ul>
       </div>
+     
     </div>
   );
 }

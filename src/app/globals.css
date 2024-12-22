@@ -12,6 +12,9 @@
   --textWhite: #ccc;
   --textError: #e01e09;
   --textBlack: #ffffff;
+  --textGreen: #4CAF50; /* Verde brillante */
+  --textYellow: #FFEB3B; /* Amarillo cálido */
+  --textRed: #F44336; /* Rojo suave */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -38,6 +41,9 @@ body {
 }
 .font-sx{
   font-size: 14px;
+}
+.bold {
+  font-weight: bold;
 }
 
 

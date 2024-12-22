@@ -48,6 +48,9 @@ export async function addPedidotBd(state, formData) {
 
   const IdCliente = await Cliente.findById(pedido.idCliente);
   //console.log(IdCliente)
+  const savedDate = new Date();
+  const statusUpdateDate = new Date(savedDate);
+  statusUpdateDate.setDate(savedDate.getDate() + 7);
   const shippingAddress = IdCliente.address;
   const userCreator = await getUser();
   const vendedor = userCreator.user;
@@ -74,6 +77,7 @@ export async function addPedidotBd(state, formData) {
       contact: IdCliente.contact,
       totalAmount,
       shippingAddress,
+      statusUpdateDate,
     });
     IdCliente.items.push(newPedido._id);
     await Cliente.findByIdAndUpdate(IdCliente._id, {

@@ -39,6 +39,7 @@ const newPedido = new Schema({
   },
   isPaid: { type: Boolean, default: false },
   paidDate: { type: Date },
+  statusUpdateDate: { type: Date },
 },
 { timestamps: true });
 
