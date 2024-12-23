@@ -10,6 +10,8 @@ export default function TablePedido({ pedido }) {
 
   const [dNone, setdNone] = useState("pedido-oculto");
   const [dNone2, setdNone2] = useState("pedido-oculto");
+  const [textArea, setTextArea] = useState("pedido-oculto");
+  const [statusNota, setStatusNota] = useState(true);
   const [status, setStatus] = useState(pedido.status);
   function displayNone() {
     if (dNone === "pedido-oculto") {
@@ -23,6 +25,15 @@ export default function TablePedido({ pedido }) {
       setdNone2("");
     } else {
       setdNone2("pedido-oculto");
+    }
+  }
+  function addTextArea() {
+    if (textArea === "pedido-oculto") {
+      setTextArea("pedido-col");
+      setStatusNota(false);
+    } else {
+      setTextArea("pedido-oculto");
+      setStatusNota(true);
     }
   }
 
@@ -94,7 +105,12 @@ export default function TablePedido({ pedido }) {
             </p>
           </div>
           <div className="pedido-sub ">
-            <p className="w-1 font-sl button-nota">+ Add Nota</p>
+            <p
+              onClick={() => addTextArea()}
+              className="w-1 font-sl button-nota"
+            >
+              + Add Nota
+            </p>
             <p className="w-1 font-sx">
               <strong className="notas-center">
                 {`${pedido.notas.length} notas`}
@@ -104,12 +120,22 @@ export default function TablePedido({ pedido }) {
           <div className="pedido-sub pedido-oculto">
             <input name="_id" id="_id" defaultValue={pedido._id} type="text" />
           </div>
-          {status !== "pending" ? (
+          {(status !== "pending" || statusNota !== true) && (
             <div className="pedido-sub-button">
               <p className=""></p>
-              <button className="pedido-botton bold">Aplicar cambios</button>
+              <button className="pedido-botton bold">
+                {
+                  status !== 'pending' ? 'Guardar status...': 'Guardar nota...'
+                }
+              </button>
             </div>
-          ) : null}
+          )}
+        </div>
+        <div className={`${textArea} `}>
+          <label className="nota-label" htmlFor="">
+            Nota
+          </label>
+          <textarea name="nota" id="nota"></textarea>
         </div>
         <div className="pedido-col">
           <p className="font-sx">
@@ -129,19 +155,20 @@ export default function TablePedido({ pedido }) {
               onClick={() => displayNone()}
               className="font-sl pedido-button"
             >
-              {dNone === "pedido-oculto" ? "Ver detalle..." : "...ocultar detalle"}
+              {dNone === "pedido-oculto"
+                ? "Ver detalle..."
+                : "...ocultar detalle"}
             </strong>
           </p>
           <p>
-            <strong 
-            onClick={() => displayNone2()}
-            className="font-sl pedido-button">
+            <strong
+              onClick={() => displayNone2()}
+              className="font-sl pedido-button"
+            >
               {dNone2 === "pedido-oculto" ? "Ver notas..." : "...ocultar notas"}
             </strong>
           </p>
         </div>
-
-        
 
         <div className={`${dNone} `}>
           <p>
@@ -157,20 +184,19 @@ export default function TablePedido({ pedido }) {
               </tr>
             </thead>
             <tbody>
-              {
-                pedido.productos.map((itm, index)=>(
-                  <tr key={index}>
-                <td>{itm.sku}</td>
-                <td>{itm.nombre}</td>
-                <td>{itm.cantidad}</td>
-                <td>{(itm.price*itm.cantidad).toLocaleString("es-ES", {
-                  style: "currency",
-                  currency: "CRC",
-                })}</td>
-              </tr>
-                ))
-              }
-             
+              {pedido.productos.map((itm, index) => (
+                <tr key={index}>
+                  <td>{itm.sku}</td>
+                  <td>{itm.nombre}</td>
+                  <td>{itm.cantidad}</td>
+                  <td>
+                    {(itm.price * itm.cantidad).toLocaleString("es-ES", {
+                      style: "currency",
+                      currency: "CRC",
+                    })}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -180,14 +206,30 @@ export default function TablePedido({ pedido }) {
           </p>
           <ul className="pedido-ul ">
             {pedido.notas.map((itm, index) => (
-              <li key={index}>
-                
-              </li>
+              <li key={index}></li>
             ))}
           </ul>
         </div>
       </form>
-      <p className="font-sm">Vendedor:  <strong>{}</strong>{pedido.vendedor} </p>
+      <p className="font-sm">
+        Vendedor: <strong>{}</strong>
+        {pedido.vendedor}{" "}
+      </p>
     </div>
   );
 }
+
+/*
+{status !== "pending" ? (
+            <div className="pedido-sub-button">
+              <p className=""></p>
+              <button className="pedido-botton bold">Aplicar cambios</button>
+            </div>
+          ) : null}
+          {statusNota !== true ? (
+            <div className="pedido-sub-button">
+              <p className=""></p>
+              <button className="pedido-botton bold">Aplicar cambios</button>
+            </div>
+          ) : null}
+           */

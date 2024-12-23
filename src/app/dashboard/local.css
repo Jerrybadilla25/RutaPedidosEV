@@ -191,7 +191,7 @@ nav ul {
     flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     
   }
   .pedido-col-1{
@@ -371,8 +371,20 @@ nav ul {
   margin: 5px;
 }
 
-
-
+.nota-label{
+  font-size: 14px;
+  margin: 0 10px;
+}
+.pedido-col textarea{
+  width: 75%;
+  padding: 0 10px;
+  font-size: 14px;
+  background-color: var(--backgroundSutil);
+  resize: none;
+}
+textarea:focus{
+  outline: none;
+}
 
 
 table {
