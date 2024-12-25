@@ -4,6 +4,7 @@ import {addPedidotBd} from '@/app/dashboard/form/pedido/actions'
 
 export default function Table2({products, id}) {
     const [state, formAction, pending] = useActionState(addPedidotBd, undefined);
+    console.log(state)
     
   return (
     <form action={formAction} className="form-box">

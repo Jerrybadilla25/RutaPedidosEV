@@ -88,8 +88,8 @@ export async function addPedidotBd(state, formData) {
     });
     await newPedido.save();
     console.log("Pedido guardado exitosamente en la BD");
-    //redirect("/dashboard");
   } catch (error) {
     console.error("Error al guardar el pedido:", error);
   }
+  redirect("/dashboard");
 }

@@ -13,6 +13,7 @@ export default function TablePedido({ pedido }) {
   const [textArea, setTextArea] = useState("pedido-oculto");
   const [statusNota, setStatusNota] = useState(true);
   const [status, setStatus] = useState(pedido.status);
+  const [statusBol, setStatusBol] = useState(pedido.status);
   function displayNone() {
     if (dNone === "pedido-oculto") {
       setdNone("pedido-table-notas");
@@ -29,7 +30,7 @@ export default function TablePedido({ pedido }) {
   }
   function addTextArea() {
     if (textArea === "pedido-oculto") {
-      setTextArea("pedido-col");
+      setTextArea("pedido-col fadeIn");
       setStatusNota(false);
     } else {
       setTextArea("pedido-oculto");
@@ -38,7 +39,12 @@ export default function TablePedido({ pedido }) {
   }
 
   const handleChange = (event) => {
-    setStatus(event.target.value);
+    if (event.target.value === status) {
+      setStatus(event.target.value);
+    } else {
+      setStatus(event.target.value);
+      //setStatusBol(!statusBol);
+    }
   };
 
   return (
@@ -87,7 +93,7 @@ export default function TablePedido({ pedido }) {
             </p>
           </div>
           <div className="pedido-sub">
-            <p className="w-3 font-sl">Status:</p>
+            <p className="w-3 font-sl">Status: <span className="textblue bold">{pedido.status}</span></p>
             <p className="w-3 font-sx">
               <strong>
                 <select
@@ -96,10 +102,23 @@ export default function TablePedido({ pedido }) {
                   id="status"
                   onChange={handleChange}
                 >
-                  <option value="pending">{pedido.status}</option>
-                  <option value="shipped">shipped</option>
-                  <option value="delivered">delivered</option>
-                  <option value="cancelled">cancelled</option>
+                  <option value={pedido.status}>{pedido.status}</option> 
+                  {
+                    statusBol !== 'pending' ? <option value="pending">pending</option>: null
+                  }
+                  {
+                    statusBol !== 'delivered' ? <option value="delivered">delivered</option>: null
+                  }
+                  {
+                    statusBol !== 'shipped' ? <option value="shipped">shipped</option>: null
+                  }
+                  {
+                    statusBol !== 'cancelled' ? <option value="cancelled">cancelled</option>: null
+                  }
+                  
+                  
+
+                
                 </select>
               </strong>
             </p>
@@ -119,23 +138,31 @@ export default function TablePedido({ pedido }) {
           </div>
           <div className="pedido-sub pedido-oculto">
             <input name="_id" id="_id" defaultValue={pedido._id} type="text" />
+            <input
+              name="statusOrigen"
+              id="statusOrigen"
+              defaultValue={pedido.status}
+              type="text"
+            />
           </div>
-          {(status !== "pending" || statusNota !== true) && (
+          {statusBol !== status && (
             <div className="pedido-sub-button">
               <p className=""></p>
-              <button className="pedido-botton bold">
-                {
-                  status !== 'pending' ? 'Guardar status...': 'Guardar nota...'
-                }
-              </button>
+              <button className="pedido-botton bold">Guardar status...</button>
             </div>
           )}
         </div>
-        <div className={`${textArea} `}>
+        <div className={`${textArea}`}>
           <label className="nota-label" htmlFor="">
             Nota
           </label>
           <textarea name="nota" id="nota"></textarea>
+          {statusNota !== true && (
+            <div className="pedido-sub-button">
+              <p className=""></p>
+              <button className="pedido-botton bold">Guardar nota...</button>
+            </div>
+          )}
         </div>
         <div className="pedido-col">
           <p className="font-sx">
@@ -157,7 +184,7 @@ export default function TablePedido({ pedido }) {
             >
               {dNone === "pedido-oculto"
                 ? "Ver detalle..."
-                : "...ocultar detalle"}
+                : "ocultar detalle"}
             </strong>
           </p>
           <p>
@@ -165,16 +192,16 @@ export default function TablePedido({ pedido }) {
               onClick={() => displayNone2()}
               className="font-sl pedido-button"
             >
-              {dNone2 === "pedido-oculto" ? "Ver notas..." : "...ocultar notas"}
+              {dNone2 === "pedido-oculto" ? "Ver notas..." : "ocultar notas"}
             </strong>
           </p>
         </div>
 
         <div className={`${dNone} `}>
-          <p>
+          <p className="w-15">
             <strong>Pedido:</strong>
           </p>
-          <table>
+          <table className="w-75">
             <thead>
               <tr>
                 <th>Codigo</th>
@@ -200,13 +227,24 @@ export default function TablePedido({ pedido }) {
             </tbody>
           </table>
         </div>
-        <div className={`${dNone2} pedido-col pedido-box-list`}>
-          <p>
+        <div className={`${dNone2} pedido-col`}>
+          <p className="w-15">
             <strong>Notas:</strong>
           </p>
-          <ul className="pedido-ul ">
+          <ul className="lista-notas w-75">
             {pedido.notas.map((itm, index) => (
-              <li key={index}></li>
+              <li key={index} className="nota-item">
+                <span className="nota-punto ">•</span>
+                <span className="nota-contenido font-sl">
+                  <strong className="font-sl">{itm.creador}</strong> -{" "}
+                  {new Date(itm.fechaCracion).toLocaleDateString("es-ES", {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                  })}
+                  : {itm.nota}
+                </span>
+              </li>
             ))}
           </ul>
         </div>
@@ -219,17 +257,4 @@ export default function TablePedido({ pedido }) {
   );
 }
 
-/*
-{status !== "pending" ? (
-            <div className="pedido-sub-button">
-              <p className=""></p>
-              <button className="pedido-botton bold">Aplicar cambios</button>
-            </div>
-          ) : null}
-          {statusNota !== true ? (
-            <div className="pedido-sub-button">
-              <p className=""></p>
-              <button className="pedido-botton bold">Aplicar cambios</button>
-            </div>
-          ) : null}
-           */
+

@@ -12,7 +12,7 @@ import './local.pedido.css'
 export default async function FormPedidoCliente({ searchParams }) {
   const data = await searchParams
   const query = data?.query || ""
-  const seachid = data?.searchid || ""
+  const seachid = data?.searchid || "" //existe un search id cliente
   if(seachid){
     //const clientId1 = await Cliente.findById(seachid).lean()
     //const clientId = JSON.parse(JSON.stringify(clientId1))
