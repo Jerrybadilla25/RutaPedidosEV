@@ -481,3 +481,53 @@ tbody tr:hover {
   opacity: 0; /* Asegura que esté invisible antes de la animación */
   animation: fadeIn 2s ease-in forwards; /* 1s de duración, suavizado "ease-in" */
 }
+
+
+/* FilterBar.css */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0.3rem;
+  margin-bottom: 0.7rem;
+  background-color: var(--backgroundSutil);
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding:  0.2rem 0.1rem ;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.filter-item-focus {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+  padding: 0.2rem 0.1rem;
+  background: var(--background);
+  border-radius: 0.3rem;
+}
+
+.filter-item:hover {
+  transform: scale(1.1);
+  color: #007bff;
+}
+
+.filter-icon {
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  color: var(--textblue);
+}
+
+.filter-name {
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: var(--textWhite);
+}

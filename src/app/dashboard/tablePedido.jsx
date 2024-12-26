@@ -5,7 +5,7 @@ import { useActionState } from "react";
 import BarraProgreso from "@/app/dashboard/barraprogreso";
 import { upDateStatus } from "@/app/dashboard/action";
 
-export default function TablePedido({ pedido }) {
+export default function TablePedido({ pedido, }) {
   const [state, formAction, pending] = useActionState(upDateStatus, undefined);
 
   const [dNone, setdNone] = useState("pedido-oculto");
@@ -93,7 +93,9 @@ export default function TablePedido({ pedido }) {
             </p>
           </div>
           <div className="pedido-sub">
-            <p className="w-3 font-sl">Status: <span className="textblue bold">{pedido.status}</span></p>
+            <p className="w-3 font-sl">
+              Status: <span className="textblue bold">{pedido.status}</span>
+            </p>
             <p className="w-3 font-sx">
               <strong>
                 <select
@@ -102,23 +104,19 @@ export default function TablePedido({ pedido }) {
                   id="status"
                   onChange={handleChange}
                 >
-                  <option value={pedido.status}>{pedido.status}</option> 
-                  {
-                    statusBol !== 'pending' ? <option value="pending">pending</option>: null
-                  }
-                  {
-                    statusBol !== 'delivered' ? <option value="delivered">delivered</option>: null
-                  }
-                  {
-                    statusBol !== 'shipped' ? <option value="shipped">shipped</option>: null
-                  }
-                  {
-                    statusBol !== 'cancelled' ? <option value="cancelled">cancelled</option>: null
-                  }
-                  
-                  
-
-                
+                  <option value={pedido.status}>{pedido.status}</option>
+                  {statusBol !== "pending" ? (
+                    <option value="pending">pending</option>
+                  ) : null}
+                  {statusBol !== "delivered" ? (
+                    <option value="delivered">delivered</option>
+                  ) : null}
+                  {statusBol !== "shipped" ? (
+                    <option value="shipped">shipped</option>
+                  ) : null}
+                  {statusBol !== "cancelled" ? (
+                    <option value="cancelled">cancelled</option>
+                  ) : null}
                 </select>
               </strong>
             </p>
@@ -182,9 +180,7 @@ export default function TablePedido({ pedido }) {
               onClick={() => displayNone()}
               className="font-sl pedido-button"
             >
-              {dNone === "pedido-oculto"
-                ? "Ver detalle..."
-                : "ocultar detalle"}
+              {dNone === "pedido-oculto" ? "Ver detalle..." : "ocultar detalle"}
             </strong>
           </p>
           <p>
@@ -256,5 +252,3 @@ export default function TablePedido({ pedido }) {
     </div>
   );
 }
-
-

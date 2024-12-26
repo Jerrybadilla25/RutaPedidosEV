@@ -34,9 +34,9 @@ export const getUser = cache(async () => {
     let dataUser = await User.findById(session.userId.userId)
       .select("-password -email -fecha")
       .lean();
-    let rolUser = await Roles.findById(dataUser.roles[0].toString());
-    let updataUser = { ...dataUser, rol: rolUser.rol };
-    return updataUser;
+    //let rolUser = await Roles.findById(dataUser.roles[0].toString());
+    //let updataUser = { ...dataUser, rol: rolUser.rol };
+    return dataUser;
   } catch (error) {
     console.log("Failed to fetch user");
     return null;

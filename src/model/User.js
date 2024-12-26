@@ -5,10 +5,19 @@ const newUser = new Schema({
     email: {type: String, unique: true},
     password: {type: String},
     fecha: { type: Date, default: Date.now},
-    roles: [{
-        type: Schema.Types.ObjectId,
-        ref: "rol"
-    }]
+    role: {
+        type: String,
+        enum: ["master", "ventas", "logistica", "facturacion", "user"],
+        default: "user",
+      },
+   
 });
 
 export default models.User || model('User', newUser);
+
+/*
+ roles: [{
+        type: Schema.Types.ObjectId,
+        ref: "rol"
+    }]
+        */

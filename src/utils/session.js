@@ -67,9 +67,9 @@ export async function deleteSession() {
   try {
     const cookieStore = await cookies()
   cookieStore.delete('session')
-  redirect("/");
   } catch (error) {
     console.error(error)
   }
+  redirect("/")
 }
 

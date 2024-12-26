@@ -40,6 +40,7 @@ export async function signIn(state, formData) {
   // Continuar con el proceso si las credenciales son válidas
   //crear sesscion
   const idUser = dataUser[0]._id.toString()
+  console.log(idUser)
   await createSession({ userId: idUser});
   redirect("/dashboard");
 }

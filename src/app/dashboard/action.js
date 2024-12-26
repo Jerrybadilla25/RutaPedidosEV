@@ -3,12 +3,52 @@ import Pedido from "@/model/Pedido";
 import { getUser } from "@/utils/dal";
 import { redirect } from "next/navigation";
 
-
-export async function getDataPedidos(){
-  const pedidos = JSON.parse (JSON.stringify(await Pedido.find().lean()))
-  return pedidos
+//activar los iconos
+export async function handleIconClick(filterName) {
+  console.log(`Server-side: ${filterName}`);
 }
 
+
+
+
+// funcion para llamar los pedidos
+export async function getDataPedidos() {
+  const roll = await getUser();
+  const rol = roll.role;
+  const pedidos = getPedidosRol(rol);
+  return pedidos;
+}
+
+async function getPedidosRol(rol) {
+  // roles = ['logistica', 'master', 'facturacion', 'ventas']
+  switch (rol) {
+    case "ventas":
+    case "master":
+      const pedidos1 = JSON.parse(JSON.stringify(await Pedido.find().lean()));
+      return pedidos1;
+    case "facturacion":
+      const pedidos2 = JSON.parse(
+        JSON.stringify(await Pedido.find({ status: "pending" }).lean())
+      );
+      return pedidos2;
+    case "logistica":
+      const pedidos3 = JSON.parse(
+        JSON.stringify(await Pedido.find({ status: "delivered" }).lean())
+      );
+      return pedidos3;
+  }
+}
+
+/*
+const pedidos = JSON.parse(
+  JSON.stringify(
+    await Pedido.find({ status: { $in: ["pending", "delivered"] } }).lean()
+  )
+);
+*/
+
+
+// funcion para agregar nota y cambiar status
 export async function upDateStatus(state, formData) {
   const user = await getUser();
   const id = formData.get("_id");
@@ -53,5 +93,21 @@ export async function upDateStatus(state, formData) {
     redirect("/dashboard");
   }
 }
+
+
+
+
+
+
+
+
+//funcion para llamar pedidos con filtros
+export async function getDataPedidosFilter(filter) {
+  const pedidos = JSON.parse(
+    JSON.stringify(await Pedido.find({ status: filter }).lean())
+  );
+  return pedidos;
+}
+
 
 
