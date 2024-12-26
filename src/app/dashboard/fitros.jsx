@@ -54,8 +54,8 @@ const FilterBar = ({filtro}) => {
     },
     { name: "Usuarios", icon: <FaUser /> },
     //{ name: "Buscar", icon: <FaSearch /> },
-    { name: "Z-A", icon: <GrDescend /> },
-    { name: "A-Z", icon: <GrAscend /> },
+    { name: "A-Z", icon: <GrDescend /> },
+    { name: "Z-A", icon: <GrAscend /> },
     { name: "Usuarios", icon: <FaUser /> },
     {
       name: "Limpiar",
@@ -75,7 +75,9 @@ const FilterBar = ({filtro}) => {
           onClick={filter.action} // Maneja el clic en el filtro
         >
           <div className="filter-icon">{filter.icon}</div>
-          <span className="filter-name">{filter.name}</span>
+          <span className={
+            filter.name===filtro ? 'filter-name-focus': 'filter-name'
+          }>{filter.name}</span>
         </div>
       ))}
     </div>

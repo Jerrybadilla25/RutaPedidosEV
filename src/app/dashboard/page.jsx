@@ -23,7 +23,7 @@ export default async function Homepage({ searchParams }) {
     <Suspense fallback={<p>Cargando pedidos...</p>}>
       <Filtros filtro={filter} />
       {pedidos.map((pedido) => (
-        <TablaPedido key={pedido._id} pedido={pedido} />
+        <TablaPedido key={pedido._id} data={pedido} />
       ))}
     </Suspense>
   );

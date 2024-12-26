@@ -212,6 +212,36 @@ nav ul {
     background-color: var(--backgroundSutil)
     
   }
+  .pedido-sub-ancla {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    padding: 5px;
+    gap: 0.5rem;
+    justify-content: center; /* Centra los elementos hijos horizontalmente */
+    align-items: center; /* Centra los elementos hijos verticalmente */
+  }
+  
+  .ancla-item {
+    width: 25px;
+    height: 25px;
+    border: 1px solid var(--backgroundSutil);
+    padding: 0.3rem;
+    margin: 0.2rem;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex; /* Establece flexbox en el contenedor */
+    justify-content: center; /* Centra el texto horizontalmente */
+    align-items: center; /* Centra el texto verticalmente */
+  }
+  .ancla-item:hover{
+    border: 1px solid var(--textblue);
+    background: var(--backgroundBox);
+    color: var(--textblue);
+    cursor: pointer;
+  }
+
+
   .pedido-sub strong{
     color: var(--textOrange)
   }
@@ -530,4 +560,9 @@ tbody tr:hover {
   font-size: 0.6rem;
   font-weight: 500;
   color: var(--textWhite);
+}
+.filter-name-focus {
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: var(--textOrange);
 }

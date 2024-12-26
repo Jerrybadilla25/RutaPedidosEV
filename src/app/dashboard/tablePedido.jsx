@@ -5,9 +5,9 @@ import { useActionState } from "react";
 import BarraProgreso from "@/app/dashboard/barraprogreso";
 import { upDateStatus } from "@/app/dashboard/action";
 
-export default function TablePedido({ pedido, }) {
+export default function TablePedido({ data }) {
   const [state, formAction, pending] = useActionState(upDateStatus, undefined);
-
+  const [pedido, setPedido] = useState(data);
   const [dNone, setdNone] = useState("pedido-oculto");
   const [dNone2, setdNone2] = useState("pedido-oculto");
   const [textArea, setTextArea] = useState("pedido-oculto");
@@ -121,7 +121,7 @@ export default function TablePedido({ pedido, }) {
               </strong>
             </p>
           </div>
-          <div className="pedido-sub ">
+          <div className="pedido-sub">
             <p
               onClick={() => addTextArea()}
               className="w-1 font-sl button-nota"
@@ -134,6 +134,16 @@ export default function TablePedido({ pedido, }) {
               </strong>
             </p>
           </div>
+
+          <div className="">
+            <div className="pedido-sub-ancla">
+              <p className="ancla-item">1</p>
+              <p className="ancla-item">2</p>
+              <p className="ancla-item">3</p>
+            </div>
+            <p></p>
+          </div>
+
           <div className="pedido-sub pedido-oculto">
             <input name="_id" id="_id" defaultValue={pedido._id} type="text" />
             <input
