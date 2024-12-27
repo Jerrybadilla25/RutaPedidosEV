@@ -10,6 +10,8 @@ export default async function Homepage({ searchParams }) {
   connectDB();
   const data = await searchParams;
   const filter = data?.filter || "vacio";
+  const ancla = data?.ancla|| "vacio";
+  console.log(ancla)
   let pedidos; // Declara pedidos fuera del bloque if/else
   
   if (filter === "vacio") {

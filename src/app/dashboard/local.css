@@ -234,6 +234,20 @@ nav ul {
     justify-content: center; /* Centra el texto horizontalmente */
     align-items: center; /* Centra el texto verticalmente */
   }
+  .ancla-item-select {
+    width: 25px;
+    height: 25px;
+    border: 1px solid var(--textblue);
+    background: var(--textblue);
+    color: var(--textBlack);
+    padding: 0.3rem;
+    margin: 0.2rem;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex; /* Establece flexbox en el contenedor */
+    justify-content: center; /* Centra el texto horizontalmente */
+    align-items: center; /* Centra el texto verticalmente */
+  }
   .ancla-item:hover{
     border: 1px solid var(--textblue);
     background: var(--backgroundBox);

@@ -7,6 +7,7 @@ import { GrDescend, GrAscend } from "react-icons/gr";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { MdOutlineCancel, MdOutlineFilterAltOff } from "react-icons/md";
 import { PiInvoiceFill } from "react-icons/pi";
+import { FaAnchorCircleXmark } from "react-icons/fa6";
 //import {handleIconClick} from '@/app/dashboard/action'
 
 const FilterBar = ({filtro}) => {
@@ -20,7 +21,8 @@ const FilterBar = ({filtro}) => {
       params.set("filter", filtroName);
     } else {
       params.delete("filter");
-      //params.delete("searchid");
+      params.delete("ancla");
+      params.delete("searchid");
     }
     replace(`${pathname}?${params.toString()}`);
   };
@@ -28,8 +30,14 @@ const FilterBar = ({filtro}) => {
   const handleIconClean = (filtroName) => {
     const params = new URLSearchParams(searchParams);
     params.delete("filter");
+    params.delete("ancla");
+    params.delete("searchid");
     replace(`${pathname}?${params.toString()}`);
   };
+
+  function cleanAncla (){
+    localStorage.clear();
+  }
 
   const filters = [
     {
@@ -61,6 +69,11 @@ const FilterBar = ({filtro}) => {
       name: "Limpiar",
       icon: <MdOutlineFilterAltOff />,
       action: () => handleIconClean("quitar"),
+    },
+    {
+      name: "limpiar",
+      icon: <FaAnchorCircleXmark />,
+      action: ()=> cleanAncla(),
     },
   ];
 

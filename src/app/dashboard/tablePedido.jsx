@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useActionState } from "react";
 import BarraProgreso from "@/app/dashboard/barraprogreso";
 import { upDateStatus } from "@/app/dashboard/action";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 export default function TablePedido({ data }) {
   const [state, formAction, pending] = useActionState(upDateStatus, undefined);
@@ -14,6 +15,53 @@ export default function TablePedido({ data }) {
   const [statusNota, setStatusNota] = useState(true);
   const [status, setStatus] = useState(pedido.status);
   const [statusBol, setStatusBol] = useState(pedido.status);
+  const [anclas, setAnclas] = useState();
+
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+
+  function addAnclaParams(anclaLocal) {
+    const params = new URLSearchParams(searchParams);
+    if (anclaLocal) {
+      params.set("ancla", anclaLocal);
+    } else {
+      params.delete("filter");
+      params.delete("ancla");
+      params.delete("searchid");
+    }
+    replace(`${pathname}?${params.toString()}`);
+  }
+
+  function addAnclaId(valor, id) {
+    // Obtener el almacenamiento local
+    const data = localStorage.getItem("anclaje");
+    const anclaLocal = data ? JSON.parse(data) : []; // Si no hay datos, inicializa
+    // como un array vacío
+    //setAnclas(anclaLocal)
+
+    // Buscar si ya existe el objeto con el ID
+    const existeId = anclaLocal.some((item) => item.id === id);
+
+    if (!existeId) {
+      // Buscar si ya existe un objeto con la misma posición
+      const existePosicion = anclaLocal.some((item) => item.posicion === valor);
+
+      if (!existePosicion) {
+        // Agregar el nuevo objeto si no existe el ID ni la posición
+        anclaLocal.push({ id, posicion: valor });
+        localStorage.setItem("anclaje", JSON.stringify(anclaLocal));
+        setAnclas(anclaLocal);
+        addAnclaParams(JSON.stringify(anclaLocal))
+        //console.log('Nuevo anclaje agregado:', { id, posicion: valor });
+      } else {
+        //console.log('La posición ya existe, no se realiza ninguna acción.');
+      }
+    } else {
+      //console.log('El ID ya existe, no se realiza ninguna acción.');
+    }
+  }
+
   function displayNone() {
     if (dNone === "pedido-oculto") {
       setdNone("pedido-table-notas");
@@ -137,9 +185,24 @@ export default function TablePedido({ data }) {
 
           <div className="">
             <div className="pedido-sub-ancla">
-              <p className="ancla-item">1</p>
-              <p className="ancla-item">2</p>
-              <p className="ancla-item">3</p>
+              <p
+                className="ancla-item"
+                onClick={() => addAnclaId("1", pedido._id)}
+              >
+                1
+              </p>
+              <p
+                className="ancla-item"
+                onClick={() => addAnclaId("2", pedido._id)}
+              >
+                2
+              </p>
+              <p
+                className="ancla-item"
+                onClick={() => addAnclaId("3", pedido._id)}
+              >
+                3
+              </p>
             </div>
             <p></p>
           </div>
