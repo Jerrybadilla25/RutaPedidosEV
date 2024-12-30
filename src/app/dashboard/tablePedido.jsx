@@ -1,12 +1,17 @@
 "use client";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useActionState } from "react";
 import BarraProgreso from "@/app/dashboard/barraprogreso";
 import { upDateStatus } from "@/app/dashboard/action";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
-export default function TablePedido({ data }) {
+export default function TablePedido({
+  data,
+  valorAncla1,
+  valorAncla2,
+  valorAncla3,
+}) {
   const [state, formAction, pending] = useActionState(upDateStatus, undefined);
   const [pedido, setPedido] = useState(data);
   const [dNone, setdNone] = useState("pedido-oculto");
@@ -15,12 +20,14 @@ export default function TablePedido({ data }) {
   const [statusNota, setStatusNota] = useState(true);
   const [status, setStatus] = useState(pedido.status);
   const [statusBol, setStatusBol] = useState(pedido.status);
-  const [anclas, setAnclas] = useState();
 
+  const router = useRouter(); // useRouter se define fuera del useEffect
+  
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
-
+  const dataParams = `${pathname}?${searchParams}`
+  
   function addAnclaParams(anclaLocal) {
     const params = new URLSearchParams(searchParams);
     if (anclaLocal) {
@@ -51,8 +58,8 @@ export default function TablePedido({ data }) {
         // Agregar el nuevo objeto si no existe el ID ni la posición
         anclaLocal.push({ id, posicion: valor });
         localStorage.setItem("anclaje", JSON.stringify(anclaLocal));
-        setAnclas(anclaLocal);
-        addAnclaParams(JSON.stringify(anclaLocal))
+        //setAnclas(anclaLocal);
+        addAnclaParams(JSON.stringify(anclaLocal));
         //console.log('Nuevo anclaje agregado:', { id, posicion: valor });
       } else {
         //console.log('La posición ya existe, no se realiza ninguna acción.');
@@ -181,25 +188,42 @@ export default function TablePedido({ data }) {
                 {`${pedido.notas.length} notas`}
               </strong>
             </p>
+            <input 
+            className="pedido-oculto"
+            defaultValue={dataParams}
+            name='dataParams'
+            type="text" />
           </div>
 
           <div className="">
             <div className="pedido-sub-ancla">
               <p
-                className="ancla-item"
-                onClick={() => addAnclaId("1", pedido._id)}
+                className={
+                  valorAncla1?.id === pedido._id && valorAncla1.posicion === 1
+                    ? "ancla-item-select"
+                    : "ancla-item"
+                }
+                onClick={() => addAnclaId(1, pedido._id)}
               >
                 1
               </p>
               <p
-                className="ancla-item"
-                onClick={() => addAnclaId("2", pedido._id)}
+                className={
+                  valorAncla2?.id === pedido._id && valorAncla2.posicion === 2
+                    ? "ancla-item-select"
+                    : "ancla-item"
+                }
+                onClick={() => addAnclaId(2, pedido._id)}
               >
                 2
               </p>
               <p
-                className="ancla-item"
-                onClick={() => addAnclaId("3", pedido._id)}
+                className={
+                  valorAncla3?.id === pedido._id && valorAncla3.posicion === 3
+                    ? "ancla-item-select"
+                    : "ancla-item"
+                }
+                onClick={() => addAnclaId(3, pedido._id)}
               >
                 3
               </p>
@@ -325,3 +349,6 @@ export default function TablePedido({ data }) {
     </div>
   );
 }
+/*
+
+*/

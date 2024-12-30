@@ -1,0 +1,60 @@
+
+.nav-principal{
+    padding: 1rem;
+
+}
+
+.logo-principal{
+    padding: 1rem;
+}
+
+/* Estilos adicionales */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .nav-item {
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 1rem;
+    margin: 0 0.5rem;
+    gap: 0.5rem; /* Espaciado entre ícono y texto */
+    border: 1px solid var(--backgroundSutil);
+    background: var(--backgroundSutil);
+    border-radius: 0 10px 0 10px;
+    width: 7rem;
+  }
+  .nav-item:hover {
+    border: 1px solid var(--textblue);
+    background: var(--backgroundSutil);
+  }
+  .nav-item:hover .nav-link {
+    color: var(--textOrange);
+  }
+  
+  .nav-item span {
+    color: var(--textblue);
+  }
+  .nav-item p {
+    font-size: 0.875rem; /* Tamaño de texto pequeño */
+    font-weight: 500;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  
+  .nav-link {
+    font-size: 0.875rem; /* Tamaño de texto pequeño */
+    font-weight: 300;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  
+  .altura-header{
+    height: 5rem;
+    border-bottom: 1px solid var(--backgroundSutil);
+  }

@@ -1,3 +1,15 @@
+
+.header{
+  padding: 0.5rem, 1rem;
+  height: 3rem;
+}
+
+
+
+
+
+
+
 /* General Styles */
 .container {
   width: 100%;
@@ -63,13 +75,7 @@
   }
 }
 
-.header-per {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  border-bottom: solid 1px #3bf507;
-}
+
 
 nav ul {
   list-style: none;
@@ -185,6 +191,8 @@ nav ul {
     width: 100%;
     border: 1px solid var(--textWhite)
   }
+  
+  
 
   .pedido-col{
     display: flex;
@@ -538,6 +546,7 @@ tbody tr:hover {
   background-color: var(--backgroundSutil);
 }
 
+
 .filter-item {
   display: flex;
   flex-direction: column;
@@ -546,6 +555,7 @@ tbody tr:hover {
   padding:  0.2rem 0.1rem ;
   cursor: pointer;
   transition: transform 0.2s ease, color 0.2s ease;
+  border: 1px solid transparent;
 }
 .filter-item-focus {
   display: flex;
@@ -580,3 +590,15 @@ tbody tr:hover {
   font-weight: 500;
   color: var(--textOrange);
 }
+.numberFiltro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+  padding: 0.2rem;
+  border: 1px solid var(--textOrange);
+  border-radius: 0.3rem;
+}
+

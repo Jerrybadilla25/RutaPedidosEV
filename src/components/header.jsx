@@ -1,5 +1,5 @@
 export default function Header() {
     return (
-        <div className="py-5 header-per">Header</div>
+        <div className="flex-row justify-between  header">Header</div>
     );
 }

@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import './local.css'
 //import NavPrincipal from "@/components/navprincipal";
 //import Header from "@/components/header";
 //import Register from '@/components/actions/formRegister'
@@ -24,11 +25,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950`}
-      >
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

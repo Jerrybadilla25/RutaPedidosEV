@@ -27,11 +27,9 @@ export default async function DasboardLayout({ children }) {
   if (dataUser._id) {
     return (
       <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950`}
-        >
-          <div className="container">
-            <div className="row">
+        <body>
+          <div className="container-100">
+            <div>
               <Header />
             </div>
             <div className="row-1">
@@ -39,15 +37,15 @@ export default async function DasboardLayout({ children }) {
             </div>
 
             <div className="row">
-             <div className="colunma">
-             <div className="colunm-1">
-                <NavPrincipal />
+              <div className="colunma">
+                <div className="colunm-1">
+                  <NavPrincipal />
+                </div>
+                <div className="colunm-2">{children}</div>
+                <div className="colunm-1">
+                  <h1>Espacio vacío</h1>
+                </div>
               </div>
-              <div className="colunm-2">{children}</div>
-              <div className="colunm-1">
-                <h1>Espacio vacío</h1>
-              </div>
-             </div>
             </div>
           </div>
         </body>

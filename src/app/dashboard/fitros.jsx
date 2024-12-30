@@ -1,6 +1,7 @@
 "use client";
 // FilterBar.jsx
 import React from "react";
+//import { useState, useEffect } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { FaFilter, FaSearch, FaUser, FaCheck } from "react-icons/fa";
 import { GrDescend, GrAscend } from "react-icons/gr";
@@ -10,11 +11,18 @@ import { PiInvoiceFill } from "react-icons/pi";
 import { FaAnchorCircleXmark } from "react-icons/fa6";
 //import {handleIconClick} from '@/app/dashboard/action'
 
-const FilterBar = ({filtro}) => {
+const FilterBar = ({filtro, numberAle }) => {
+  
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
+ 
+
+   // Obtener el almacenamiento local
+   
+  
+   
   const handleIconClick = (filtroName) => {
     const params = new URLSearchParams(searchParams);
     if (filtroName) {
@@ -37,6 +45,11 @@ const FilterBar = ({filtro}) => {
 
   function cleanAncla (){
     localStorage.clear();
+  }
+  const clearAncla = {
+    name: "vaciar",
+    icon: <FaAnchorCircleXmark />,
+    action: ()=> cleanAncla(),
   }
 
   const filters = [
@@ -68,13 +81,14 @@ const FilterBar = ({filtro}) => {
     {
       name: "Limpiar",
       icon: <MdOutlineFilterAltOff />,
-      action: () => handleIconClean("quitar"),
+      action: () => handleIconClean("vaciar"),
     },
     {
-      name: "limpiar",
+      name: "vaciar",
       icon: <FaAnchorCircleXmark />,
       action: ()=> cleanAncla(),
-    },
+    }
+    
   ];
 
   return (
@@ -93,6 +107,7 @@ const FilterBar = ({filtro}) => {
           }>{filter.name}</span>
         </div>
       ))}
+
     </div>
   );
 };

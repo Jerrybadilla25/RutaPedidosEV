@@ -2,13 +2,14 @@
 import Pedido from "@/model/Pedido";
 import { getUser } from "@/utils/dal";
 import { redirect } from "next/navigation";
+//import { revalidateTag } from 'next/cache'
+
 
 //activar los iconos
 export async function handleIconClick(filterName) {
+  
   console.log(`Server-side: ${filterName}`);
 }
-
-
 
 
 // funcion para llamar los pedidos
@@ -55,11 +56,15 @@ export async function upDateStatus(state, formData) {
   const status = formData.get("status");
   const nota = formData.get("nota");
   const statusOrigen = formData.get("statusOrigen");
+  const dataParams = formData.get('dataParams')
   const updates = {};
 
   if (nota) {
     updates.$push = {
-      notas: { nota: nota, creador: user.user, fechaCracion: new Date() },
+      notas: {
+        $each: [{ nota: nota, creador: user.user, fechaCracion: new Date() }],
+        $position: 0, // Inserta al principio del arreglo
+      },
     };
   }
 
@@ -84,14 +89,21 @@ export async function upDateStatus(state, formData) {
   }
 
   if (Object.keys(updates).length === 0) {
-    redirect("/dashboard");
+    //return {message: 'ok'}
+    //revalidateTag('/dashboard')
+    redirect(dataParams);
   }
   try {
     await Pedido.findByIdAndUpdate(id, updates, { new: true });
-    redirect("/dashboard");
+    //return {message: 'ok'}
+    //revalidateTag('/dashboard')
+    redirect(dataParams);
   } catch (error) {
-    redirect("/dashboard");
+    //return {message: 'ok'}
+    //revalidateTag('/dashboard')
+    redirect(dataParams);
   }
+    
 }
 
 
