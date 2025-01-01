@@ -11,18 +11,14 @@ import { PiInvoiceFill } from "react-icons/pi";
 import { FaAnchorCircleXmark } from "react-icons/fa6";
 //import {handleIconClick} from '@/app/dashboard/action'
 
-const FilterBar = ({filtro, numberAle }) => {
-  
+const FilterBar = ({ filtro, numberAncla }) => {
+  console.log({ numberAncla });
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
- 
+  // Obtener el almacenamiento local
 
-   // Obtener el almacenamiento local
-   
-  
-   
   const handleIconClick = (filtroName) => {
     const params = new URLSearchParams(searchParams);
     if (filtroName) {
@@ -43,14 +39,20 @@ const FilterBar = ({filtro, numberAle }) => {
     replace(`${pathname}?${params.toString()}`);
   };
 
-  function cleanAncla (){
+  function cleanAncla() {
     localStorage.clear();
   }
   const clearAncla = {
     name: "vaciar",
     icon: <FaAnchorCircleXmark />,
-    action: ()=> cleanAncla(),
-  }
+    action: () => cleanAncla(),
+  };
+
+  const clerAncla = {
+    name: "vaciar",
+    icon: <FaAnchorCircleXmark />,
+    action: () => cleanAncla(),
+  };
 
   const filters = [
     {
@@ -83,12 +85,6 @@ const FilterBar = ({filtro, numberAle }) => {
       icon: <MdOutlineFilterAltOff />,
       action: () => handleIconClean("vaciar"),
     },
-    {
-      name: "vaciar",
-      icon: <FaAnchorCircleXmark />,
-      action: ()=> cleanAncla(),
-    }
-    
   ];
 
   return (
@@ -97,17 +93,37 @@ const FilterBar = ({filtro, numberAle }) => {
         <div
           key={index}
           className={
-            filter.name===filtro ? 'filter-item-focus': 'filter-item'
+            filter.name === filtro ? "filter-item-focus" : "filter-item"
           }
           onClick={filter.action} // Maneja el clic en el filtro
         >
           <div className="filter-icon">{filter.icon}</div>
-          <span className={
-            filter.name===filtro ? 'filter-name-focus': 'filter-name'
-          }>{filter.name}</span>
+          <span
+            className={
+              filter.name === filtro ? "filter-name-focus" : "filter-name"
+            }
+          >
+            {filter.name}
+          </span>
         </div>
       ))}
-
+      <div 
+        className={
+          numberAncla === 3 ? "filter-item-focus" : "filter-item"
+        }
+        onClick={clerAncla.action}
+        >
+        <div
+          className= "filter-icon"
+        >
+          {clerAncla.icon}
+        </div>
+        <span
+          className={numberAncla === 3 ? "filter-name-focus" : "filter-name"}
+        >
+          {clearAncla.name}
+        </span>
+      </div>
     </div>
   );
 };

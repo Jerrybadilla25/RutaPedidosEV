@@ -10,26 +10,30 @@ export default async function Homepage({ searchParams }) {
   connectDB();
   const data = await searchParams;
   const filter = data?.filter || "vacio";
+
   const ancla2 = data?.ancla || [];
-
-
-  // Decodificar y procesar `ancla`
   let ancla = [];
+
   if (data?.ancla) {
     try {
-      ancla = JSON.parse(decodeURIComponent(data.ancla));
+      const data2 = JSON.parse(decodeURIComponent(data.ancla));
+      if (Array.isArray(data2) && data2.length >= 2) {
+        ancla = data2.sort((a, b) => a.posicion - b.posicion);
+      } else {
+        ancla = data2;
+      }
     } catch (error) {
-      console.error("Error al procesar ancla:", error);
+      console.error("Error al procesar 'ancla':", error);
     }
   }
+
+  const idsAncla = ancla.map((a) => a.id); // Extrae solo IDs de 'ancla'
+
   const valorAncla1 = ancla?.[0] || null;
   const valorAncla2 = ancla?.[1] || null;
   const valorAncla3 = ancla?.[2] || null;
- 
 
-
-
-  let pedidos1; // Declara pedidos fuera del bloque if/else
+  let pedidos1;
 
   if (filter === "vacio") {
     pedidos1 = await getDataPedidos();
@@ -37,21 +41,20 @@ export default async function Homepage({ searchParams }) {
     pedidos1 = await getDataPedidosFilter(filter);
   }
 
-  
   const elementosPrincipales = pedidos1
-  .filter((item) => ancla2.includes(item._id))
-  .sort((a, b) => (a.posicion) - (b.posicion));
-  const elementosRestantes = pedidos1.filter(
-    (item) => !ancla2.includes(item._id)
-  );
+    .filter((item) => idsAncla.includes(item._id))
+    .sort((a, b) => {
+      const posicionA = ancla.find((x) => x.id === a._id)?.posicion || 0;
+      const posicionB = ancla.find((x) => x.id === b._id)?.posicion || 0;
+      return posicionA - posicionB;
+    });
+
+  const elementosRestantes = pedidos1.filter((item) => !idsAncla.includes(item._id));
   const pedidos = [...elementosPrincipales, ...elementosRestantes];
-  let numberAle = 0
-  
-  
 
   return (
     <Suspense fallback={<p>Cargando pedidos...</p>}>
-      <Filtros filtro={filter} numberAle={numberAle} />
+      <Filtros filtro={filter} numberAncla={ancla.length}/>
       {pedidos.map((pedido) => (
         <TablaPedido
           key={pedido._id}
@@ -64,3 +67,4 @@ export default async function Homepage({ searchParams }) {
     </Suspense>
   );
 }
+

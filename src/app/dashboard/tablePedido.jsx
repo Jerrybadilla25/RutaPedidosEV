@@ -22,12 +22,12 @@ export default function TablePedido({
   const [statusBol, setStatusBol] = useState(pedido.status);
 
   const router = useRouter(); // useRouter se define fuera del useEffect
-  
+
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
-  const dataParams = `${pathname}?${searchParams}`
-  
+  const dataParams = `${pathname}?${searchParams}`;
+
   function addAnclaParams(anclaLocal) {
     const params = new URLSearchParams(searchParams);
     if (anclaLocal) {
@@ -188,11 +188,12 @@ export default function TablePedido({
                 {`${pedido.notas.length} notas`}
               </strong>
             </p>
-            <input 
-            className="pedido-oculto"
-            defaultValue={dataParams}
-            name='dataParams'
-            type="text" />
+            <input
+              className="pedido-oculto"
+              defaultValue={dataParams}
+              name="dataParams"
+              type="text"
+            />
           </div>
 
           <div className="">
@@ -280,13 +281,20 @@ export default function TablePedido({
               {dNone === "pedido-oculto" ? "Ver detalle..." : "ocultar detalle"}
             </strong>
           </p>
+
           <p>
-            <strong
-              onClick={() => displayNone2()}
-              className="font-sl pedido-button"
-            >
-              {dNone2 === "pedido-oculto" ? "Ver notas..." : "ocultar notas"}
-            </strong>
+            {pedido.notas.length === 0 ? (
+              <strong className="font-sl pedido-button">
+                {dNone2 === "pedido-oculto" ? "Ver notas..." : "ocultar notas"}
+              </strong>
+            ) : (
+              <strong
+                onClick={() => displayNone2()}
+                className="font-sl pedido-button"
+              >
+                {dNone2 === "pedido-oculto" ? "Ver notas..." : "ocultar notas"}
+              </strong>
+            )}
           </p>
         </div>
 
