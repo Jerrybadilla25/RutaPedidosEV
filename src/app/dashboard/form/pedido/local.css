@@ -1,3 +1,111 @@
+.container-cliente {
+  width: 70%;
+  border: 1px solid var(--textWhite);
+  margin-top: 1rem;
+  margin-button: 1rem;
+  margin-left: 15%;
+  margin-right: 15%;
+  //margin: 1rem 0.25rem;
+  padding: 1rem;
+}
+
+.container-head-cliente {
+  width: 80%;
+  //border: 1px solid var(--textWhite);
+  margin-top: 1rem;
+  margin-button: 1rem;
+  margin-left: 10%;
+  margin-right: 10%;
+  //margin: 1rem 0.25rem;
+  padding: 1rem;
+}
+
+.nameDescripcion{
+  font-weight: bold;
+}
+.nameTitle{
+  font-size: 14px;
+  color:var(--textblue);
+}
+.box-line{
+  border-top: 2px solid var(--textWhite);
+  padding-top: 1rem;
+}
+.box-line:hover{
+  border-top: 2px solid var(--textOrange);
+  padding-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .container-cliente {
+    width: 96%;
+    margin-top: 1rem;
+    margin-button: 1rem;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  .container-head-cliente {
+    width: 99%;
+    margin-top: 1rem;
+    margin-button: 1rem;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+  }
+}
+
+.butonSelect{
+  width: 100px;
+  background-color: var(--background);
+  border: 1px solid var(--textWhite);
+  padding: 1px 5px;
+  border-radius: 5px;
+  margin: 2px;
+}
+.butonSelect::placeholder{
+  color: var(--textOrange);
+}
+
+.butonSelect:hover{
+  width: 100px;
+  background-color: var(--backgroundSutil);
+  border: 1px solid var(--textOrange);
+  cursor: pointer;
+}
+
+.search {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  justify-content: center;
+  font-weight: 500;
+}
+.searchInput {
+  all: unset;
+  background: var(--backgroundSutil);
+  padding: 10px 15px;
+  border: var(--backgroundBox);
+  border-radius: 10px;
+}
+.searchInput:hover {
+  //background-color: #e0e0e0; /* Cambia el fondo en hover */
+}
+
+.searchInput:focus {
+  outline: none; /* Quita el contorno predeterminado */
+  //border: 1px solid #007BFF; /* Cambia el color del borde en focus */
+}
+.searchInput::placeholder {
+  color: var(--textbluePlaceholder); /* Cambia el color del placeholder */
+  font-style: italic; /* Cambia el estilo de fuente */
+  font-size: 14px; /* Cambia el tamaño del texto */
+}
+
+.searchTitle {
+  padding: 10px 15px;
+  border-radius: 0.5rem;
+  justify-content: center;
+  font-weight: 500;
+}
+
 /* General Styles */
 .container-ped {
   max-width: 1200px;
@@ -31,14 +139,13 @@ h5 {
 }
 p {
   font-weight: bold;
-  
 }
 
 /* Table Styles */
 .table-per {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 40px;
+  margin-top: 1rem;;
 }
 
 .table-header {
@@ -48,7 +155,7 @@ p {
 
 .table-header th {
   text-align: left;
-  padding: 10px 18px;
+  padding: 0.5rem 0.75rem;;
   //border: 1px solid white;
 }
 
@@ -57,7 +164,7 @@ p {
 }
 
 .table-row td {
-  padding: 10px;
+  padding: 0.5rem 0.75rem;;
   //border: 1px solid white;
 }
 
@@ -65,19 +172,24 @@ p {
 .input-field,
 .input-per {
   width: 100%;
-  padding: 8px;
+  padding: 0.3rem 0.75rem;;
   //border: 1px solid white;
   background-color: transparent;
   color: white;
   border-radius: 5px;
   text-align: left;
+  
 }
 
 .input-field[readonly] {
   cursor: not-allowed;
 }
 
+
 .input-per {
+  -moz-appearance: textfield !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
   background-color: rgba(255, 255, 255, 0.1); /* Fondo para el input editable */
 }
 
@@ -102,7 +214,6 @@ p {
   color: white;
 }
 
-
 /* Responsive Styles */
 @media (max-width: 768px) {
   .flex-container {
@@ -120,59 +231,55 @@ p {
   }
 }
 
-
 /* estilos tabla cliente */
 
-.flex-justify-between{
+.flex-justify-between-2 {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: center
+  justify-content: center;
 }
 
-.flex-justify-between div{
+.flex-justify-between div {
   margin: 10px;
 }
 
-
 .borderPerLef {
-  border-left: solid 7px  #0a0a0a;
-  border-right: solid 7px  #0a0a0a;
+  border-left: solid 7px #0a0a0a;
+  border-right: solid 7px #0a0a0a;
   //border-top-left-radius: 5px; /* Redondea la esquina superior izquierda */
   //border-bottom-left-radius: 5px; /* Redondea la esquina inferior izquierda */
-
 }
 
-.borderPerLef:hover{
+.borderPerLef:hover {
   border-left: solid 7px var(--textOrange);
-  border-right: solid 7px  var(--backgroundSutil);
+  border-right: solid 7px var(--backgroundSutil);
 }
-.borderPerAll{
+.borderPerAll {
   background-color: transparent;
   border: solid 1px #ccc;
   margin-bottom: 10px;
   //border-radius: 10px;
 }
-.container-data-cliente{
+.container-data-cliente {
   background-color: transparent;
 }
 
-.borderPerAll:hover{
-  border: solid 1px  var(--textOrange); 
+.borderPerAll:hover {
+  border: solid 1px var(--textOrange);
   background-color: var(--backgroundSutil);
 }
 
-.border-top{
+.border-top {
   border: solid 1px var(--textWhite);
 }
-
 
 .bg-per-WhiteHueso {
   background: #020800;
   //border-radius: 5px
 }
 
-.text-white div p  {
+.text-white div p {
   color: var(--textWhite);
   font-size: 12px;
   background-color: var(--backgroundSutil);
@@ -180,7 +287,7 @@ p {
   border-radius: 5px;
 }
 
-.text-orange div p  {
+.text-orange div p {
   color: var(--textOrange);
   font-size: 12px;
   background-color: var(--backgroundSutil);
@@ -196,21 +303,18 @@ p {
   color: var(--textOrange);
 }
 
-.bolt-per{
+.bolt-per {
   font-weight: bold;
 }
-.font-per-sm{
+.font-per-sm {
   font-size: 12px;
 }
 
-.font-per-sl{
+.font-per-sl {
   font-size: 16px;
 }
 
-
-
-
-.buton-per{
+.buton-per {
   width: 95px;
   color: var(--textOrange);
   background-color: var(--backgroundBox);
@@ -222,7 +326,11 @@ p {
   color: var(--textOrange);
 }
 
-.display-none{
-  display:none;
+.display-none {
+  display: none;
 }
-
+.box-1{
+  background: var(--backgroundSutil);
+  padding: 1rem;
+  border-radius: 1rem;
+}

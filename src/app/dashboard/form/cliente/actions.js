@@ -2,7 +2,7 @@
 import {addClientDbFormSchema} from '@/utils/definiciones'
 import {getUser} from '@/utils/dal'
 import Cliente from '@/model/Cliente'
-import { nanoid } from "nanoid"
+//import { nanoid } from "nanoid"
 import {createIdClient} from '@/utils/creteSku'
 import {redirect} from 'next/navigation'
 

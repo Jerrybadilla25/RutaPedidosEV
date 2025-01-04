@@ -8,6 +8,7 @@
   --backgroundBox: #242424;
   --backgroundSutil: #ffffff1a;
   --textblue: #3BAAFF;
+  --textbluePlaceholder: #9fa6ab;
   --textOrange: #F57B27;
   --textWhite: #ccc;
   --textError: #e01e09;
@@ -111,8 +112,8 @@ body2 {
   left: 50%; /* Mover al centro horizontalmente */
   transform: translate(-50%, -50%); /* Ajustar el punto de referencia */
 }
-
-.flex-center-div {
+/*centrar un form logo o register*/
+.flex-center-div { 
   display: flex;
   flex-direction: column; /* Opcional: organiza los elementos en columna */
   justify-content: center;
@@ -135,11 +136,6 @@ body2 {
   justify-content: center;
   font-weight: 500;
 }
-
-
-
-
-
 
 /* Flexbox: Justificación */
 .justify-center {
@@ -218,6 +214,17 @@ body2 {
 .mb-3{
   margin: 0 0 3rem 0;
 }
+.mx-1{
+  margin: 0 0.5rem;
+}
+.mx-2{
+  margin: 0 1rem;
+}
+.mx-2{
+  margin: 0 2rem;
+}
+
+
 .red{
   background: red;
 }

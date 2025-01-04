@@ -6,7 +6,7 @@ import Search from '@/app/dashboard/form/pedido/search'
 import {Suspense} from 'react'
 import Cliente from '@/model/Cliente'
 import Productos from '@/model/Product'
-import './local.pedido.css'
+import './local.css'
 
 
 export default async function FormPedidoCliente({ searchParams }) {
@@ -23,8 +23,8 @@ export default async function FormPedidoCliente({ searchParams }) {
     
 
     return(
-      <div className="p-4">
-        <Search/>
+      <div className="">
+         <Search/>
         <div>
           <Suspense key={seachid}>
             <TableAddPedido
@@ -40,7 +40,7 @@ export default async function FormPedidoCliente({ searchParams }) {
   }
   
   return (
-    <div className="p-4">
+    <div className="">
       
       <Search/>
       {/* Contenedor de la tarjeta */}

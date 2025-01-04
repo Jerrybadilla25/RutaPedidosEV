@@ -18,7 +18,7 @@ export default function SelectClient({ids}) {
 
   return (
     <input
-    className='buton-per'
+    className='butonSelect'
     onClick={()=>handleSearchId(ids)}
     name="select"
     placeholder='Seleccionar'

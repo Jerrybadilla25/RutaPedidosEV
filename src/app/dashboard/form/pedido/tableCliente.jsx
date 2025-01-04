@@ -1,70 +1,51 @@
 import { getClientePedido } from "@/app/dashboard/form/pedido/actions";
-import SelectClient from '@/app/dashboard/form/pedido/selectClient'
+import SelectClient from "@/app/dashboard/form/pedido/selectClient";
 
-
-export default async function TableCliente({query}) {
+export default async function TableCliente({ query }) {
   const clientes = await getClientePedido(query);
 
   return (
-    <div>
+    <div className="container-100">
       {clientes.map((itm) => (
-        <div key={itm._id}>
-          <div className="borderPerAll">
-            <div className="borderPerLef">
-              <div className="flex justify-between mx-5 py-4 text-white text-per-white">
-                <div className="">
-                  <p className=" ">Nombre del comercio</p>
-                  <span className="text-per-white bolt-per font-per-sl">
-                    {itm.name}
-                  </span>
+        <div key={itm._id} className="container-cliente">
+          <div className="">
+            <div className="">
+              <div className="flex-row justify-between mb-2">
+                <div className="flex-column">
+                  <p className="nameTitle ">Nombre del comercio</p>
+                  <span className="nameDescripcion">{itm.name}</span>
                 </div>
-                <div className="">
-                  <p className="">Contacto</p>
-                  <span className="text-per-white bolt-per font-per-sl">
-                    {itm.contact}
-                  </span>
+                <div className="flex-column">
+                  <p className="nameTitle">Contacto</p>
+                  <span className="nameDescripcion">{itm.contact}</span>
                 </div>
-                <div>
-                  <p className="">Tel contacto</p>
-                  <span className="text-per-white bolt-per font-per-sl">
-                    {itm.cel}
-                  </span>
+                <div className="flex-column">
+                  <p className="nameTitle" >Tel contacto</p>
+                  <span className="nameDescripcion">{itm.cel}</span>
                 </div>
-                <div>
-                  <p className=" ">Email contacto</p>
-                  <span className="text-per-white bolt-per font-per-sl">
-                    {itm.email}
-                  </span>
+                <div className=" flex-column">
+                  <p className="nameTitle">Email contacto</p>
+                  <span className="nameDescripcion">{itm.email}</span>
                 </div>
               </div>
 
-              <div className="">
-                <div className="border-top"></div>
+              <div className="flex-row justify-between box-line">
+                <div>
+                  <p className=" nameTitle ">Direccion del cliente</p>
+                </div>
 
-                <div className="flex justify-between mx-5 text-per-azul ">
-                  <div>
-                    <p className="  mt-2">Direccion del cliente</p>
-                  </div>
-                  <div className="text-per-white p-3">
-                    <div>
-                      <p>
-                        <span className="text-per-white">
-                          {itm.address.provincia}, {itm.address.canton},{" "}
-                          {itm.address.distrito} <br />
-                        </span>
-                        <span className="text-per-white">
-                          {itm.address.direccion}
-                        </span>
-                      </p>
-                    </div>
-                  </div>
+                <div>
+                  <p>
+                    <span className="">
+                      {itm.address.provincia}, {itm.address.canton},{" "}
+                      {itm.address.distrito} <br />
+                    </span>
+                    <span className="nameDescripcion">{itm.address.direccion}</span>
+                  </p>
                 </div>
               </div>
-              <SelectClient ids={itm._id.toString()}/>
-              
-              
+              <SelectClient ids={itm._id.toString()} />
             </div>
-            
           </div>
         </div>
       ))}

@@ -20,17 +20,21 @@ export default function Search() {
   }, 300);
   
   return (
-    <div>
-      <h4>Buscar cliente</h4>
+    <div className="flex-row justify-center mb-1">
+      <div className="search">
+        <h4 className="searchTitle">Buscar cliente</h4>
+      </div>
+      
       {/* Contenedor del input de búsqueda */}
-      <div className="mb-4 flex flex-row justify-between">
+      <div className="search">
         <input
+          size="50"
           onChange={(e) => handleSearch(e.target.value)}
           type="text"
           defaultValue={searchParams.get("query")?.toString()}
           name="search"
-          placeholder="Buscar..."
-          className="w-full text-slate-950 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focu<SelectCliente/>s:ring-2 focus:ring-blue-500"
+          placeholder="Escriba aqui..."
+          className="searchInput"
         />
       </div>
     </div>

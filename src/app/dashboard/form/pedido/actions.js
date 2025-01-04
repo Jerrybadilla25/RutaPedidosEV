@@ -45,9 +45,7 @@ export async function addPedidotBd(state, formData) {
       productoTemp = {};
     }
   });
-
   const IdCliente = await Cliente.findById(pedido.idCliente);
-  //console.log(IdCliente)
   const savedDate = new Date();
   const statusUpdateDate = new Date(savedDate);
   statusUpdateDate.setDate(savedDate.getDate() + 7);
