@@ -8,11 +8,15 @@ export default function ClientForm() {
 
   return (
     <div className="form-container">
-      <h1>Agregar cliente</h1>
+      <div className="mb-1">
+        <h1 className="text-h1">Registro de clientes</h1>
+        <h3 className="text-h3">Ingrese los datos del nuevo cliente.</h3>
+      </div>
+      
       <form action={formAction}>
-        <div className="form-row">
+        <div className="form-row box-line">
           <label htmlFor="name">Nombre del comercio</label>
-          <input type="text" id="name" name="name"  />
+          <input type="text" id="name" name="name" className="input-cliente"  />
           <p className="error-message">
             {state?.errors?.name && state.errors.name}
           </p>
@@ -20,7 +24,7 @@ export default function ClientForm() {
 
         <div className="form-row">
           <label htmlFor="email">Correo electrónico</label>
-          <input type="email" id="email" name="email"  />
+          <input type="email" id="email" name="email" className="input-cliente"  />
           <p className="error-message">
             {state?.errors?.email && state.errors.email}
           </p>
@@ -28,7 +32,7 @@ export default function ClientForm() {
 
         <div className="form-row">
           <label htmlFor="contact">Nombre de contacto</label>
-          <input type="text" id="contact" name="contact" />
+          <input type="text" id="contact" name="contact" className="input-cliente" />
           <p className="error-message">
             {state?.errors?.contact && state.errors.contact}
           </p>
@@ -36,7 +40,7 @@ export default function ClientForm() {
 
         <div className="form-row">
           <label htmlFor="phone">Número de teléfono</label>
-          <input type="text" id="phone" name="cel"  />
+          <input type="text" id="phone" name="cel" className="input-cliente"  />
           <p className="error-message">{state?.errors?.cel && state.errors.cel}</p>
         </div>
 
@@ -46,7 +50,7 @@ export default function ClientForm() {
             type="text"
             id="cedJuridica"
             name="cedJuridica"
-            
+            className="input-cliente"
           />
           <p className="error-message">
             {state?.errors?.cedJuridica && state.errors.cedJuridica}
@@ -59,7 +63,7 @@ export default function ClientForm() {
             type="text"
             id="provincia"
             name="provincia"
-            
+            className="input-cliente"
           />
           <p className="error-message">
             {state?.errors?.provincia && state.errors.provincia}
@@ -68,7 +72,7 @@ export default function ClientForm() {
 
         <div className="form-row">
           <label htmlFor="canton">Cantón</label>
-          <input type="text" id="canton" name="canton"  />
+          <input type="text" id="canton" name="canton" className="input-cliente" />
           <p className="error-message">
             {state?.errors?.canton && state.errors.canton}
           </p>
@@ -76,7 +80,7 @@ export default function ClientForm() {
 
         <div className="form-row">
           <label htmlFor="distrito">Distrito</label>
-          <input type="text" id="distrito" name="distrito"  />
+          <input type="text" id="distrito" name="distrito" className="input-cliente" />
           <p className="error-message">
             {state?.errors?.distrito && state.errors.distrito}
           </p>
@@ -88,7 +92,7 @@ export default function ClientForm() {
             type="text"
             id="direccion"
             name="direccion"
-            
+            className="input-cliente"
           />
           <p className="error-message">
             {state?.errors?.direccion && state.errors.direccion}

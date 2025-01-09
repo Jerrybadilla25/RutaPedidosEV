@@ -6,6 +6,7 @@
   --background: #ffffff;
   --foreground: #171717;
   --backgroundBox: #242424;
+  --backgroundBoxSutil: #3d3b3b;
   --backgroundSutil: #ffffff1a;
   --textblue: #3BAAFF;
   --textbluePlaceholder: #9fa6ab;
@@ -86,6 +87,25 @@ body2 {
   margin: 0 auto; /* Centrado horizontal */
   padding: 0;
 }
+
+.box-red{
+  background:var(--textRed);
+  padding: 0.10rem 0.50rem;
+  border-radius: 0.20rem;
+}
+.box-yellow{
+  background: var(--textYellow);
+
+}
+.box-green{
+  background: var(--textGreen);
+  padding: 0.10rem 0.50rem;
+  border-radius: 0.20rem;
+}
+.mb-1{
+  margin-bottom: 0.7rem;
+}
+
 
 /* Flexbox: Direcciones */
 .flex-column {
@@ -205,6 +225,10 @@ body2 {
   height: 100vh;
 }
 
+.mb-0{
+  margin: 0 0 0.2rem 0;
+}
+
 .mb-1{
   margin: 0 0 1rem 0;
 }
@@ -228,6 +252,7 @@ body2 {
 .red{
   background: red;
 }
+
 .W-100{
   width: 100%;
 }
@@ -240,6 +265,35 @@ body2 {
 .W-30{
   width: 30%;
 }
+.W-25{
+  width: 25%;
+}
+.text-h1{
+  font-size: 1.8rem !important;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+.text-h3{
+  font-size: 0.80rem;;
+}
+
+.nameDescripcion{
+  font-weight: bold;
+}
+.nameTitle{
+  font-size: 14px;
+  color:var(--textblue);
+}
+
+.box-line{
+  border-top: 2px solid var(--textWhite);
+  padding-top: 1rem;
+}
+.box-line:hover{
+  border-top: 2px solid var(--textOrange);
+  padding-top: 1rem;
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

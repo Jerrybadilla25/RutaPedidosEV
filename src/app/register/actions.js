@@ -7,6 +7,7 @@ import { createSession } from "@/utils/session";
 //import { cookies } from 'next/headers'
 import { deleteSession } from "@/utils/session";
 import { SignupFormSchema } from "@/utils/definiciones";
+import { redirect } from "next/navigation";
 //import Roles from '@/model/Roles'
 
 export async function signup(state, formData){
@@ -37,10 +38,11 @@ export async function signup(state, formData){
     user,
     email,
     password: hashedPassword,
+    role: 'facturacion'
   });
   //createUser.roles.push(rol[0]._id)
   await createUser.save();
-  //console.log(createUser)
+  redirect("/login");
   }
     
 };

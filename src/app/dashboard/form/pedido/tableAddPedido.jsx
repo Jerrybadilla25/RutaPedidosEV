@@ -1,4 +1,5 @@
 import Table from "@/app/dashboard/form/pedido/table2";
+import Squeleton from '@/app/dashboard/form/pedido/esqueleton.table2'
 export default function tableAddPedido({ clientId, products }) {
   return (
     <div className="container-100 ">
@@ -41,7 +42,10 @@ export default function tableAddPedido({ clientId, products }) {
         </div>
       </div>
       <div className="flex-row box-line">
-        <Table products={products} id={clientId._id} />
+        {
+          products ? <Table products={products} id={clientId._id} />: <Squeleton/>
+        }
+        
       </div>
       </div>
       

@@ -76,7 +76,7 @@
 }
 
 
-
+/*estilos de navegacion 1 */
 nav ul {
   list-style: none;
   margin: 0;
@@ -85,8 +85,8 @@ nav ul {
 
 .navPer {
   width: 100%; /* Ajusta el ancho según sea necesario */
-  //background-color: #f4f4f4; /* Fondo del menú */
-  //border: 1px solid #ccc; /* Borde opcional */
+  height: 100vh;
+  background-color: var(--backgroundSutil); /* Fondo del menú */
   padding: 10px;
   border-radius: 8px; /* Bordes redondeados */
 }
@@ -94,19 +94,20 @@ nav ul {
 
 
 .navPer ul li {
-  margin: 25px; /* Espacio entre elementos */
+  margin: 1rem; /* Espacio entre elementos */
 }
 
 /* Estilo de los enlaces */
 .linkPer {
   display: block; /* Hace que los enlaces ocupen todo el ancho */
+  //background: red;
   text-decoration: none;
   color: white; /* Color del texto */
-  margin: 10px 15px; /* Espaciado interno */
-  padding-left: 15px;
-
-  //background-color: #eaeaea; /* Fondo de los enlaces */
-  //border-radius: 5px; /* Bordes redondeados */
+  margin: 15px; /* Espaciado interno */
+  padding: 15px;
+  border-left: 2px solid var(--backgroundSutil);
+  background-color: var(--backgroundSutil); /* Fondo de los enlaces */
+  border-radius: 5px; /* Bordes redondeados */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 .linkPer:hover {
@@ -117,11 +118,15 @@ nav ul {
 
 .text-color-green {
   display: block; /* Hace que los enlaces ocupen todo el ancho */
+  //background: red;
   text-decoration: none;
-  margin: 10px 15px; /* Espaciado interno */
-  padding-left: 15px;
-  color: #84eb07;
-  border-left: 2px solid #41a31a;
+  color: var(--textOrange); /* Color del texto */
+  margin: 15px; /* Espaciado interno */
+  padding: 15px;
+  border-left: 2px solid var(--background);
+  background-color: var(--background); /* Fondo de los enlaces */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 
@@ -602,3 +607,87 @@ tbody tr:hover {
   border-radius: 0.3rem;
 }
 
+
+
+.skeleton {
+  background-color: var(--backgroundSutil);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-text {
+  height: 20px;
+  width: 100%;
+  margin: 8px 0;
+}
+
+.skeleton-select {
+  height: 40px;
+  width: 100%;
+  margin: 8px 0;
+}
+
+.skeleton-button {
+  height: 30px;
+  width: 80px;
+  margin: 8px 0;
+}
+
+.skeleton {
+  height: 10px;
+  width: 100%;
+}
+
+.barra-progreso {
+  height: 20px;
+  width: 100%;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+
+
+
+/* Opcional: Estilo para los inputs */
+input[type="date"] {
+  outline: none; /* Elimina el contorno */
+  width: 75px;
+  background-color: var(--background);
+  //padding: 5px;
+  font-size: 8px;
+  border: none;
+  border-radius: 4px;
+}
+
+
+.textDate{
+  font-size: 10px;
+  width: 16px;
+}
+
+.btn-rango-1{
+  font-size: 12px;
+  width: 50px;
+  color:var(--textblue);
+  margin-left: 1rem;
+  padding: 0.4rem 0.2rem;
+  background-color: var(--background);
+  border-radius: 5px;
+}
+.btn-rango-1:hover{
+  color:var(--textOrange);
+}
+.box-rango{
+  background-color: var(--backgroundBoxSutil);
+  //border: 1px solid var(--textWhite);
+  padding: 0.4rem 0.2rem;
+  border-radius: 5px;
+}

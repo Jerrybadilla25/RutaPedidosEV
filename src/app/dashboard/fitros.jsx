@@ -9,10 +9,11 @@ import { LiaShippingFastSolid } from "react-icons/lia";
 import { MdOutlineCancel, MdOutlineFilterAltOff } from "react-icons/md";
 import { PiInvoiceFill } from "react-icons/pi";
 import { FaAnchorCircleXmark } from "react-icons/fa6";
+import RangoFecha from '@/app/dashboard/component/rangoFecha'
 //import {handleIconClick} from '@/app/dashboard/action'
 
+
 const FilterBar = ({ filtro, numberAncla }) => {
-  console.log({ numberAncla });
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -76,10 +77,8 @@ const FilterBar = ({ filtro, numberAncla }) => {
       action: () => handleIconClick("delivered"),
     },
     { name: "Usuarios", icon: <FaUser /> },
-    //{ name: "Buscar", icon: <FaSearch /> },
-    { name: "A-Z", icon: <GrDescend /> },
-    { name: "Z-A", icon: <GrAscend /> },
-    { name: "Usuarios", icon: <FaUser /> },
+    //{ name: "A-Z", icon: <GrDescend /> },
+    //{ name: "Z-A", icon: <GrAscend /> },
     {
       name: "Limpiar",
       icon: <MdOutlineFilterAltOff />,
@@ -88,7 +87,7 @@ const FilterBar = ({ filtro, numberAncla }) => {
   ];
 
   return (
-    <div className="filter-bar">
+    <div className="filter-bar ">
       {filters.map((filter, index) => (
         <div
           key={index}
@@ -107,25 +106,42 @@ const FilterBar = ({ filtro, numberAncla }) => {
           </span>
         </div>
       ))}
-      <div 
-        className={
-          numberAncla === 3 ? "filter-item-focus" : "filter-item"
-        }
+      <div
+        className={numberAncla === 3 ? "filter-item-focus" : "filter-item"}
         onClick={clerAncla.action}
-        >
-        <div
-          className= "filter-icon"
-        >
-          {clerAncla.icon}
-        </div>
+      >
+        <div className="filter-icon">{clerAncla.icon}</div>
         <span
           className={numberAncla === 3 ? "filter-name-focus" : "filter-name"}
         >
           {clearAncla.name}
         </span>
       </div>
+     <RangoFecha />
     </div>
   );
 };
 
 export default FilterBar;
+
+/*
+ <div className="">
+        <div className="">
+          <div className="flex-row mb-0">
+            <span className="textDate">De</span>
+            <input 
+            type="date"
+            name='dataIn'
+            />
+          </div>
+          <div className="flex-row">
+            <span className="textDate">A</span>
+            <input 
+            type="date" 
+            name='dataOut'
+            />
+          </div>
+        </div>
+      </div>
+
+*/

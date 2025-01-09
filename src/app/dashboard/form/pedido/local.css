@@ -20,21 +20,8 @@
   padding: 1rem;
 }
 
-.nameDescripcion{
-  font-weight: bold;
-}
-.nameTitle{
-  font-size: 14px;
-  color:var(--textblue);
-}
-.box-line{
-  border-top: 2px solid var(--textWhite);
-  padding-top: 1rem;
-}
-.box-line:hover{
-  border-top: 2px solid var(--textOrange);
-  padding-top: 1rem;
-}
+
+
 
 @media (max-width: 768px) {
   .container-cliente {
@@ -334,3 +321,38 @@ p {
   padding: 1rem;
   border-radius: 1rem;
 }
+
+
+/* Skeleton Styles */
+.skeleton {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f5f5f5 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-text {
+  height: 20px;
+  width: 100%;
+  margin: 8px 0;
+}
+
+.skeleton-input {
+  height: 40px;
+  width: 100%;
+  margin: 8px 0;
+}
+
+.skeleton-row {
+  height: 50px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+

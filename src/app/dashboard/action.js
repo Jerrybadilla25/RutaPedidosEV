@@ -4,37 +4,63 @@ import { getUser } from "@/utils/dal";
 import { redirect } from "next/navigation";
 //import { revalidateTag } from 'next/cache'
 
-
 //activar los iconos
 export async function handleIconClick(filterName) {
-  
   console.log(`Server-side: ${filterName}`);
 }
 
-
-// funcion para llamar los pedidos
-export async function getDataPedidos() {
-  const roll = await getUser();
-  const rol = roll.role;
-  const pedidos = getPedidosRol(rol);
+//funcion para llamar pedidos con filtros
+export async function getDataPedidosFilter(filter, filterRango) {
+  const pedidos = JSON.parse(
+    JSON.stringify(
+      await Pedido.find({
+        status: filter,
+        createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
+      }).lean()
+    )
+  );
   return pedidos;
 }
 
-async function getPedidosRol(rol) {
+// funcion para llamar los pedidos
+export async function getDataPedidos(filterRango) {
+  const roll = await getUser();
+  const rol = roll.role;
+  const pedidos = getPedidosRol(rol, filterRango);
+  return pedidos;
+}
+
+async function getPedidosRol(rol, filterRango) {
   // roles = ['logistica', 'master', 'facturacion', 'ventas']
   switch (rol) {
     case "ventas":
     case "master":
-      const pedidos1 = JSON.parse(JSON.stringify(await Pedido.find().lean()));
+      const pedidos1 = JSON.parse(
+        JSON.stringify(
+          await Pedido.find({
+            createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
+          }).lean()
+        )
+      );
       return pedidos1;
     case "facturacion":
       const pedidos2 = JSON.parse(
-        JSON.stringify(await Pedido.find({ status: "pending" }).lean())
+        JSON.stringify(
+          await Pedido.find({
+            status: "pending",
+            createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
+          }).lean()
+        )
       );
       return pedidos2;
     case "logistica":
       const pedidos3 = JSON.parse(
-        JSON.stringify(await Pedido.find({ status: "delivered" }).lean())
+        JSON.stringify(
+          await Pedido.find({
+            status: "delivered",
+            createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
+          }).lean()
+        )
       );
       return pedidos3;
   }
@@ -48,7 +74,6 @@ const pedidos = JSON.parse(
 );
 */
 
-
 // funcion para agregar nota y cambiar status
 export async function upDateStatus(state, formData) {
   const user = await getUser();
@@ -56,7 +81,7 @@ export async function upDateStatus(state, formData) {
   const status = formData.get("status");
   const nota = formData.get("nota");
   const statusOrigen = formData.get("statusOrigen");
-  const dataParams = formData.get('dataParams')
+  const dataParams = formData.get("dataParams");
   const updates = {};
 
   if (nota) {
@@ -103,23 +128,4 @@ export async function upDateStatus(state, formData) {
     //revalidateTag('/dashboard')
     redirect(dataParams);
   }
-    
 }
-
-
-
-
-
-
-
-
-//funcion para llamar pedidos con filtros
-export async function getDataPedidosFilter(filter) {
-  const pedidos = JSON.parse(
-    JSON.stringify(await Pedido.find({ status: filter }).lean())
-  );
-  return pedidos;
-}
-
-
-
