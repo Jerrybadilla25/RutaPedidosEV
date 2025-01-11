@@ -49,8 +49,6 @@ export default async function Homepage({ searchParams }) {
       dataIn: pastDate,
       dataOut: dataOut,
     };
-
-    console.log(filterRango);
   }
 
   // Obtiene el filtro adicional desde los parámetros de búsqueda (o "vacio" si no existe)

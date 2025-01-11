@@ -55,19 +55,4 @@ export default function tableAddPedido({ clientId, products }) {
   );
 }
 
-/*
- <div>
-        <div className="flex-container">
-          <h5>Nombre comercio</h5>
-          <p>{clientId.name}</p>
-          <h5>Email</h5>
-          <p>{clientId.email}</p>
-        </div>
-        <div className="flex-container">
-          <h5>Contacto</h5>
-          <p>{clientId.contact}</p>
-          <h5>Teléfono</h5>
-          <p>{clientId.cel}</p>mx-5 py-
-        </div>
-      </div>
-      */
+

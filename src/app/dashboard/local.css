@@ -656,38 +656,3 @@ tbody tr:hover {
 
 
 
-/* Opcional: Estilo para los inputs */
-input[type="date"] {
-  outline: none; /* Elimina el contorno */
-  width: 75px;
-  background-color: var(--background);
-  //padding: 5px;
-  font-size: 8px;
-  border: none;
-  border-radius: 4px;
-}
-
-
-.textDate{
-  font-size: 10px;
-  width: 16px;
-}
-
-.btn-rango-1{
-  font-size: 12px;
-  width: 50px;
-  color:var(--textblue);
-  margin-left: 1rem;
-  padding: 0.4rem 0.2rem;
-  background-color: var(--background);
-  border-radius: 5px;
-}
-.btn-rango-1:hover{
-  color:var(--textOrange);
-}
-.box-rango{
-  background-color: var(--backgroundBoxSutil);
-  //border: 1px solid var(--textWhite);
-  padding: 0.4rem 0.2rem;
-  border-radius: 5px;
-}

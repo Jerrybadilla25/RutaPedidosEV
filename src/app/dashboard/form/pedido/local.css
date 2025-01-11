@@ -1,12 +1,18 @@
 .container-cliente {
   width: 70%;
-  border: 1px solid var(--textWhite);
+  background-color: var(--backgroundSutil);
+  border: 2px solid var(--backgroundSutil);
   margin-top: 1rem;
   margin-button: 1rem;
   margin-left: 15%;
   margin-right: 15%;
   //margin: 1rem 0.25rem;
   padding: 1rem;
+}
+
+.container-cliente:hover {
+  background-color: var(--backgroundBox);
+  border: 2px solid var(--backgroundBox);
 }
 
 .container-head-cliente {
@@ -30,6 +36,7 @@
     margin-button: 1rem;
     margin-left: 2%;
     margin-right: 2%;
+    
   }
   .container-head-cliente {
     width: 99%;

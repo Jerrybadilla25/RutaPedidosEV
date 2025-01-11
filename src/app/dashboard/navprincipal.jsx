@@ -52,6 +52,13 @@ export default function NavPrincipal() {
         >
           <Link href="/dashboard/products">Productos</Link>
         </li>
+        <li
+          className={
+            pathname === "/dashboard/tools/history" ? "text-color-green" : "linkPer"
+          }
+        >
+          <Link href="/dashboard/tools/history">Historial</Link>
+        </li>
         <li className="linkPer">
           <BotonLogOut />
         </li>

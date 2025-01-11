@@ -11,29 +11,44 @@ export async function handleIconClick(filterName) {
 
 //funcion para llamar pedidos con filtros
 export async function getDataPedidosFilter(filter, filterRango) {
-  const pedidos = JSON.parse(
-    JSON.stringify(
-      await Pedido.find({
-        status: filter,
-        createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
-      }).lean()
-    )
-  );
-  return pedidos;
+  const roll = await getUser();
+  const rol = roll.role;
+  const seller = roll.user
+  if(rol !== "ventas"){
+    const pedidos = JSON.parse(
+      JSON.stringify(
+        await Pedido.find({
+          status: filter,
+          createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
+        }).lean()
+      )
+    );
+    return pedidos;
+  }else{
+    const pedidos = JSON.parse(
+      JSON.stringify(
+        await Pedido.find({
+          vendedor: seller,
+          status: filter,
+          createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
+        }).lean()
+      )
+    );
+    return pedidos.reverse();
+  }
 }
 
 // funcion para llamar los pedidos
 export async function getDataPedidos(filterRango) {
   const roll = await getUser();
   const rol = roll.role;
-  const pedidos = getPedidosRol(rol, filterRango);
+  const seller = roll.user
+  const pedidos = getPedidosRol(rol, filterRango, seller);
   return pedidos;
 }
 
-async function getPedidosRol(rol, filterRango) {
-  // roles = ['logistica', 'master', 'facturacion', 'ventas']
+async function getPedidosRol(rol, filterRango, seller) {
   switch (rol) {
-    case "ventas":
     case "master":
       const pedidos1 = JSON.parse(
         JSON.stringify(
@@ -63,7 +78,22 @@ async function getPedidosRol(rol, filterRango) {
         )
       );
       return pedidos3;
+    case "ventas":
+      const pedidos4 = JSON.parse(
+        JSON.stringify(
+          await Pedido.find({
+            vendedor: seller,
+            createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
+          }).lean()
+        )
+      );
+      return pedidos4.reverse()
+
+      default: 
+      let pedidos5 = []
+      return pedidos5
   }
+  
 }
 
 /*

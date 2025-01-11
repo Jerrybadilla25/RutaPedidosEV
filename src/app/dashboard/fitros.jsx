@@ -124,24 +124,3 @@ const FilterBar = ({ filtro, numberAncla }) => {
 
 export default FilterBar;
 
-/*
- <div className="">
-        <div className="">
-          <div className="flex-row mb-0">
-            <span className="textDate">De</span>
-            <input 
-            type="date"
-            name='dataIn'
-            />
-          </div>
-          <div className="flex-row">
-            <span className="textDate">A</span>
-            <input 
-            type="date" 
-            name='dataOut'
-            />
-          </div>
-        </div>
-      </div>
-
-*/

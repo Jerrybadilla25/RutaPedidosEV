@@ -1,0 +1,59 @@
+
+.search-box-history{
+    width: 80%;
+    padding: 0.4rem;
+    //border: 1px solid var(--backgroundSutil);
+    //background-color: var(--backgroundSutil);
+    
+}
+
+.icon-search{
+    width: 5%;
+    padding: 0.5rem;
+    color: var(--textOrange);
+}
+
+.box-search{
+  background-color: var(--backgroundBoxSutil);
+  padding: 0.5rem 0rem;
+  border: 1px solid var(--backgroundSutil);
+  border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .search-box-history{
+        width: 70%;
+    }
+  }
+
+.search-box-history input{
+    border: none;
+    width: 90%;
+    padding: 0.3rem 1rem;
+    background-color: var(--backgroundBox);
+    border-radius: 5px;
+}
+
+.search-box-history input:focus {
+    outline: none; /* Quita el borde azul o resaltado */
+    box-shadow: none; /* Elimina sombras adicionales */
+    border-color: initial; /* Restablece el color del borde si es necesario */
+  }
+
+  .search-box-history input::placeholder {
+    color: var(--textbluePlaceholder);
+    font-style: italic;
+    font-size: 12px;
+  }
+
+  .box-row-venta{
+    margin: 1rem 2rem;
+    padding: 0.5rem;
+    
+    
+  }
+  .line-botton-w{
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--textWhite);
+  }

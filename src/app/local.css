@@ -58,3 +58,47 @@
     height: 5rem;
     border-bottom: 1px solid var(--backgroundSutil);
   }
+
+
+  /* estilos historial*/
+
+  .box-history{
+    background-color: var(--backgroundSutil);
+    margin: 1rem 0.5rem;;
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  /* Estilo para tablas */
+.table-full {
+  width: 100%; /* Tabla con ancho completo */
+  border-collapse: collapse; /* Combina bordes */
+}
+
+.table-full thead {
+  background-color: var(--backgroundBoxSutil); /* Fondo sutil para encabezado */
+  color: var(--foreground); /* Texto del encabezado */
+}
+
+.table-full th {
+  padding: 0.4rem; /* Espaciado interno */
+  text-align: left; /* Alineación del texto */
+  font-weight: bold;
+  border-bottom: 1px solid var(--backgroundBox); /* Línea inferior */
+}
+
+.table-full td {
+  padding: 0.4rem; /* Espaciado interno */
+  border-bottom: 1px solid var(--backgroundSutil); /* Línea inferior */
+}
+
+.table-full tr:hover {
+  background-color: var(--backgroundSutil); /* Fondo sutil al pasar el cursor */
+}
+
+/* Responsive Design para tabla */
+@media (max-width: 768px) {
+  .table-full {
+    font-size: 12px; /* Reducir tamaño de fuente en pantallas pequeñas */
+  }
+}
