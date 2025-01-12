@@ -37,8 +37,7 @@ export async function signup(state, formData){
    const createUser = new User({
     user,
     email,
-    password: hashedPassword,
-    role: 'facturacion'
+    password: hashedPassword
   });
   //createUser.roles.push(rol[0]._id)
   await createUser.save();

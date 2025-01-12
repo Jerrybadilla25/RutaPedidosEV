@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const URI1 = "mongodb://192.168.0.162:27017/PedidosEG";
+
 
 const conn = {
   isConnected: false,
@@ -15,7 +15,7 @@ export async function connectDB() {
 
   try {
     // Conectando a la base de datos
-    await mongoose.connect(URI1, {
+    await mongoose.connect(process.env.MONGO, {
     });
 
     conn.isConnected = true; // Marca como conectado
