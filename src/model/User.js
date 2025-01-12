@@ -15,9 +15,3 @@ const newUser = new Schema({
 
 export default models.User || model('User', newUser);
 
-/*
- roles: [{
-        type: Schema.Types.ObjectId,
-        ref: "rol"
-    }]
-        */

@@ -1,6 +1,6 @@
 
 .header{
-  padding: 0.5rem, 1rem;
+  padding: 0.75rem;
   height: 3rem;
 }
 
@@ -129,6 +129,22 @@ nav ul {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.linkPer3{
+  display: block; /* Hace que los enlaces ocupen todo el ancho */
+  //background: red;
+  text-decoration: none;
+  color: var(--textOrange); /* Color del texto */
+  margin: 10px 15px; /* Espaciado interno */
+  padding: 5px 10px;
+  border-left: 2px solid var(--background);
+  background-color: var(--background); /* Fondo de los enlaces */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  
+}
 
 
 /* General Styles for Navigation */

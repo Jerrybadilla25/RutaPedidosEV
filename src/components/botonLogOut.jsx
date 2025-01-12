@@ -6,7 +6,7 @@ export default function LogoutButton() {
     <form action={deleteSession}>
       <button
         type="submit"
-        
+        className='btn-out'
       >
         Logout
       </button>

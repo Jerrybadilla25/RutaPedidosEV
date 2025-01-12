@@ -8,13 +8,13 @@
   --backgroundBox: #242424;
   --backgroundBoxSutil: #3d3b3b;
   --backgroundSutil: #ffffff1a;
-  --textblue: #3BAAFF;
+  --textblue: #3baaff;
   --textbluePlaceholder: #9fa6ab;
-  --textOrange: #F57B27;
+  --textOrange: #f57b27;
   --textWhite: #ccc;
   --textError: #e01e09;
   --textBlack: #ffffff;
-  --textGreen: #4CAF50; /* Verde brillante */
+  --textGreen: #4caf50; /* Verde brillante */
   --textYellow: #5c5519; /* Amarillo cálido */
   --textRed: #8f2e27; /* Rojo suave */
 }
@@ -23,8 +23,6 @@
   :root {
     --background: #050708;
     --foreground: #ededed;
-    
-
   }
 }
 
@@ -32,60 +30,63 @@ body {
   margin: 0;
   padding: 0;
   width: 100%; /* Ajusta el ancho del body */
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+
   line-height: 1.5;
-  background-color: var(--background, #fff); /* Usa colores CSS variables si lo deseas */
+  background-color: var(
+    --background,
+    #fff
+  ); /* Usa colores CSS variables si lo deseas */
   color: var(--foreground, #000);
 }
 
 body2 {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
- 
 }
 
-.font-sm{
+.d-none {
+  display: none;
+}
+
+.font-sm {
   font-size: 10px !important;
 }
-.font-sl{
+.font-sl {
   font-size: 12px !important;
 }
-.font-sx{
+.font-sx {
   font-size: 14px !important;
 }
 .bold {
   font-weight: bold;
 }
-.roboto{
+.roboto {
   font-family: Roboto;
   font-size: 1.2rem;
 }
-.textblue{
+.textblue {
   color: var(--textblue);
 }
-.text-error{
+.text-error {
   color: var(--textError);
 }
-.text-succes{
+.text-succes {
   color: var(--textGreen);
 }
-.text-warning{
+.text-warning {
   color: var(--textOrange);
 }
 
-
-
 /* Contenedores */
 .full-screen-center {
-  width: 100%; 
-  height: 100vh; 
-  display: flex; 
-  justify-content: center; 
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
   flex-direction: column;
-  align-items: center; 
-  margin: 0; 
-  padding: 0; 
+  align-items: center;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box; /* Asegura que padding no afecte el tamaño total */
 }
 
@@ -101,24 +102,22 @@ body2 {
   padding: 0;
 }
 
-.box-red{
-  background:var(--textRed);
-  padding: 0.10rem 0.50rem;
-  border-radius: 0.20rem;
+.box-red {
+  background: var(--textRed);
+  padding: 0.1rem 0.5rem;
+  border-radius: 0.2rem;
 }
-.box-yellow{
+.box-yellow {
   background: var(--textYellow);
-
 }
-.box-green{
+.box-green {
   background: var(--textGreen);
-  padding: 0.10rem 0.50rem;
-  border-radius: 0.20rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 0.2rem;
 }
-.mb-1{
+.mb-1 {
   margin-bottom: 0.7rem;
 }
-
 
 /* Flexbox: Direcciones */
 .flex-column {
@@ -146,7 +145,7 @@ body2 {
   transform: translate(-50%, -50%); /* Ajustar el punto de referencia */
 }
 /*centrar un form logo o register*/
-.flex-center-div { 
+.flex-center-div {
   display: flex;
   flex-direction: column; /* Opcional: organiza los elementos en columna */
   justify-content: center;
@@ -159,15 +158,25 @@ body2 {
   transform: translate(-50%, -50%); /* Ajustar el punto de referencia */
 }
 
-
-
 /*botones*/
-.btn{
+.btn {
   padding: 0.5rem;
   margin: 2rem;
   border-radius: 0.5rem;
   justify-content: center;
   font-weight: 500;
+}
+.btn-out{
+  padding: 0.2rem 0.5rem;;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: Roboto;
+  border: 2px solid var(--backgroundSutil);
+  border-radius: 5px;
+}
+.btn-out:hover{
+  color: var(--textOrange);
+  border: 2px solid var(--textOrange);
 }
 
 /* Flexbox: Justificación */
@@ -238,100 +247,96 @@ body2 {
   height: 100vh;
 }
 
-.mb-0{
+.mb-0 {
   margin: 0 0 0.2rem 0;
 }
 
-.mb-1{
+.mb-1 {
   margin: 0 0 1rem 0;
 }
-.mb-2{
+.mb-2 {
   margin: 0 0 2rem 0;
 }
-.mb-3{
+.mb-3 {
   margin: 0 0 3rem 0;
 }
-.mx-1{
+.mx-1 {
   margin: 0 0.5rem;
 }
-.mx-2{
+.mx-2 {
   margin: 0 1rem;
 }
-.mx-2{
+.mx-2 {
   margin: 0 2rem;
 }
-.my-1{
+.my-1 {
   margin: 1rem;
 }
-.my-2{
+.my-2 {
   margin: 2rem;
 }
-.my-3{
+.my-3 {
   margin: 3rem;
 }
 
-
-.red{
+.red {
   background: red;
 }
 
-.W-100{
+.W-100 {
   width: 100%;
 }
-.W-80{
+.W-80 {
   width: 80%;
 }
-.W-50{
+.W-50 {
   width: 50%;
 }
-.W-30{
+.W-30 {
   width: 30%;
 }
-.W-25{
+.W-25 {
   width: 25%;
 }
-.text-h1{
+.text-h1 {
   font-size: 1.8rem !important;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 700;
 }
-.text-h3{
-  font-size: 0.80rem;;
+.text-h3 {
+  font-size: 0.8rem;
 }
 
-.nameDescripcion{
+.nameDescripcion {
   font-weight: bold;
 }
-.nameTitle{
+.nameTitle {
   font-size: 14px;
-  color:var(--textblue);
+  color: var(--textblue);
 }
 
-.box-line{
+.box-line {
   border-top: 2px solid var(--textWhite);
   padding-top: 1rem;
 }
-.box-line:hover{
+.box-line:hover {
   border-top: 2px solid var(--textOrange);
   padding-top: 1rem;
 }
 
-
 /* Responsive Design */
 @media (max-width: 768px) {
-  .W-50{
+  .W-50 {
     width: 50%;
   }
 
-  .W-25{
+  .W-25 {
     width: 25%;
   }
-  .W-30{
+  .W-30 {
     width: 80%;
   }
 }
-
-
 
 /* Opcional: Estilo para los inputs */
 input[type="date"] {
@@ -344,25 +349,24 @@ input[type="date"] {
   border-radius: 4px;
 }
 
-
-.textDate{
+.textDate {
   font-size: 10px;
   width: 16px;
 }
 
-.btn-rango-1{
+.btn-rango-1 {
   font-size: 12px;
   width: 50px;
-  color:var(--textblue);
+  color: var(--textblue);
   margin-left: 1rem;
   padding: 0.4rem 0.2rem;
   background-color: var(--background);
   border-radius: 5px;
 }
-.btn-rango-1:hover{
-  color:var(--textOrange);
+.btn-rango-1:hover {
+  color: var(--textOrange);
 }
-.box-rango{
+.box-rango {
   background-color: var(--backgroundBoxSutil);
   //border: 1px solid var(--textWhite);
   padding: 0.4rem 0.2rem;

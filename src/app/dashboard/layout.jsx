@@ -24,6 +24,8 @@ export const metadata = {
 export default async function DasboardLayout({ children }) {
   //validar la sescion
   const dataUser = await getUser();
+  
+  
   if (dataUser._id) {
     return (
       <html lang="en">
@@ -33,17 +35,17 @@ export default async function DasboardLayout({ children }) {
               <Header />
             </div>
             <div className="row-1">
-              <NavSecundario />{" "}
+              <NavSecundario role={dataUser.role} />{" "}
             </div>
 
             <div className="row">
               <div className="colunma">
                 <div className="colunm-1">
-                  <NavPrincipal />
+                  <NavPrincipal role={dataUser.role} />
                 </div>
                 <div className="colunm-2">{children}</div>
                 <div className="colunm-1">
-                  <h1>Espacio vacío</h1>
+                  <h1></h1>
                 </div>
               </div>
             </div>
