@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import "./local.css";
 import { Suspense } from "react";
 //import { getUser } from "@/utils/dal";

@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import TablaCliente from "@/app/dashboard/form/pedido/tableCliente";
 import TableAddPedido from "@/app/dashboard/form/pedido/tableAddPedido";
 import Cargando from "@/components/cargando";

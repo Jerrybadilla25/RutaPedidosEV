@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import TableProduts from '@/app/dashboard/products/tableProduts'
 import {Suspense} from 'react'
 import Cargando from '@/components/cargando'

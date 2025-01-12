@@ -1,4 +1,5 @@
 // Importaciones necesarias para la página
+export const dynamic = 'force-dynamic';
 import React from "react";
 import { Suspense } from "react";
 import { connectDB } from "@/utils/dbserver"; // Función para conectar a la base de datos
