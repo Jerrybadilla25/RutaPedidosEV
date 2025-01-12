@@ -2,29 +2,30 @@ import Pedidos from "@/app/dashboard/tools/history/itemPedidos";
 
 export default async function TableClient({ user, dataHistory }) {
   return (
-    <div>
+    <div className="box-history-container">
+      <h1 className="roboto text-warning">Historial de Pedidos</h1>
       {dataHistory.map((itm) => (
         <div key={itm._id}>
-          <div className="box-history">
-            <div className="flex-row justify-between gap-medium line-botton-w">
+          <div className="">
+            <div className="flex-row justify-between gap-medium line-botton-w box-history">
               <p className="flex-column">
-                <strong className="nameTitle">Id Cliente </strong>
+                <strong className="nameTitle font-sm">Id Cliente </strong>
                 <strong>{itm.clientId}</strong>
               </p>
               <p className="flex-column">
-                <strong className="nameTitle">Nombre </strong>
+                <strong className="nameTitle font-sm">Nombre </strong>
                 <strong>{itm.name}</strong>
               </p>
               <p className="flex-column">
-                <strong className="nameTitle">Contacto </strong>
+                <strong className="nameTitle font-sm">Contacto </strong>
                 <strong>{itm.contact}</strong>
               </p>
               <p className="flex-column">
-                <strong className="nameTitle"> Status </strong>
+                <strong className="nameTitle font-sm"> Status </strong>
                 <strong>{itm.status}</strong>
               </p>
               <p className="flex-column">
-                <strong className="nameTitle">Direccion</strong>
+                <strong className="nameTitle font-sm">Direccion</strong>
                 <strong>
                   {itm.address.provincia}, {itm.address.canton},{" "}
                   {itm.address.distrito}{" "}
@@ -32,7 +33,9 @@ export default async function TableClient({ user, dataHistory }) {
               </p>
             </div>
 
-            <div className="flex-row justify-around box-row-venta">
+            {
+              dataHistory.length === 1 ? 
+              <div className="flex-row justify-around box-row-venta">
               
                 <strong className="bold roboto">Ventas totales</strong>
                 <strong className="text-succes roboto">
@@ -44,14 +47,19 @@ export default async function TableClient({ user, dataHistory }) {
                     })}
                 </strong>
               
-            </div>
+            </div>:<p></p>
+            }
 
-            <div className="flex-column my-1">
+            
+
+            {
+              dataHistory.length === 1 ?
+              <div className="flex-column my-1">
               <table className="table-full">
                 <thead>
                   <tr>
-                    <th></th>
-                    <th>Pedido</th>
+                    <th>#</th>
+                    <th>Id Pedido</th>
                     <th>Fecha</th>
                     <th>Status</th>
                     <th>Vendedor</th>
@@ -82,7 +90,8 @@ export default async function TableClient({ user, dataHistory }) {
                   ))}
                 </tbody>
               </table>
-            </div>
+            </div>:<p></p>
+            }
           </div>
         </div>
       ))}

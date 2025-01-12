@@ -1,19 +1,17 @@
-
-.search-box-history{
-    width: 80%;
-    padding: 0.4rem;
-    //border: 1px solid var(--backgroundSutil);
-    //background-color: var(--backgroundSutil);
-    
+.search-box-history {
+  width: 80%;
+  padding: 0.4rem;
+  //border: 1px solid var(--backgroundSutil);
+  //background-color: var(--backgroundSutil);
 }
 
-.icon-search{
-    width: 5%;
-    padding: 0.5rem;
-    color: var(--textOrange);
+.icon-search {
+  width: 5%;
+  padding: 0.5rem;
+  color: var(--textOrange);
 }
 
-.box-search{
+.box-search {
   background-color: var(--backgroundBoxSutil);
   padding: 0.5rem 0rem;
   border: 1px solid var(--backgroundSutil);
@@ -22,38 +20,107 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .search-box-history{
-        width: 70%;
-    }
+  .search-box-history {
+    width: 64%;
   }
+}
 
-.search-box-history input{
-    border: none;
-    width: 90%;
-    padding: 0.3rem 1rem;
-    background-color: var(--backgroundBox);
-    border-radius: 5px;
+.search-box-history input {
+  border: none;
+  width: 90%;
+  padding: 0.3rem 1rem;
+  background-color: var(--backgroundBox);
+  border-radius: 5px;
 }
 
 .search-box-history input:focus {
-    outline: none; /* Quita el borde azul o resaltado */
-    box-shadow: none; /* Elimina sombras adicionales */
-    border-color: initial; /* Restablece el color del borde si es necesario */
-  }
+  outline: none; /* Quita el borde azul o resaltado */
+  box-shadow: none; /* Elimina sombras adicionales */
+  border-color: initial; /* Restablece el color del borde si es necesario */
+}
 
-  .search-box-history input::placeholder {
-    color: var(--textbluePlaceholder);
-    font-style: italic;
-    font-size: 12px;
-  }
+.search-box-history input::placeholder {
+  color: var(--textbluePlaceholder);
+  font-style: italic;
+  font-size: 12px;
+}
 
-  .box-row-venta{
-    margin: 1rem 2rem;
-    padding: 0.5rem;
-    
-    
+.box-row-venta {
+  margin: 1rem 2rem;
+  padding: 0.5rem;
+}
+.line-botton-w {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--textWhite);
+}
+
+/* estilos historial*/
+
+.box-history {
+  background-color: var(--backgroundSutil);
+  border: 2px solid var(--backgroundSutil);
+  margin: 1rem 0.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.box-history-container {
+  //background-color: var(--backgroundBoxSutil);
+  border: 2px solid var(--backgroundSutil);
+  margin: 1.5rem 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+/* Estilo para tablas */
+.table-full {
+  width: 100%; /* Tabla con ancho completo */
+  border-collapse: collapse; /* Combina bordes */
+}
+
+.table-full thead {
+  background-color: var(--backgroundBoxSutil); /* Fondo sutil para encabezado */
+  color: var(--foreground); /* Texto del encabezado */
+}
+
+.table-full th {
+  padding: 0.4rem; /* Espaciado interno */
+  text-align: left; /* Alineación del texto */
+  font-weight: bold;
+  border: 1px solid var(--backgroundBox); /* Línea inferior */
+}
+
+.table-full td {
+  padding: 0.4rem; /* Espaciado interno */
+  border: 1px solid var(--backgroundSutil); /* Línea inferior */
+}
+
+.table-full tr:hover {
+  background-color: var(--backgroundSutil); /* Fondo sutil al pasar el cursor */
+}
+
+/* input radio */
+.input-radio input[type="radio"] {
+  appearance: none; /* Quita el estilo predeterminado */
+  -webkit-appearance: none; /* Compatibilidad para Safari */
+  -moz-appearance: none; /* Compatibilidad para Firefox */
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--textblue); /* Borde negro */
+  border-radius: 50%; /* Forma circular */
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  margin-right: 6px; /* Espacio entre el botón radio y el texto */
+}
+
+.input-radio input[type="radio"]:checked {
+  background-color: var(--textblue); /* Fondo verde cuando está seleccionado */
+  border-color: var(--textblue); /* Cambiar el color del borde al mismo que el fondo */
+}
+
+/* Responsive Design para tabla */
+@media (max-width: 768px) {
+  .table-full {
+    font-size: 12px; /* Reducir tamaño de fuente en pantallas pequeñas */
   }
-  .line-botton-w{
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--textWhite);
-  }
+}
