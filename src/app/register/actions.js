@@ -10,41 +10,55 @@ import { SignupFormSchema } from "@/utils/definiciones";
 import { redirect } from "next/navigation";
 //import Roles from '@/model/Roles'
 
-export async function signup(state, formData){
-  //1 validar los datos
-  const validatedFields = SignupFormSchema.safeParse({
-    user: formData.get('user'),
-    email: formData.get('email'),
-    password: formData.get('password'),
-  })
- 
-  // If any form fields are invalid, return early
-  if (!validatedFields.success) {
-    return {
-      errors: validatedFields.error.flatten().fieldErrors,
+export async function signup(state, formData) {
+  try {
+    // Validar los datos del formulario
+    const validatedFields = SignupFormSchema.safeParse({
+      user: formData.get("user"),
+      email: formData.get("email"),
+      password: formData.get("password"),
+    });
+
+    // Si algún campo del formulario no es válido, retornar temprano con los errores
+    if (!validatedFields.success) {
+      return {
+        errors: validatedFields.error.flatten().fieldErrors,
+      };
     }
+
+    // Conectar a la base de datos
+    connectDB();
+
+    const { user, email, password } = validatedFields.data;
+
+    // Verificar si el correo ya existe
+    const userEmail = await User.find({ email: email });
+    if (userEmail.length === 1) {
+      console.log("El correo ya existe");
+      return;
+    }
+
+    // Encriptar la contraseña
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Crear el usuario en la base de datos con la contraseña encriptada
+    const createUser = new User({
+      user,
+      email,
+      password: hashedPassword,
+    });
+
+    // Guardar el nuevo usuario
+    await createUser.save();
+  } catch (error) {
+    console.error("Error al registrar usuario:", error);
+    return { error: "Hubo un problema al registrar el usuario." };
   }
-  connectDB()
-  const {user, email, password}=validatedFields.data
-  const userEmail = await User.find({email: email})
-  //const rol = await Roles.find({rol:"master"})
-  if(userEmail.length===1){
-    console.log('el correo ya exixte')
-  }else{
-  // Encriptar la contraseña
-   const hashedPassword = await bcrypt.hash(password, 10)
-  // Crear el usuario en la base de datos con la contraseña encriptada
-   const createUser = new User({
-    user,
-    email,
-    password: hashedPassword
-  });
-  //createUser.roles.push(rol[0]._id)
-  await createUser.save();
+
+  // Redireccionar solo si todo el proceso fue exitoso
   redirect("/login");
-  }
-    
-};
+}
+
 
 
 //monitor25*

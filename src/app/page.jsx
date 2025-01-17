@@ -1,16 +1,24 @@
 import Link from "next/link";
 import { cookies } from "next/headers";
-import { GrLogin, GrLogout } from "react-icons/gr";
+import { GrLogin } from "react-icons/gr";
 import BotonLogOut from "@/components/botonLogOut";
+import BarraMaster from '@/components/barraMaster'
+import {getUser} from '@/utils/dal'
 
 export default async function Homepage() {
-  const cookie = (await cookies()).get("session")?.value;
+  //const cookie = (await cookies()).get("session")?.value;
+  const user = await getUser()
+  let role = null
+  if(user){
+    role = user.role
+  }
+  
 
   return (
-    
+    <div className="container-100">
       <header className="flex-row justify-between align-center altura-header">
         <div className="logo-principal">
-          {cookie ? (
+          {user ? (
             <Link href="/dashboard" className="hover:text-gray-300">
               Mi Aplicacion
             </Link>
@@ -19,7 +27,7 @@ export default async function Homepage() {
           )}
         </div>
 
-        {!cookie ? (
+        {!user ? (
           <nav className="nav-container">
             <Link href="/login" className="nav-item">
               <span>
@@ -27,12 +35,7 @@ export default async function Homepage() {
               </span>
               <p>Login</p>
             </Link>
-            <Link href="/register" className="nav-item">
-              <span>
-                <GrLogout />
-              </span>
-              <p>Register</p>
-            </Link>
+            
           </nav>
         ) : (
           <div className="">
@@ -40,6 +43,16 @@ export default async function Homepage() {
           </div>
         )}
       </header>
+      {
+        (role==='master') && (
+          <BarraMaster/>
+        )
+      }
+        
+      
+    </div>
+    
+      
      
   );
 }

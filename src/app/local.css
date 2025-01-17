@@ -61,4 +61,72 @@
   }
 
 
+  .edit-roles{
+    //background-color: var(--backgroundSutil);
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  /* Estilos generales del formulario */
+.form-role {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  //max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid var(--backgroundBox);
+  border-radius: 8px;
+  background-color: var(--backgroundSutil);
+}
+
+/* Estilos para las etiquetas */
+.label-role {
+  font-weight: bold;
+  color: var(--textWhite);
+  margin-bottom: 0.5rem;
+}
+
+/* Estilos para los selects */
+.select-role {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--backgroundBox);
+  border-radius: 4px;
+  background-color: var(--backgroundSutil);
+  color: var(--textWhite);
+  appearance: none; /* Oculta la flecha por defecto en algunos navegadores */
+  outline: none;
+  cursor: pointer;
+}
+
+/* Opciones dentro de los selects */
+.option-role {
+  background-color: var(--backgroundBoxSutil);
+  color: var(--textWhite);
+  padding: 0.5rem;
+}
+
+/* Botón para enviar el formulario */
+.button-role {
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--textWhite);
+  border: 1px solid var(--textblue);
+  //background-color: #007BFF; /* Azul */
+  //border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-role:hover {
+  border: 1px solid var(--textOrange);
+  color: var(--textOrange);
+  //background-color: #0056b3; /* Azul oscuro al pasar el mouse */
+}
+
+
  

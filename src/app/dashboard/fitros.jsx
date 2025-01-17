@@ -19,30 +19,42 @@ const FilterBar = ({ filtro, numberAncla }) => {
   const { replace } = useRouter();
 
   // Obtener el almacenamiento local
-
   const handleIconClick = (filtroName) => {
-    const params = new URLSearchParams(searchParams);
-    if (filtroName) {
-      params.set("filter", filtroName);
-    } else {
+    try {
+      const params = new URLSearchParams(searchParams);
+      if (filtroName) {
+        params.set("filter", filtroName);
+      } else {
+        params.delete("filter");
+        params.delete("ancla");
+        params.delete("searchid");
+      }
+      replace(`${pathname}?${params.toString()}`);
+    } catch (error) {
+      console.error("Error en handleIconClick:", error);
+    }
+  };
+  
+  const handleIconClean = () => {
+    try {
+      const params = new URLSearchParams(searchParams);
       params.delete("filter");
       params.delete("ancla");
       params.delete("searchid");
+      replace(`${pathname}?${params.toString()}`);
+    } catch (error) {
+      console.error("Error en handleIconClean:", error);
     }
-    replace(`${pathname}?${params.toString()}`);
-  };
-
-  const handleIconClean = (filtroName) => {
-    const params = new URLSearchParams(searchParams);
-    params.delete("filter");
-    params.delete("ancla");
-    params.delete("searchid");
-    replace(`${pathname}?${params.toString()}`);
   };
 
   function cleanAncla() {
-    localStorage.clear();
+    try {
+      localStorage.clear();
+    } catch (error) {
+      console.error("Error al limpiar localStorage:", error);
+    }
   }
+  
   const clearAncla = {
     name: "vaciar",
     icon: <FaAnchorCircleXmark />,
@@ -76,13 +88,13 @@ const FilterBar = ({ filtro, numberAncla }) => {
       icon: <PiInvoiceFill />,
       action: () => handleIconClick("delivered"),
     },
-    { name: "Usuarios", icon: <FaUser /> },
+    //{ name: "Usuarios", icon: <FaUser /> },
     //{ name: "A-Z", icon: <GrDescend /> },
     //{ name: "Z-A", icon: <GrAscend /> },
     {
       name: "Limpiar",
       icon: <MdOutlineFilterAltOff />,
-      action: () => handleIconClean("vaciar"),
+      action: () => handleIconClean(),
     },
   ];
 

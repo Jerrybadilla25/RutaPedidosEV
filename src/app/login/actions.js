@@ -10,36 +10,42 @@ import { SignupFormSchema } from "@/utils/definiciones";
 //import Roles from '@/model/Roles'
 
 export async function signIn(state, formData) {
-  // Extraer datos del formulario
-  const userEmail = formData.get("email");
-  const userPassword = formData.get("password");
+  try {
+    // Extraer datos del formulario
+    const userEmail = formData.get("email");
+    const userPassword = formData.get("password");
 
-  // Validar que existan el correo y la contraseña
-  if (!userEmail || !userPassword) {
-    console.log("Faltan datos: email o contraseña no proporcionados");
-    return;
+    // Validar que existan el correo y la contraseña
+    if (!userEmail || !userPassword) {
+      console.log("Faltan datos: email o contraseña no proporcionados");
+      return;
+    }
+
+    // Buscar usuario en la base de datos
+    connectDB();
+    const dataUser = await User.find({ email: userEmail });
+    if (!dataUser || dataUser.length === 0) {
+      console.log("El usuario no existe");
+      return;
+    }
+
+    // Verificar contraseña
+    const hashedPassword = dataUser[0].password;
+    const isPasswordCorrect = await bcrypt.compare(userPassword, hashedPassword);
+
+    if (!isPasswordCorrect) {
+      console.log("Contraseña incorrecta");
+      return;
+    }
+
+    // Crear sesión
+    const idUser = dataUser[0]._id.toString();
+    await createSession({ userId: idUser });
+  } catch (error) {
+    console.error("Error al iniciar sesión:", error);
   }
 
-  // Buscar usuario en la base de datos
-  connectDB()
-  const dataUser = await User.find({ email: userEmail });
-  if (!dataUser) {
-    console.log("El usuario no existe");
-    return;
-  }
-
-  // Verificar contraseña
-  const hashedPassword = dataUser[0].password;
-  const isPasswordCorrect = await bcrypt.compare(userPassword, hashedPassword);
-
-  if (!isPasswordCorrect) {
-    console.log("Contraseña incorrecta");
-    return;
-  }
-
-  // Continuar con el proceso si las credenciales son válidas
-  //crear sesscion
-  const idUser = dataUser[0]._id.toString()
-  await createSession({ userId: idUser});
+  // Redireccionar después de que todo el proceso haya sido exitoso
   redirect("/dashboard");
 }
+

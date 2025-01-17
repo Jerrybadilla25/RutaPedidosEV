@@ -9,7 +9,6 @@ import './local.css'
 
 export default async function AllProducts() {
     const user = await getUser()
-    console.log(user)
     if(!user.user){
         redirect('/')
     }

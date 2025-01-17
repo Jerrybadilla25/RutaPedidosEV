@@ -58,10 +58,10 @@ export default async function Historial({ searchParams }) {
 
   return (
     <div>
-      <Suspense key={history}>
+      
         <Search />
         <TablePedidos dataHistory={dataHistory} />
-      </Suspense>
+     
     </div>
   );
 }

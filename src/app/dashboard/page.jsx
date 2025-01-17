@@ -7,6 +7,7 @@ import TablaPedido from "@/app/dashboard/tablePedido"; // Componente para mostra
 import SqueletonTable from "@/app/dashboard/squeletonTable"; // Componente de carga mientras se obtienen los datos
 import Filtros from "@/app/dashboard/fitros"; // Componente para los filtros de la página
 import { getDataPedidos, getDataPedidosFilter } from "@/app/dashboard/action"; // Funciones para obtener los datos de pedidos
+import {getUser} from '@/utils/dal'
 
 // Componente principal de la página
 export default async function Homepage({ searchParams }) {
@@ -82,13 +83,21 @@ export default async function Homepage({ searchParams }) {
 
   let pedidos1; // Variable para almacenar los pedidos obtenidos
 
-  if (filter === "vacio") {
-    // Si no hay filtro específico, obtiene todos los pedidos dentro del rango
-    pedidos1 = await getDataPedidos(filterRango);
-  } else {
-    // Si hay un filtro específico, aplica el filtro además del rango
-    pedidos1 = await getDataPedidosFilter(filter, filterRango);
+  const session = await getUser()
+  
+
+
+  try {
+    if (filter === "vacio") {
+      pedidos1 = await getDataPedidos(filterRango);
+    } else {
+      pedidos1 = await getDataPedidosFilter(filter, filterRango);
+    }
+  } catch (error) {
+    console.error("Error al obtener los pedidos:", error);
+    pedidos1 = []; // Retorna una lista vacía en caso de error
   }
+  
 
   // Separa los pedidos destacados (según "ancla") del resto
   const elementosPrincipales = pedidos1

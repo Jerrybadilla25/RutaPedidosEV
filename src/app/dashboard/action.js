@@ -2,109 +2,106 @@
 import Pedido from "@/model/Pedido";
 import { getUser } from "@/utils/dal";
 import { redirect } from "next/navigation";
-//import { revalidateTag } from 'next/cache'
 
-//activar los iconos
+// Activar los iconos
 export async function handleIconClick(filterName) {
-  console.log(`Server-side: ${filterName}`);
-}
-
-//funcion para llamar pedidos con filtros
-export async function getDataPedidosFilter(filter, filterRango) {
-  const roll = await getUser();
-  const rol = roll.role;
-  const seller = roll.user
-  if(rol !== "ventas"){
-    const pedidos = JSON.parse(
-      JSON.stringify(
-        await Pedido.find({
-          status: filter,
-          createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
-        }).lean()
-      )
-    );
-    return pedidos;
-  }else{
-    const pedidos = JSON.parse(
-      JSON.stringify(
-        await Pedido.find({
-          vendedor: seller,
-          status: filter,
-          createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
-        }).lean()
-      )
-    );
-    return pedidos.reverse();
+  try {
+    console.log(`Server-side: ${filterName}`);
+  } catch (error) {
+    console.error("Error al manejar el clic del ícono:", error);
   }
 }
 
-// funcion para llamar los pedidos
-export async function getDataPedidos(filterRango) {
-  const roll = await getUser();
-  const rol = roll.role;
-  const seller = roll.user
-  const pedidos = getPedidosRol(rol, filterRango, seller);
-  return pedidos;
-}
+// Función para llamar pedidos con filtros
+export async function getDataPedidosFilter(filter, filterRango) {
+  try {
+    const roll = await getUser();
+    const rol = roll.role;
+    const seller = roll.user;
 
-async function getPedidosRol(rol, filterRango, seller) {
-  switch (rol) {
-    case "master":
-      const pedidos1 = JSON.parse(
+    if (rol !== "ventas") {
+      const pedidos = JSON.parse(
         JSON.stringify(
           await Pedido.find({
+            status: filter,
             createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
           }).lean()
         )
       );
-      return pedidos1;
-    case "facturacion":
-      const pedidos2 = JSON.parse(
-        JSON.stringify(
-          await Pedido.find({
-            status: "pending",
-            createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
-          }).lean()
-        )
-      );
-      return pedidos2;
-    case "logistica":
-      const pedidos3 = JSON.parse(
-        JSON.stringify(
-          await Pedido.find({
-            status: "delivered",
-            createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
-          }).lean()
-        )
-      );
-      return pedidos3;
-    case "ventas":
-      const pedidos4 = JSON.parse(
+      return pedidos;
+    } else {
+      const pedidos = JSON.parse(
         JSON.stringify(
           await Pedido.find({
             vendedor: seller,
+            status: filter,
             createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
           }).lean()
         )
       );
-      return pedidos4.reverse()
-
-      default: 
-      let pedidos5 = []
-      return pedidos5
+      return pedidos.reverse();
+    }
+  } catch (error) {
+    console.error("Error al obtener pedidos con filtros:", error);
+    return [];
   }
-  
 }
 
-/*
-const pedidos = JSON.parse(
-  JSON.stringify(
-    await Pedido.find({ status: { $in: ["pending", "delivered"] } }).lean()
-  )
-);
-*/
+// Función para llamar los pedidos
+export async function getDataPedidos(filterRango) {
+  try {
+    const roll = await getUser();
+    const rol = roll.role;
+    const seller = roll.user;
+    const pedidos = await getPedidosRol(rol, filterRango, seller);
+    return pedidos;
+  } catch (error) {
+    console.error("Error al obtener pedidos:", error);
+    return [];
+  }
+}
 
-// funcion para agregar nota y cambiar status
+async function getPedidosRol(rol, filterRango, seller) {
+  try {
+    switch (rol) {
+      case "master":
+        return await fetchPedidos({
+          createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
+        });
+      case "facturacion":
+        return await fetchPedidos({
+          status: "pending",
+          createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
+        });
+      case "logistica":
+        return await fetchPedidos({
+          status: "delivered",
+          createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
+        });
+      case "ventas":
+        return (await fetchPedidos({
+          vendedor: seller,
+          createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
+        })).reverse();
+      default:
+        return [];
+    }
+  } catch (error) {
+    console.error("Error en la asignación de pedidos según rol:", error);
+    return [];
+  }
+}
+
+async function fetchPedidos(query) {
+  try {
+    return JSON.parse(JSON.stringify(await Pedido.find(query).lean()));
+  } catch (error) {
+    console.error("Error al obtener pedidos de la base de datos:", error);
+    return [];
+  }
+}
+
+// Función para agregar nota y cambiar status
 export async function upDateStatus(state, formData) {
   const user = await getUser();
   const id = formData.get("_id");
@@ -118,7 +115,7 @@ export async function upDateStatus(state, formData) {
     updates.$push = {
       notas: {
         $each: [{ nota: nota, creador: user.user, fechaCracion: new Date() }],
-        $position: 0, // Inserta al principio del arreglo
+        $position: 0,
       },
     };
   }
@@ -144,18 +141,16 @@ export async function upDateStatus(state, formData) {
   }
 
   if (Object.keys(updates).length === 0) {
-    //return {message: 'ok'}
-    //revalidateTag('/dashboard')
     redirect(dataParams);
+    return;
   }
+
   try {
     await Pedido.findByIdAndUpdate(id, updates, { new: true });
-    //return {message: 'ok'}
-    //revalidateTag('/dashboard')
     redirect(dataParams);
   } catch (error) {
-    //return {message: 'ok'}
-    //revalidateTag('/dashboard')
+    console.error("Error al actualizar el pedido:", error);
     redirect(dataParams);
   }
 }
+

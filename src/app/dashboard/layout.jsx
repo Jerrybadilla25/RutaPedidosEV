@@ -32,7 +32,7 @@ export default async function DasboardLayout({ children }) {
         <body>
           <div className="container-100">
             <div>
-              <Header />
+              <Header role={dataUser.role}/>
             </div>
             <div className="row-1">
               <NavSecundario role={dataUser.role} />{" "}

@@ -1,10 +1,7 @@
 "use server";
 import { addProduct } from "@/utils/definiciones";
-//import {getUser} from '@/utils/dal'
-//import Sku from "@/model/sku";
 import Producto from "@/model/Product";
 import { createSku } from "@/utils/creteSku";
-//import { nanoid } from "nanoid"
 import { redirect } from "next/navigation";
 
 export async function addProductDb(state, formData) {
@@ -33,8 +30,9 @@ export async function addProductDb(state, formData) {
       stock,
     });
     await newProduct.save();
-    redirect("/dashboard");
+    
   } catch (error) {
-    redirect("/dashboard/form/articulo")
+    console.log(error)
   }
+  redirect("/dashboard/products");
 }
