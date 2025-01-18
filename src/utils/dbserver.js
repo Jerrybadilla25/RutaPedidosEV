@@ -15,7 +15,7 @@ export async function connectDB() {
 
   try {
     // Conectando a la base de datos
-    await mongoose.connect(process.env.URI, {
+    await mongoose.connect(process.env.MONGODB_URI, {
     });
 
     conn.isConnected = true; // Marca como conectado
