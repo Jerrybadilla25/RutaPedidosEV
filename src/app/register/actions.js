@@ -10,7 +10,9 @@ import { SignupFormSchema } from "@/utils/definiciones";
 import { redirect } from "next/navigation";
 //import Roles from '@/model/Roles'
 
+
 export async function signup(state, formData) {
+  
   try {
     // Validar los datos del formulario
     const validatedFields = SignupFormSchema.safeParse({

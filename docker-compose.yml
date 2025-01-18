@@ -31,9 +31,7 @@ services:
     volumes:
       - /home/jerrybd/datamongo:/data/db # Monta el volumen de MongoDB en el host
 
-volumes:
-  mongo-data: # Queda definido pero no se utiliza
-
 networks:
   app-network:
     driver: bridge
+
