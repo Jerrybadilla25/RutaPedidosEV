@@ -23,7 +23,7 @@ services:
 
   mongodb:
     image: mongo:4.4
-    container_name: mongodb
+    container_name: mongodb-next
     ports:
       - "27017:27017"
     networks:
