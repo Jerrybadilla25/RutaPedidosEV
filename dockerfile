@@ -8,6 +8,10 @@ WORKDIR /app
 COPY package*.json ./
 COPY . .
 
+# Cambia los permisos del directorio de trabajo
+RUN chown -R node:node /app
+USER node
+
 # Instala las dependencias
 RUN npm install
 
@@ -19,3 +23,4 @@ EXPOSE 3000
 
 # Comando para iniciar la aplicación
 CMD ["npm", "run", "start"]
+

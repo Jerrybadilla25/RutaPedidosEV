@@ -13,9 +13,9 @@ services:
       MONGODB_URI: "mongodb://mongodb:27017/PedidosEG" # Conexión a MongoDB
       SESSION_SECRET: "Jdv0YPEBnpBObfmXUvfNlFw4K3MNvkK9xQfGFRJH3VM=" # Secreto de sesión
     volumes:
-      - .:/app
-      - /app/node_modules
-    command: ["npm", "run", "start"]
+      - .:/app:ro                # Monta los archivos del proyecto en modo solo lectura
+      - /app/node_modules        # Permite que las dependencias sean gestionadas dentro del contenedor
+      - /app/.next               # Evita que el directorio de build sea sobrescrito
     depends_on:
       - mongodb
     networks:
@@ -29,12 +29,13 @@ services:
     networks:
       - app-network
     volumes:
-      - mongo-data:/data/db
+      - /home/jerrybd/datamongo:/data/db # Monta el volumen en el host
 
 volumes:
-  mongo-data:
+  mongo-data: # Este volumen queda definido pero no se usa; puedes eliminarlo si no lo necesitas
 
 networks:
   app-network:
     driver: bridge
+
 
