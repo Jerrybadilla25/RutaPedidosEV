@@ -61,17 +61,7 @@ export default function NavPrincipal({ role }) {
         >
           <Link href="/dashboard/products">Productos</Link>
         </li>
-        {role === "master" && (
-          <li
-            className={
-              pathname === "/dashboard/tools/history"
-                ? "text-color-green"
-                : "linkPer"
-            }
-          >
-            <Link href="/dashboard/tools/history">Historial Pedidos</Link>
-          </li>
-        )}
+        
 
         {(role === "master" || role === "ventas") && (
           <li
@@ -86,3 +76,18 @@ export default function NavPrincipal({ role }) {
     </nav>
   );
 }
+
+
+/*
+{role === "master" && (
+          <li
+            className={
+              pathname === "/dashboard/tools/history"
+                ? "text-color-green"
+                : "linkPer"
+            }
+          >
+            <Link href="/dashboard/tools/history">Global de Pedidos</Link>
+          </li>
+        )}
+          */

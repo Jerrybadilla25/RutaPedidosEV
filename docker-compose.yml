@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  nextjs-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nextjs_server
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      MONGODB_URI: "mongodb://mongodb:27017/PedidosEG" # Conexión a MongoDB
+      SESSION_SECRET: "Jdv0YPEBnpBObfmXUvfNlFw4K3MNvkK9xQfGFRJH3VM=" # Secreto de sesión
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: ["npm", "run", "start"]
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+
+  mongodb:
+    image: mongo:5.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
+
+networks:
+  app-network:
+    driver: bridge
+

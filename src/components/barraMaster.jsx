@@ -1,13 +1,27 @@
-import React from "react";
-import User from "@/model/User";
+"use client";
+import { changeRoll } from "@/components/actions/actions";
+import React,{ useActionState, useEffect } from "react";
+import { toast } from "sonner";
 
-export default async function BarraMaster() {
-  let users = await User.find().select("-password -fecha").lean();
-  users = JSON.parse(JSON.stringify(users));
+export default function BarraMaster({ users }) {
+  const [state, formAction, pending] = useActionState(changeRoll, undefined);
+
+  
+  // Monitorear cambios en el estado y mostrar un toast según la respuesta
+  useEffect(() => {
+    if (state) {
+      if (state.success) {
+        toast.success(state.message || "¡Rol actualizado con éxito!");
+      } else {
+        toast.error(state.message || "Hubo un error al actualizar el rol.");
+      }
+    }
+  }, [state]); // Ejecuta cada vez que `state` cambia
+
   return (
     <div className="container-90">
       <div className="edit-roles">
-        <form className="form-role">
+        <form action={formAction} className="form-role">
           <h1 className="nameTitle">Cambiar roles</h1>
           {/* Campo para seleccionar al usuario */}
           <label className="label-role" htmlFor="userId">
@@ -44,8 +58,8 @@ export default async function BarraMaster() {
           </select>
 
           {/* Botón para enviar el formulario */}
-          <button className="button-role" >
-            Actualizar Rol
+          <button type="submit" className="button-role"  disabled={pending}>
+          {pending ? "Actualizando..." : "Actualizar Rol"}
           </button>
         </form>
       </div>

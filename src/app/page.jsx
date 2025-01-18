@@ -1,18 +1,22 @@
 import Link from "next/link";
-import { cookies } from "next/headers";
+//import { cookies } from "next/headers";
 import { GrLogin } from "react-icons/gr";
 import BotonLogOut from "@/components/botonLogOut";
-import BarraMaster from '@/components/barraMaster'
-import {getUser} from '@/utils/dal'
+import BarraMaster from "@/components/barraMaster";
+import { getUser } from "@/utils/dal";
+import User from "@/model/User";
+
+
 
 export default async function Homepage() {
   //const cookie = (await cookies()).get("session")?.value;
-  const user = await getUser()
-  let role = null
-  if(user){
-    role = user.role
+  const user = await getUser();
+  let role = null;
+  if (user) {
+    role = user.role;
   }
-  
+  let users = await User.find().select("-password -fecha").lean();
+  users = JSON.parse(JSON.stringify(users));
 
   return (
     <div className="container-100">
@@ -35,7 +39,6 @@ export default async function Homepage() {
               </span>
               <p>Login</p>
             </Link>
-            
           </nav>
         ) : (
           <div className="">
@@ -43,16 +46,7 @@ export default async function Homepage() {
           </div>
         )}
       </header>
-      {
-        (role==='master') && (
-          <BarraMaster/>
-        )
-      }
-        
-      
+      {role === "master" && <BarraMaster users={users}  />}
     </div>
-    
-      
-     
   );
 }

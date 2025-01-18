@@ -1,11 +1,14 @@
 "use client";
 import { useActionState, useState, useEffect } from "react";
 import { addPedidotBd } from "@/app/dashboard/form/pedido/actions";
-import { FaTruck } from "react-icons/fa";
+
+
 
 export default function Table2({ products, id }) {
   const [state, formAction, pending] = useActionState(addPedidotBd, undefined);
   const [data, setData] = useState([]); // Estado inicial vacío
+
+  
 
   useEffect(() => {
     if (products?.length) {

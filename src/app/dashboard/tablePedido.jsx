@@ -10,7 +10,7 @@ export default function TablePedido({
   data,
   valorAncla1,
   valorAncla2,
-  valorAncla3,
+  valorAncla3
 }) {
   const [state, formAction, pending] = useActionState(upDateStatus, undefined);
   const [pedido, setPedido] = useState(data);

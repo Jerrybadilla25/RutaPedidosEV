@@ -7,7 +7,7 @@ const newProduct = new Schema({
   description: { type: String, required: true },
   price: { type: Number, required: true },
   category: { type: String, required: true, index: true }, // Índice para búsquedas por categoría
-  stock: { type: Number, required: false, min: 0 },
+  //stock: { type: Number, required: false, min: 0 },
   images: [{ type: String }], // Array de URLs de imágenes
   ratings: { type: Number, default: 0, min: 0, max: 5 },
   numReviews: { type: Number, default: 0 },

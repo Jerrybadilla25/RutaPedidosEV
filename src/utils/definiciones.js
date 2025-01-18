@@ -18,6 +18,10 @@ export const SignupFormSchema = z.object({
 });
 
 export const addProduct = z.object({
+  codigo: z
+    .string()
+    .min(2, { message: "Digite el codigo del artículo" })
+    .trim(),
   name: z
     .string()
     .min(2, { message: "Digite el nombre del artículo" })
@@ -33,14 +37,16 @@ export const addProduct = z.object({
     .string()
     .min(2, { message: "Escoja una categoría" })
     .trim(),
-  stock: z
-    .number({ invalid_type_error: "El inventario debe ser un número válido" })
-    .int({ message: "El inventario debe ser un número entero" })
-    .positive({ message: "El inventario debe ser un número positivo" }),
+  
 });
 
 
-
+/*
+stock: z
+    .number({ invalid_type_error: "El inventario debe ser un número válido" })
+    .int({ message: "El inventario debe ser un número entero" })
+    .positive({ message: "El inventario debe ser un número positivo" }),
+    */
 
 
 
