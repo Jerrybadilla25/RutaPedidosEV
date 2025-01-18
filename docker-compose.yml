@@ -10,28 +10,13 @@ services:
       - "3000:3000"
     environment:
       NODE_ENV: production
-      MONGODB_URI: "mongodb://mongodb:27017/PedidosEG" # Conexión a MongoDB
+      MONGODB_URI: "mongodb+srv://jerrybadi:aZN1b9Dsb5BdO63u@cluster0.k1ihd.mongodb.net/PedidosEG" # Conexión a MongoDB
       SESSION_SECRET: "Jdv0YPEBnpBObfmXUvfNlFw4K3MNvkK9xQfGFRJH3VM=" # Secreto de sesión
     volumes:
       - .:/app                 # Monta todo el proyecto en el contenedor
       - /app/node_modules      # Asegura que las dependencias sean gestionadas dentro del contenedor
       - /app/.next             # Permite que el directorio .next tenga permisos de escritura
-    depends_on:
-      - mongodb
-    networks:
-      - app-network
+    
 
-  mongodb:
-    image: mongo:4.4
-    container_name: mongodb-next
-    ports:
-      - "27017:27017"
-    networks:
-      - app-network
-    volumes:
-      - /home/jerrybd/datamongo:/data/db # Monta el volumen de MongoDB en el host
-
-networks:
-  app-network:
-    driver: bridge
+ 
 
