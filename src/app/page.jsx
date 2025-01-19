@@ -2,6 +2,7 @@ import Link from "next/link";
 //import { cookies } from "next/headers";
 import { GrLogin } from "react-icons/gr";
 import BotonLogOut from "@/components/botonLogOut";
+import Register from '@/components/botonRegister'
 import BarraMaster from "@/components/barraMaster";
 import { getUser } from "@/utils/dal";
 import User from "@/model/User";
@@ -44,7 +45,9 @@ export default async function Homepage() {
           <div className="">
             <BotonLogOut />
           </div>
+          
         )}
+        
       </header>
       {role === "master" && <BarraMaster users={users}  />}
     </div>

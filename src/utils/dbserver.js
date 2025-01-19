@@ -19,7 +19,7 @@ export async function connectDB() {
     });
 
     conn.isConnected = true; // Marca como conectado
-    console.log("Conectado a la base de datos:", mongoose.connection.name);
+    console.log("Conectado a la base de datos x mongoA:", mongoose.connection.name);
   } catch (error) {
     console.error("Error al conectar a la base de datos:", error.message);
   }
