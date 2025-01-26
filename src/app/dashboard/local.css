@@ -18,6 +18,14 @@
   flex-direction: column;
 }
 
+.container-100 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
 .row {
   width: 100%;
   display: flex;
@@ -58,7 +66,11 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (min-width: 480px) and (max-width: 1200px) {
+  .container-100 {
+    width: 100%;
+  }
+
   .colunm-1 {
     display: none; /* Hide column-1 on small screens */
   }
@@ -73,7 +85,10 @@
     flex-wrap: wrap;
     margin-bottom: 10px;
   }
+  
 }
+
+
 
 
 /*estilos de navegacion 1 */
@@ -142,9 +157,7 @@ nav ul {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-@media (max-width: 768px) {
-  
-}
+
 
 
 /* General Styles for Navigation */

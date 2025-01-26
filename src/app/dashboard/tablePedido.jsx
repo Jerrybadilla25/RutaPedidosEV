@@ -5,12 +5,14 @@ import { useActionState } from "react";
 import BarraProgreso from "@/app/dashboard/barraprogreso";
 import { upDateStatus } from "@/app/dashboard/action";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import Opcion from "@/app/dashboard/option";
 
 export default function TablePedido({
   data,
   valorAncla1,
   valorAncla2,
-  valorAncla3
+  valorAncla3,
+  rol,
 }) {
   const [state, formAction, pending] = useActionState(upDateStatus, undefined);
   const [pedido, setPedido] = useState(data);
@@ -153,26 +155,12 @@ export default function TablePedido({
             </p>
             <p className="w-3 font-sx">
               <strong>
-                <select
-                  className="pedido-select"
-                  name="status"
-                  id="status"
-                  onChange={handleChange}
-                >
-                  <option value={pedido.status}>{pedido.status}</option>
-                  {statusBol !== "pending" ? (
-                    <option value="pending">pending</option>
-                  ) : null}
-                  {statusBol !== "delivered" ? (
-                    <option value="delivered">delivered</option>
-                  ) : null}
-                  {statusBol !== "shipped" ? (
-                    <option value="shipped">shipped</option>
-                  ) : null}
-                  {statusBol !== "cancelled" ? (
-                    <option value="cancelled">cancelled</option>
-                  ) : null}
-                </select>
+                <Opcion
+                  handleChange={handleChange}
+                  statusBol={statusBol}
+                  rol={rol}
+                  status={pedido.status}
+                />
               </strong>
             </p>
           </div>

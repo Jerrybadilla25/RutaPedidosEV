@@ -2,7 +2,7 @@
 import { addClientDbFormSchema } from "@/utils/definiciones";
 import { getUser } from "@/utils/dal";
 import Cliente from "@/model/Cliente";
-import { createIdClient } from "@/utils/creteSku";
+//import { createIdClient } from "@/utils/creteSku";
 import { redirect } from "next/navigation";
 
 export async function addClientBd(state, formData) {
@@ -10,6 +10,7 @@ export async function addClientBd(state, formData) {
     // Validar los datos del formulario
     const validatedFields = addClientDbFormSchema.safeParse({
       name: formData.get("name"),
+      clientId: formData.get("clientId"),
       email: formData.get("email"),
       contact: formData.get("contact"),
       cel: formData.get("cel"),
@@ -28,10 +29,11 @@ export async function addClientBd(state, formData) {
 
     const user = await getUser();
     const userCreator = user.user;
-    const clientId = await createIdClient();
+    //const clientId = await createIdClient();
 
     const {
       name,
+      clientId,
       email,
       contact,
       cel,

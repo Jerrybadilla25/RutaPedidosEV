@@ -2,13 +2,10 @@
 import { useActionState, useState, useEffect } from "react";
 import { addPedidotBd } from "@/app/dashboard/form/pedido/actions";
 
-
-
-export default function Table2({ products, id }) {
+export default function Table2({ products, id, desc }) {
   const [state, formAction, pending] = useActionState(addPedidotBd, undefined);
   const [data, setData] = useState([]); // Estado inicial vacío
-
-  
+  console.log({ data });
 
   useEffect(() => {
     if (products?.length) {
@@ -39,17 +36,37 @@ export default function Table2({ products, id }) {
     <div>
       <div className="flex-row justify-around">
         <h2 className="nameDescripcion mb-1 w-25">Tomar pedido</h2>
-        <div className="flex-row w-25">
+        <div className="flex-column w-25">
           <p
-            className={
-              data.reduce((acc, item) => acc + item.subtotal, 0) >= 70000
-                ? "nameDescripcion mb-1 box-green"
-                : "nameDescripcion mb-1 box-red"
-            }
+            
           >
-            <strong className="nameDescripcion mx-1">Total:</strong>{" "}
+            <strong className="nameDescripcion">Total:</strong>{" "}
             {data
               .reduce((acc, item) => acc + item.subtotal, 0)
+              .toLocaleString("es-ES", {
+                style: "currency",
+                currency: "CRC",
+              })}
+          </p>
+          <p>
+            <strong>Descuento: </strong>
+            {(data
+              .reduce((acc, item) => acc + item.subtotal, 0)*desc/100)
+              .toLocaleString("es-ES", {
+                style: "currency",
+                currency: "CRC",
+              })}
+          </p>
+          <p
+          className={
+            data.reduce((acc, item) => acc + item.subtotal, 0) >= 70000
+              ? "nameDescripcion mb-1 box-green"
+              : "nameDescripcion mb-1 box-red"
+          }
+          >
+            <strong>Total con descuento: </strong>
+            {(data
+              .reduce((acc, item) => acc + item.subtotal, 0)*(1-(desc/100)))
               .toLocaleString("es-ES", {
                 style: "currency",
                 currency: "CRC",
@@ -61,19 +78,21 @@ export default function Table2({ products, id }) {
       <form action={formAction} className="flex-row w-100">
         <table className="table-per">
           <colgroup>
+            <col style={{ width: "5%" }} />
+            <col style={{ width: "45%" }} />
+
+            <col style={{ width: "15%" }} />
             <col style={{ width: "10%" }} />
-            <col style={{ width: "25%" }} />
             <col style={{ width: "10%" }} />
-            <col style={{ width: "10%" }} />
-            <col style={{ width: "25%" }} />
-            <col style={{ width: "20%" }} />
+            <col style={{ width: "15%" }} />
           </colgroup>
           <thead>
             <tr className="table-header">
               <th>Código</th>
               <th>Nombre</th>
-              <th>Categoría</th>
+
               <th>Precio</th>
+              <th>Invent</th>
               <th>Solicitud</th>
               <th>Sub total</th>
             </tr>
@@ -99,15 +118,7 @@ export default function Table2({ products, id }) {
                     readOnly
                   />
                 </td>
-                <td>
-                  <input
-                    type="text"
-                    className="input-field"
-                    value={itm.category}
-                    name="category"
-                    readOnly
-                  />
-                </td>
+
                 <td>
                   <input
                     type="text"
@@ -123,6 +134,15 @@ export default function Table2({ products, id }) {
                     min="1"
                     step="1"
                     className="input-per"
+                    name="inventario"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    min="1"
+                    step="1"
+                    className="input-per"
                     name="cantidad"
                     onChange={(e) =>
                       handleChange(itm._id, Number(e.target.value))
@@ -130,12 +150,7 @@ export default function Table2({ products, id }) {
                   />
                 </td>
                 <td>
-                  <p>
-                    {itm.subtotal.toLocaleString("es-ES", {
-                      style: "currency",
-                      currency: "CRC",
-                    })}
-                  </p>
+                  <p>{itm.subtotal.toLocaleString("es-ES")}</p>
                 </td>
               </tr>
             ))}

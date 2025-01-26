@@ -70,12 +70,12 @@ async function getPedidosRol(rol, filterRango, seller) {
         });
       case "facturacion":
         return await fetchPedidos({
-          status: "pending",
+          status: "delivered",
           createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
         });
       case "logistica":
         return await fetchPedidos({
-          status: "delivered",
+          status: "pending",
           createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
         });
       case "ventas":
@@ -147,10 +147,12 @@ export async function upDateStatus(state, formData) {
 
   try {
     await Pedido.findByIdAndUpdate(id, updates, { new: true });
-    redirect(dataParams);
+    //redirect(dataParams);
   } catch (error) {
     console.error("Error al actualizar el pedido:", error);
-    redirect(dataParams);
+    //redirect(dataParams);
   }
+  redirect(dataParams);
+  
 }
 

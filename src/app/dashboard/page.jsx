@@ -16,6 +16,7 @@ export default async function Homepage({ searchParams }) {
 
   // Obtiene los parámetros de búsqueda enviados en la URL
   const data = await searchParams;
+  console.log({data})
 
   // Obtiene el rango de fechas para filtrar los pedidos
   const datafilterRango = data?.filterRango || null;
@@ -85,6 +86,8 @@ export default async function Homepage({ searchParams }) {
 
   const session = await getUser()
   
+
+  
   
 
 
@@ -136,6 +139,7 @@ export default async function Homepage({ searchParams }) {
           valorAncla1={valorAncla1} // Primer valor destacado (ancla)
           valorAncla2={valorAncla2} // Segundo valor destacado (ancla)
           valorAncla3={valorAncla3} // Tercer valor destacado (ancla)
+          rol={session.role}
         />
       ))}
     </Suspense>

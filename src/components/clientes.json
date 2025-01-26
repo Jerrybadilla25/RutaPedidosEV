@@ -1,0 +1,738 @@
+[
+     {
+      "clientId": "CL12100008",
+      "name": "DINIA MARIA ZELEDON VALVERDE",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100046",
+      "name": "GLORIA JIMENEZ SIBAJA",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12100050",
+      "name": "PISCINAS Y JARDINES TROPICALES S.A",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12100055",
+      "name": "SUPER VETERINARIA DE LIBERIA S.A",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100063",
+      "name": "JESUS SUAREZ OLIVERIO",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100157",
+      "name": "CENTRO AGRICOLA CANTONAL DE PUNTARENAS",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12100252",
+      "name": "CLINICA Y FARMACIA VETERINARIA RUDIN Y SALAZAR NUMERO DOS SA",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100253",
+      "name": "VETERINARIA OROTINA S.A",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100262",
+      "name": "VETERINARIA CAÑAS S.A",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12100267",
+      "name": "AGROVETERINARIA ABANGARES S.A",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12100270",
+      "name": "KARLA SALAZAR LEAL",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100271",
+      "name": "SUPERVET DE CAÑAS V A S.A",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12100290",
+      "name": "FERRETERIA FYM S.A",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100300",
+      "name": "FARMACIA ORGANICA",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100301",
+      "name": "ANDREA TATIANA SALAS ZELEDON",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12100306",
+      "name": "AGROLAND DEL PACIFICO S.A",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12100309",
+      "name": "JESSICA MENESES ALPIZAR",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100314",
+      "name": "ELIECER PEREZ BRIONES",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100320",
+      "name": "MARIA ELIZABETH MARENCO TRIGUEROS",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100325",
+      "name": "DIANA GABRIELA FERNANDEZ VILLALTA",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100326",
+      "name": "PAPAGAYO DO IT CENTER S.A",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12100334",
+      "name": "RODOLFO JESUS RAMIREZ RODRIGUEZ",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100337",
+      "name": "MERKADITO TROPIKAL S.A",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100343",
+      "name": "EL COLONO ZONA NORTE S.A",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12100346",
+      "name": "EDDI SANTIAGO SUARES CASTILLO",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100347",
+      "name": "MARCOS ANTONIO OBREGON MONTIEL",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100348",
+      "name": "MARIO ANDRES CASTAÑEDA CASTRO",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100353",
+      "name": "Luis Edgardo Oseguedo Martinez",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 08 días"
+     },
+     {
+      "clientId": "CL12100358",
+      "name": "SUPER MERCADO CAMAN S.A",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100376",
+      "name": "CENTRO VETERINARIO SANTA CRUZ",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12100378",
+      "name": "SANTOS TOMAS CASCANTE PICADO",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100728",
+      "name": "FERNANDO HERNANDEZ CABALCETA",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100775",
+      "name": "JESUS ANTONIO CUBILLO PEREZ",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100890",
+      "name": "AGROINSUMOS TECNO PLANT DE CAÑAS, TC S.A.",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12100962",
+      "name": "AGROVETERINARIA LA YUNTA J Y G NICOYA S.A",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12100983",
+      "name": "FERRETERIA TECNICA FETESA S.A",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101201",
+      "name": "ARIEL ARIAS GUIDO",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101223",
+      "name": "AGROVETERINARIA NOSARA SRL",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101286",
+      "name": "TERESA BARRANTES VENEGAS",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101289",
+      "name": "GUANAVET SOCIEDAD ANONIMA",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101310",
+      "name": "JESUS MARIA VEGA QUESADA",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101312",
+      "name": "CLIENTE DE CONTADO MONZI",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101361",
+      "name": "ULISES ARIAS VILLEGAS",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101379",
+      "name": "TIENDA PARA MASCOTAS EL AMIGO",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101410",
+      "name": "GERARDO ROJAS FALLAS",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101413",
+      "name": "MARLON ALFARO CASTRO",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101421",
+      "name": "ASOCIACION DE GANADEROS INDEPENDIENTES DEL PACIFICO",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101422",
+      "name": "BETZY LEONELA LORIA CHAVEZ",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101426",
+      "name": "GANADERIA ARRIETA LEAL",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101452",
+      "name": "GRUPO VIVERISTA TORENIAS S.A",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101453",
+      "name": "INVERSIONES HERMANOS ALEMAN SRL",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101455",
+      "name": "DISEÑO Y DECORACION TICOZACATE S.A",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101460",
+      "name": "RODNAY JUAN SOLANO ESPINOZA",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101562",
+      "name": "AGROLAND GOLD SRL",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101582",
+      "name": "JOSE MARIO HERNANDEZ MORENO",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101587",
+      "name": "AGROPECUARIA LA VAQUITA BIJAGUA S.A",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101589",
+      "name": "SOLUCIONES MOVILES INTERNACIONALES S.A",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101590",
+      "name": "ADEMAR FRANCISCO ALVARADO CASTRO",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101593",
+      "name": "WALTER RICARDO ALFARO CASTRO",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101595",
+      "name": "BENAVENTE Y VARGAS S.A",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101621",
+      "name": "GRUPO SUPERMERCADO NOSARA LIMITADA",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101627",
+      "name": "SERVICIOS Y PRODUCTOS AGROPECUARIOS DE LA COSTA SEPRACO SRL",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101628",
+      "name": "EL GALLO DE LA PENINSULA S.A",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101633",
+      "name": "BOREALIS S.A",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101641",
+      "name": "NOSARAVET S.A",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101643",
+      "name": "JUAN MANUEL ZUÑIGA",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101650",
+      "name": "FERJUCA S.A",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101653",
+      "name": "MARITA JIMENEZ CERDAS",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101661",
+      "name": "FRANCISCO ALEJANDRO ALFARO AGUILAR",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101684",
+      "name": "JOSE PABLO RODRIGUEZ AJÚ",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101693",
+      "name": "LILLIANA MARIA LOPEZ DELGADO",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101703",
+      "name": "KRISTHY MICHELLE MONTERO MADRIGAL",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101711",
+      "name": "ASOCIACION DE PRODUCTORES DE LECHE DE MONTEVERDE",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101714",
+      "name": "KATTY MAGALY MARTINEZ RODRIGUEZ",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101730",
+      "name": "RONNY ARMANDO TABLADO GUZMAN",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101741",
+      "name": "AGROPECUARIA AGRO LOGOS COLONIA C A P S.A",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101783",
+      "name": "ANA YANCY PARRALES ARCE",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101808",
+      "name": "AGRO BARN LYS S.A",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 45 días"
+     },
+     {
+      "clientId": "CL12101818",
+      "name": "COOPECERROAZUL R.L",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101823",
+      "name": "ROHARODESTE MONTE SRL",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101826",
+      "name": "MARCOS TULIO AVILA ALVARADO",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101833",
+      "name": "JUAN CARLOS VILLALOBOS VARGAS",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101834",
+      "name": "ANDREA TATIANA SALAS ZELEDON",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101849",
+      "name": "ANGELICA MARIA ALFARO CRUZ",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101853",
+      "name": "IMPORTACIONES DEPOSITO MAYOREO S.A",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101855",
+      "name": "YANEY ANTONIO VARGAS FERNANDEZ",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101857",
+      "name": "THAIS DE LA TRINIDAD QUIROS PARRALES",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101858",
+      "name": "SANTOS TOMAS CASCANTE PICADO",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101862",
+      "name": "CARLOS EDUARDO MASIS ARCE",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101880",
+      "name": "CORPORACION COMERCIAL EL LAGAR CR S.A",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101881",
+      "name": "ALMACENES EL REY LTDA",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101882",
+      "name": "EL COLONO AGROPECUARIO S.A",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101890",
+      "name": "VETERINARIA VILLA EL ROSAL S.A.",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101895",
+      "name": "COMERCIALIADORA ALMOJO SOCIEDAD ANONIMA",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101929",
+      "name": "ALEXIS ANTONIO SIEZAR ALTAMIRANO",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101931",
+      "name": "DEPORGEN SOCIEDAD ANONIMA",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101941",
+      "name": "ADRIANA BRICEÑO ESPINOZA",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101944",
+      "name": "DISTRIBUIDORA AGROPECUARIA AGRO LOGOS E P A SOCIEDAD ANONIMA",
+      "agente": "RURAL 1",
+      "desc": 0,
+      "typePay": "Crédito 30 días"
+     },
+     {
+      "clientId": "CL12101960",
+      "name": "RODOLFO GERARDO VILLALOBOS ALFARO",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101966",
+      "name": "GRUPO EMPRESARIAL CUBILLOS SOCIEDAD ANONIMA",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101968",
+      "name": "AGROVETERINARIA LA YUNTA G & A CANAS LIMITADA",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101971",
+      "name": "LUIS ALBERTO UGALDE ALVARADO",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101979",
+      "name": "ZEIDY GIANETTE CARVAJAL QUESADA",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12101989",
+      "name": "OSCAR MAURICIO UGALDE CHAVARRIA",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     },
+     {
+      "clientId": "CL12102004",
+      "name": "PACIFIC VET AGRO SERVICES SOCIEDAD ANONIMA",
+      "agente": "RURAL 1",
+      "desc": 5,
+      "typePay": "Contado"
+     }
+    ]
+    

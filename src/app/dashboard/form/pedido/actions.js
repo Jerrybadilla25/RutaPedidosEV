@@ -27,7 +27,7 @@ export async function addPedidotBd(state, formData) {
     idCliente: data.idCliente,
     productos: [],
   };
-  const productosKeys = ["sku", "nombre", "category", "price", "cantidad"];
+  const productosKeys = ["sku", "nombre", "price", "cantidad"];
   let productoTemp = {};
 
   filteredData.forEach(([key, value]) => {

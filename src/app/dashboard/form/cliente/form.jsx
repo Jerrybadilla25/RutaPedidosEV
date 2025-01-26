@@ -14,7 +14,14 @@ export default function ClientForm() {
       </div>
       
       <form action={formAction}>
-        <div className="form-row box-line">
+      <div className="form-row box-line">
+          <label htmlFor="name">Numero Cliente</label>
+          <input type="text" id="clientId" name="clientId" className="input-cliente"  />
+          <p className="error-message">
+            {state?.errors?.name && state.errors.name}
+          </p>
+        </div>
+        <div className="form-row">
           <label htmlFor="name">Nombre del comercio</label>
           <input type="text" id="name" name="name" className="input-cliente"  />
           <p className="error-message">

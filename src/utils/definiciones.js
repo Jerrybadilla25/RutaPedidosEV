@@ -22,10 +22,7 @@ export const addProduct = z.object({
     .string()
     .min(2, { message: "Digite el codigo del artículo" })
     .trim(),
-  name: z
-    .string()
-    .min(2, { message: "Digite el nombre del artículo" })
-    .trim(),
+  name: z.string().min(2, { message: "Digite el nombre del artículo" }).trim(),
   description: z
     .string()
     .min(2, { message: "Digite una descripción válida" })
@@ -33,13 +30,8 @@ export const addProduct = z.object({
   price: z
     .number({ invalid_type_error: "El precio debe ser un número válido" })
     .positive({ message: "El precio debe ser un número positivo" }),
-  category: z
-    .string()
-    .min(2, { message: "Escoja una categoría" })
-    .trim(),
-  
+  category: z.string().min(2, { message: "Escoja una categoría" }).trim(),
 });
-
 
 /*
 stock: z
@@ -48,19 +40,16 @@ stock: z
     .positive({ message: "El inventario debe ser un número positivo" }),
     */
 
-
-
-
-
 export const addClientDbFormSchema = z.object({
   name: z
     .string()
     .min(4, { message: "El nombre debe contener minimo 4 letras" })
     .trim(),
-  email: z
+  clientId: z
     .string()
-    .email({ message: "Ingrese un email valido." })
+    .min(9, { message: "El nombre debe contener minimo 10 letras" })
     .trim(),
+  email: z.string().email({ message: "Ingrese un email valido." }).trim(),
   contact: z
     .string()
     .min(2, { message: "El nombre debe contener minimo 2 letras" })
@@ -88,5 +77,5 @@ export const addClientDbFormSchema = z.object({
   direccion: z
     .string()
     .min(2, { message: "El dato debe contener minimo 2 letras" })
-    .trim()
+    .trim(),
 });

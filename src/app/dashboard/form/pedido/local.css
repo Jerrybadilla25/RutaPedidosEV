@@ -29,7 +29,7 @@
 
 
 
-@media (max-width: 768px) {
+@media (min-width: 480px) and (max-width: 1200px) {
   .container-cliente {
     width: 96%;
     margin-top: 1rem;
