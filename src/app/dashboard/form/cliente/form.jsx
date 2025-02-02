@@ -3,7 +3,7 @@ import { useActionState, useFormStatus } from "react";
 import { addClientBd } from "@/app/dashboard/form/cliente/actions";
 import "./local.addcliente.css";
 
-export default function ClientForm() {
+export default function ClientForm({ cliente }) {
   const [state, formAction, pending] = useActionState(addClientBd, undefined);
 
   return (
@@ -12,18 +12,47 @@ export default function ClientForm() {
         <h1 className="text-h1">Registro de clientes</h1>
         <h3 className="text-h3">Ingrese los datos del nuevo cliente.</h3>
       </div>
-      
+
       <form action={formAction}>
-      <div className="form-row box-line">
-          <label htmlFor="name">Numero Cliente</label>
-          <input type="text" id="clientId" name="clientId" className="input-cliente"  />
-          <p className="error-message">
-            {state?.errors?.name && state.errors.name}
-          </p>
-        </div>
+        {cliente?._id ? (
+          <div className="form-row box-line">
+            <label htmlFor="name">Numero Cliente</label>
+            <input
+              type="text"
+              id="clientId"
+              name="clientId"
+              className="input-cliente"
+              defaultValue={cliente?.clientId}
+              readOnly
+            />
+            <p className="error-message">
+              {state?.errors?.name && state.errors.name}
+            </p>
+          </div>
+        ) : (
+          <div className="form-row box-line">
+            <label htmlFor="name">Numero Cliente</label>
+            <input
+              type="text"
+              id="clientId"
+              name="clientId"
+              className="input-cliente"
+              defaultValue={cliente?.clientId}
+            />
+            <p className="error-message">
+              {state?.errors?.name && state.errors.name}
+            </p>
+          </div>
+        )}
         <div className="form-row">
           <label htmlFor="name">Nombre del comercio</label>
-          <input type="text" id="name" name="name" className="input-cliente"  />
+          <input
+            defaultValue={cliente?.name}
+            type="text"
+            id="name"
+            name="name"
+            className="input-cliente"
+          />
           <p className="error-message">
             {state?.errors?.name && state.errors.name}
           </p>
@@ -31,7 +60,13 @@ export default function ClientForm() {
 
         <div className="form-row">
           <label htmlFor="email">Correo electrónico</label>
-          <input type="email" id="email" name="email" className="input-cliente"  />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className="input-cliente"
+            defaultValue={cliente?.email}
+          />
           <p className="error-message">
             {state?.errors?.email && state.errors.email}
           </p>
@@ -39,7 +74,13 @@ export default function ClientForm() {
 
         <div className="form-row">
           <label htmlFor="contact">Nombre de contacto</label>
-          <input type="text" id="contact" name="contact" className="input-cliente" />
+          <input
+            type="text"
+            id="contact"
+            name="contact"
+            className="input-cliente"
+            defaultValue={cliente?.contact}
+          />
           <p className="error-message">
             {state?.errors?.contact && state.errors.contact}
           </p>
@@ -47,8 +88,16 @@ export default function ClientForm() {
 
         <div className="form-row">
           <label htmlFor="phone">Número de teléfono</label>
-          <input type="text" id="phone" name="cel" className="input-cliente"  />
-          <p className="error-message">{state?.errors?.cel && state.errors.cel}</p>
+          <input
+            defaultValue={cliente?.cel}
+            type="text"
+            id="phone"
+            name="cel"
+            className="input-cliente"
+          />
+          <p className="error-message">
+            {state?.errors?.cel && state.errors.cel}
+          </p>
         </div>
 
         <div className="form-row">
@@ -58,6 +107,7 @@ export default function ClientForm() {
             id="cedJuridica"
             name="cedJuridica"
             className="input-cliente"
+            defaultValue={cliente?.cedJuridica}
           />
           <p className="error-message">
             {state?.errors?.cedJuridica && state.errors.cedJuridica}
@@ -71,6 +121,7 @@ export default function ClientForm() {
             id="provincia"
             name="provincia"
             className="input-cliente"
+            defaultValue={cliente?.address.provincia}
           />
           <p className="error-message">
             {state?.errors?.provincia && state.errors.provincia}
@@ -79,7 +130,13 @@ export default function ClientForm() {
 
         <div className="form-row">
           <label htmlFor="canton">Cantón</label>
-          <input type="text" id="canton" name="canton" className="input-cliente" />
+          <input
+            type="text"
+            id="canton"
+            name="canton"
+            className="input-cliente"
+            defaultValue={cliente?.address.canton}
+          />
           <p className="error-message">
             {state?.errors?.canton && state.errors.canton}
           </p>
@@ -87,7 +144,13 @@ export default function ClientForm() {
 
         <div className="form-row">
           <label htmlFor="distrito">Distrito</label>
-          <input type="text" id="distrito" name="distrito" className="input-cliente" />
+          <input
+            type="text"
+            id="distrito"
+            name="distrito"
+            className="input-cliente"
+            defaultValue={cliente?.address.distrito}
+          />
           <p className="error-message">
             {state?.errors?.distrito && state.errors.distrito}
           </p>
@@ -100,16 +163,23 @@ export default function ClientForm() {
             id="direccion"
             name="direccion"
             className="input-cliente"
+            defaultValue={cliente?.address.direccion}
           />
           <p className="error-message">
             {state?.errors?.direccion && state.errors.direccion}
           </p>
         </div>
 
-        <div className="form-button">
-          <button disabled={pending}>
-            {pending ? "Enviando datos..." : "Guardar cliente"}
-          </button>
+        <div className="form-button mb-8">
+          {cliente?._id ? (
+            <button disabled={pending}>
+              {pending ? "Enviando datos..." : "Actualizar cliente"}
+            </button>
+          ) : (
+            <button disabled={pending}>
+              {pending ? "Enviando datos..." : "Guardar cliente"}
+            </button>
+          )}
         </div>
       </form>
     </div>

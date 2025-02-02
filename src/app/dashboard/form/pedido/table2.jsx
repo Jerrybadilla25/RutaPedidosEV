@@ -1,11 +1,12 @@
 "use client";
-import { useActionState, useState, useEffect } from "react";
+import { useActionState, useState, useEffect, use } from "react";
 import { addPedidotBd } from "@/app/dashboard/form/pedido/actions";
 
 export default function Table2({ products, id, desc }) {
   const [state, formAction, pending] = useActionState(addPedidotBd, undefined);
   const [data, setData] = useState([]); // Estado inicial vacío
-  console.log({ data });
+  //const [filter, setFilter] = useState("Sustratos");
+  
 
   useEffect(() => {
     if (products?.length) {
@@ -32,14 +33,17 @@ export default function Table2({ products, id, desc }) {
     );
   };
 
+  /*
+  const changeCategory = (filter) => {
+    setFilter(filter);
+  };*/
+
   return (
     <div>
       <div className="flex-row justify-around">
         <h2 className="nameDescripcion mb-1 w-25">Tomar pedido</h2>
         <div className="flex-column w-25">
-          <p
-            
-          >
+          <p>
             <strong className="nameDescripcion">Total:</strong>{" "}
             {data
               .reduce((acc, item) => acc + item.subtotal, 0)
@@ -50,32 +54,35 @@ export default function Table2({ products, id, desc }) {
           </p>
           <p>
             <strong>Descuento: </strong>
-            {(data
-              .reduce((acc, item) => acc + item.subtotal, 0)*desc/100)
-              .toLocaleString("es-ES", {
-                style: "currency",
-                currency: "CRC",
-              })}
+            {(
+              (data.reduce((acc, item) => acc + item.subtotal, 0) * desc) /
+              100
+            ).toLocaleString("es-ES", {
+              style: "currency",
+              currency: "CRC",
+            })}
           </p>
           <p
-          className={
-            data.reduce((acc, item) => acc + item.subtotal, 0) >= 70000
-              ? "nameDescripcion mb-1 box-green"
-              : "nameDescripcion mb-1 box-red"
-          }
+            className={
+              data.reduce((acc, item) => acc + item.subtotal, 0) >= 78950
+                ? "nameDescripcion mb-1 box-green"
+                : "nameDescripcion mb-1 box-red"
+            }
           >
             <strong>Total con descuento: </strong>
-            {(data
-              .reduce((acc, item) => acc + item.subtotal, 0)*(1-(desc/100)))
-              .toLocaleString("es-ES", {
-                style: "currency",
-                currency: "CRC",
-              })}
+            {(
+              data.reduce((acc, item) => acc + item.subtotal, 0) *
+              (1 - desc / 100)
+            ).toLocaleString("es-ES", {
+              style: "currency",
+              currency: "CRC",
+            })}
           </p>
         </div>
       </div>
 
       <form action={formAction} className="flex-row w-100">
+        
         <table className="table-per">
           <colgroup>
             <col style={{ width: "5%" }} />
@@ -98,62 +105,63 @@ export default function Table2({ products, id, desc }) {
             </tr>
           </thead>
           <tbody>
-            {data.map((itm) => (
-              <tr key={itm._id} className="table-row">
-                <td>
-                  <input
-                    type="text"
-                    name="sku"
-                    className="input-field"
-                    value={itm.productId}
-                    readOnly
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    className="input-field"
-                    value={itm.name}
-                    name="nombre"
-                    readOnly
-                  />
-                </td>
+            {data
+              .map((itm) => (
+                <tr key={itm._id} className="table-row">
+                  <td>
+                    <input
+                      type="text"
+                      name="sku"
+                      className="input-field"
+                      value={itm.productId}
+                      readOnly
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      className="input-field"
+                      value={itm.name}
+                      name="nombre"
+                      readOnly
+                    />
+                  </td>
 
-                <td>
-                  <input
-                    type="text"
-                    className="input-field"
-                    value={itm.price}
-                    name="price"
-                    readOnly
-                  />
-                </td>
-                <td>
-                  <input
-                    type="number"
-                    min="1"
-                    step="1"
-                    className="input-per"
-                    name="inventario"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="number"
-                    min="1"
-                    step="1"
-                    className="input-per"
-                    name="cantidad"
-                    onChange={(e) =>
-                      handleChange(itm._id, Number(e.target.value))
-                    }
-                  />
-                </td>
-                <td>
-                  <p>{itm.subtotal.toLocaleString("es-ES")}</p>
-                </td>
-              </tr>
-            ))}
+                  <td>
+                    <input
+                      type="text"
+                      className="input-field"
+                      value={itm.price}
+                      name="price"
+                      readOnly
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      min="0"
+                      step="1"
+                      className="input-per"
+                      name="inventario"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      min="1"
+                      step="1"
+                      className="input-per"
+                      name="cantidad"
+                      onChange={(e) =>
+                        handleChange(itm._id, Number(e.target.value))
+                      }
+                    />
+                  </td>
+                  <td>
+                    <p>{itm.subtotal.toLocaleString("es-ES")}</p>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
 
@@ -168,3 +176,40 @@ export default function Table2({ products, id, desc }) {
     </div>
   );
 }
+
+/*
+
+<div className="flex-row justify-flex-start  gap-medium mx-1 my-1">
+          <p className="nameDescripcion btn-filter-fijo">Filtros</p>
+          <p
+            onClick={() => changeCategory("Sustratos")}
+            className={filter==='Sustratos' ? "btn-filter-hover": 'nameTitle btn-filter'}
+          >
+            Sustratos
+          </p>
+          <p
+            onClick={() => changeCategory("Fertilizantes")}
+            className={filter==='Fertilizantes' ? "btn-filter-hover": 'nameTitle btn-filter'}
+          >
+            Fertilizante
+          </p>
+          <p
+            onClick={() => changeCategory("Fungicida")}
+            className={filter==='Fungicida' ? "btn-filter-hover": 'nameTitle btn-filter'}
+          >
+            Fungicidas
+          </p>
+          <p
+            onClick={() => changeCategory("Insecticida")}
+            className={filter==='Insecticida' ? "btn-filter-hover": 'nameTitle btn-filter'}
+          >
+            Insecticidas
+          </p>
+          <p
+            onClick={() => changeCategory("Varios")}
+            className={filter==='Varios' ? "btn-filter-hover": 'nameTitle btn-filter'}
+          >
+            Varios
+          </p>
+        </div>
+        */

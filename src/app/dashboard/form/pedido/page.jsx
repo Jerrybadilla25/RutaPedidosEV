@@ -19,7 +19,9 @@ export default async function FormPedidoCliente({ searchParams }) {
       JSON.stringify(await Cliente.findById(seachid).lean())
     ); //esta linea de codigo unifica las dos de arriba, se necesita documentos no serializados para pasar como props al cliente
     //const products1 = await Productos.find().lean()
-    const products = JSON.parse(JSON.stringify(await Productos.find().lean()));
+    const products = JSON.parse(JSON.stringify(await Productos.find().lean
+    ()));
+    
 
     return (
       <div className="">

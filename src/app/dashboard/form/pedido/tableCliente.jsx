@@ -1,5 +1,6 @@
 import { getClientePedido } from "@/app/dashboard/form/pedido/actions";
 import SelectClient from "@/app/dashboard/form/pedido/selectClient";
+import EditClient from '@/app/dashboard/form/pedido/editClient'
 
 export default async function TableCliente({ query }) {
   const clientes = await getClientePedido(query);
@@ -34,16 +35,18 @@ export default async function TableCliente({ query }) {
                   <p className=" nameTitle ">Direccion del cliente</p>
                 </div>
 
+               
                 <div>
                   <p>
                     <span className="">
-                      direccion <br />
+                      {itm.address.provincia},  {itm.address.canton},   {itm.address.distrito} <br />
                     </span>
-                    <span className="nameDescripcion">direccion</span>
+                    <span className="nameDescripcion">{itm.address.direccion}</span>
                   </p>
                 </div>
               </div>
               <SelectClient ids={itm._id.toString()} />
+              <EditClient ids={itm._id.toString()} />
             </div>
           </div>
         </div>
@@ -51,56 +54,3 @@ export default async function TableCliente({ query }) {
     </div>
   );
 }
-/*
-
-name
-"vivero tarvaquita"
-email
-"fiona@tarvaquita.com"
-contact
-"Fiona"
-cel
-"25101535"
-
-
-address
-Object
-provincia
-"san jose"
-canton
-"aserri"
-distrito
-"tarvaca"
-direccion
-"100 mts sur de la antena"
-*/
-
-/*
-import {getClientePedido} from '@/utils/fechData'
-
-export default async function TablaCliente(query ) {
-   const clientes = await getClientePedido()
-   console.log(clientes)
-  
-
-  return (
-    <div className=" bg-slate-700 shadow-lg rounded-lg p-6">
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">
-        Título de la Tarjeta
-      </h2>
-      <p className="text-white mb-4">
-        Este es un ejemplo de contenido en una tarjeta. Puedes agregar más
-        información aquí.
-      </p>
-      <ul className="list-disc list-inside text-gray-700 mb-4">
-        <li>Elemento 1</li>
-        <li>Elemento 2</li>
-        <li>Elemento 3</li>
-      </ul>
-      <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
-        Botón de Acción
-      </button>
-    </div>
-  );
-}
-*/

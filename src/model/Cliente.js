@@ -21,7 +21,7 @@ const newCliente = new Schema(
       direccion: { type: String,required: true, default: "N/A" },
     },
     createdAt: { type: Date, default: Date.now },
-    zona: { type: String, required: true },
+    zona: { type: String, required: false },
     status: { type: String, default: "Activo" },
     typePay: { type: String, default: "contado" },
     desc: { type: Number, default: 0 },

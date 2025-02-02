@@ -6,6 +6,7 @@ import BarraProgreso from "@/app/dashboard/barraprogreso";
 import { upDateStatus } from "@/app/dashboard/action";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import Opcion from "@/app/dashboard/option";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 export default function TablePedido({
   data,
@@ -13,6 +14,7 @@ export default function TablePedido({
   valorAncla2,
   valorAncla3,
   rol,
+  user
 }) {
   const [state, formAction, pending] = useActionState(upDateStatus, undefined);
   const [pedido, setPedido] = useState(data);
@@ -38,7 +40,17 @@ export default function TablePedido({
       params.delete("filter");
       params.delete("ancla");
       params.delete("searchid");
+      params.delete("idPed");
     }
+    replace(`${pathname}?${params.toString()}`);
+  }
+
+  function deletePedido (idPedido){
+    const params = new URLSearchParams(searchParams);
+    params.delete("filter");
+    params.delete("ancla");
+    params.delete("searchid");
+    params.set("idPed", idPedido);
     replace(`${pathname}?${params.toString()}`);
   }
 
@@ -217,8 +229,18 @@ export default function TablePedido({
                 3
               </p>
             </div>
-            <p></p>
           </div>
+          {
+            (user === pedido.vendedor) && (
+              <div onClick={()=>deletePedido(pedido._id)} className="delete-pedido">
+            <RiDeleteBin6Line className="icon-delete"/>
+            <p>
+              <span className="text-delete">Eliminar pedido</span>
+            </p>
+          </div>
+            )
+          }
+          
 
           <div className="pedido-sub pedido-oculto">
             <input name="_id" id="_id" defaultValue={pedido._id} type="text" />

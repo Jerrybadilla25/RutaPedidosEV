@@ -9,9 +9,9 @@ import { LiaShippingFastSolid } from "react-icons/lia";
 import { MdOutlineCancel, MdOutlineFilterAltOff } from "react-icons/md";
 import { PiInvoiceFill } from "react-icons/pi";
 import { FaAnchorCircleXmark } from "react-icons/fa6";
-import RangoFecha from '@/app/dashboard/component/rangoFecha'
-//import {handleIconClick} from '@/app/dashboard/action'
+import RangoFecha from "@/app/dashboard/component/rangoFecha";
 
+//import {handleIconClick} from '@/app/dashboard/action'
 
 const FilterBar = ({ filtro, numberAncla }) => {
   const searchParams = useSearchParams();
@@ -28,19 +28,21 @@ const FilterBar = ({ filtro, numberAncla }) => {
         params.delete("filter");
         params.delete("ancla");
         params.delete("searchid");
+        params.delete("idPed");
       }
       replace(`${pathname}?${params.toString()}`);
     } catch (error) {
       console.error("Error en handleIconClick:", error);
     }
   };
-  
+
   const handleIconClean = () => {
     try {
       const params = new URLSearchParams(searchParams);
       params.delete("filter");
       params.delete("ancla");
       params.delete("searchid");
+      params.delete("idPed");
       replace(`${pathname}?${params.toString()}`);
     } catch (error) {
       console.error("Error en handleIconClean:", error);
@@ -54,7 +56,7 @@ const FilterBar = ({ filtro, numberAncla }) => {
       console.error("Error al limpiar localStorage:", error);
     }
   }
-  
+
   const clearAncla = {
     name: "vaciar",
     icon: <FaAnchorCircleXmark />,
@@ -129,10 +131,9 @@ const FilterBar = ({ filtro, numberAncla }) => {
           {clearAncla.name}
         </span>
       </div>
-     <RangoFecha />
+      <RangoFecha />
     </div>
   );
 };
 
 export default FilterBar;
-

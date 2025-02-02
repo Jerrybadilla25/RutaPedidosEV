@@ -682,6 +682,27 @@ tbody tr:hover {
   }
 }
 
-
+.delete-pedido{
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+  justify-content: center;  /* Centra horizontalmente */
+  align-items: center;
+  margin: 1rem;
+  border: solid 1px var(--backgroundSutil);
+  border-radius: 5px;
+  padding: 5px;
+}
+.delete-pedido:hover{
+  color: var(--textRed);
+  border: solid 1px var(--textRed);
+  cursor: pointer;
+}
+.text-delete{
+  font-size: 10px !important;
+}
+.icon-delete:hover{
+  color: var(--textWhite) !important;
+}
 
 

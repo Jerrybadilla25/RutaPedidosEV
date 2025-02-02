@@ -6,7 +6,7 @@ import { connectDB } from "@/utils/dbserver"; // Función para conectar a la bas
 import TablaPedido from "@/app/dashboard/tablePedido"; // Componente para mostrar los pedidos en una tabla
 import SqueletonTable from "@/app/dashboard/squeletonTable"; // Componente de carga mientras se obtienen los datos
 import Filtros from "@/app/dashboard/fitros"; // Componente para los filtros de la página
-import { getDataPedidos, getDataPedidosFilter } from "@/app/dashboard/action"; // Funciones para obtener los datos de pedidos
+import { getDataPedidos, getDataPedidosFilter, deletePedido } from "@/app/dashboard/action"; // Funciones para obtener los datos de pedidos
 import {getUser} from '@/utils/dal'
 
 // Componente principal de la página
@@ -16,10 +16,16 @@ export default async function Homepage({ searchParams }) {
 
   // Obtiene los parámetros de búsqueda enviados en la URL
   const data = await searchParams;
-  console.log({data})
+  
 
   // Obtiene el rango de fechas para filtrar los pedidos
   const datafilterRango = data?.filterRango || null;
+  const idPedidoDelete = data?.idPed || null;
+
+  if(idPedidoDelete!==null){
+    await deletePedido(idPedidoDelete)
+  }
+
   let filterRango;
 
   if (data?.filterRango) {
@@ -140,6 +146,7 @@ export default async function Homepage({ searchParams }) {
           valorAncla2={valorAncla2} // Segundo valor destacado (ancla)
           valorAncla3={valorAncla3} // Tercer valor destacado (ancla)
           rol={session.role}
+          user={session.user}
         />
       ))}
     </Suspense>

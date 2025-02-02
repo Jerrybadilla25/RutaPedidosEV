@@ -1,5 +1,6 @@
 "use server";
 import Pedido from "@/model/Pedido";
+import Cliente from "@/model/Cliente";
 import { getUser } from "@/utils/dal";
 import { redirect } from "next/navigation";
 
@@ -9,6 +10,37 @@ export async function handleIconClick(filterName) {
     console.log(`Server-side: ${filterName}`);
   } catch (error) {
     console.error("Error al manejar el clic del ícono:", error);
+  }
+}
+
+// funcion para eliminar pedidos
+export async function deletePedido(id) {
+  try {
+    let data = await Pedido.findById(id);
+
+    if (!data) {
+      return { msj: "El pedido no existe", success: false };
+    }
+
+    if (data.status === "pending" || data.status === "cancelled") {
+      let cliente = await Cliente.findOne({ clientId: data.idCliente });
+
+      if (cliente) {
+        await Cliente.updateOne(
+          { _id: cliente._id },
+          { $pull: { items: id } }
+        );
+      }
+
+      await Pedido.findByIdAndDelete(id);
+
+      return { msj: "Pedido eliminado correctamente", success: true };
+    }
+
+    return { msj: "El pedido no puede eliminarse", success: false };
+  } catch (error) {
+    console.log(error);
+    return { msj: "Error eliminando el pedido", success: false };
   }
 }
 
@@ -79,10 +111,12 @@ async function getPedidosRol(rol, filterRango, seller) {
           createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
         });
       case "ventas":
-        return (await fetchPedidos({
-          vendedor: seller,
-          createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
-        })).reverse();
+        return (
+          await fetchPedidos({
+            vendedor: seller,
+            createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
+          })
+        ).reverse();
       default:
         return [];
     }
@@ -153,6 +187,4 @@ export async function upDateStatus(state, formData) {
     //redirect(dataParams);
   }
   redirect(dataParams);
-  
 }
-
