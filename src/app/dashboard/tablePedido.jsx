@@ -292,6 +292,10 @@ export default function TablePedido({
             </strong>
           </p>
 
+          
+          
+          
+
           <p>
             {pedido.notas.length === 0 ? (
               <strong className="font-sl pedido-button">

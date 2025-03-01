@@ -59,7 +59,16 @@ export default function NavPrincipal({ role }) {
               pathname === "/dashboard/history" ? "linPer3" : "linkPer2"
             }
           >
-            <Link href="/dashboard/history">Historial Pedidos</Link>
+            <Link href="/dashboard/history">Historial</Link>
+          </li>
+        )}
+        {(role === "master" || role === "ventas") && (
+          <li
+            className={
+              pathname === "/dashboard/form/editpedido" ? "linPer3" : "linkPer2"
+            }
+          >
+            <Link href="/dashboard/form/editpedido">Editar</Link>
           </li>
         )}
       </ul>

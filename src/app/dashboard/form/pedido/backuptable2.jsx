@@ -1,93 +1,24 @@
 "use client";
-import { useState, useEffect } from "react";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
-
-
-//import { addPedidotBd } from "@/app/dashboard/form/pedido/actions";
+import { useActionState, useState, useEffect, use } from "react";
+import { addPedidotBd } from "@/app/dashboard/form/pedido/actions";
 
 export default function Table2({ products, id, desc }) {
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
+  const [state, formAction, pending] = useActionState(addPedidotBd, undefined);
   const [data, setData] = useState([]); // Estado inicial vacío
   const [filter, setFilter] = useState("Sustratos");
-  const [sessionInfo, setSessionInfo] = useState(null);
-  
   
 
   useEffect(() => {
     if (products?.length) {
       const updatedData = products.map((producto) => ({
         ...producto,
-        cantidad: producto.cantidad || 0, // Mantener valores previos
-        subtotal: producto.subtotal || 0,
-        inventario: producto.inventario || 0,
+        cantidad: 0, // Campo cantidad por defecto
+        subtotal: 0, // Campo subtotal por defecto
       }));
       setData(updatedData);
     }
-  }, [products]); // Dependencia en `products`
+  }, [products, filter]); // Dependencia en `products`
 
-
-  //enviar el pedido
-  const handleSubmit = async (event) => {
-    event.preventDefault(); // Evita que se recargue la página
-  
-    handleGetSession(); // Obtener sesión antes de enviar el pedido
-  
-    const pedidoData = {
-      clienteId: id,
-      productos: data,
-      sessionInfo,
-    };
-  
-    try {
-      const response = await fetch(`/api/pedido/${id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(pedidoData),
-      });
-  
-      console.log(response);
-  
-      if (!response.ok) {
-        throw new Error("Error al guardar el pedido");
-      }
-  
-      const result = await response.json();
-      console.log("Pedido guardado con éxito:", result);
-      // Redirigir a /dashboard si la respuesta es exitosa
-      handleClear()
-      
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
-  const handleClear = () => {
-    const params = new URLSearchParams(searchParams); // Obtener los parámetros actuales
-    // Eliminar los parámetros `query` y `searchid`
-    params.delete("query");
-    params.delete("searchid");
-  
-    // Actualizar la URL sin recargar la página
-    replace('/dashboard');
-  };
-
-  //funcion que almacena la sesion
-  const handleGetSession = () => {
-    const data = getSessionData("userSession");
-    setSessionInfo(data);
-  };
-
-  const getSessionData = (key) => {
-    if (typeof window !== "undefined") {
-      const data = sessionStorage.getItem(key);
-      return data ? JSON.parse(data) : null;
-    }
-    return null;
-  };
   
 
   const handleChange = (_id, value) => {
@@ -98,19 +29,6 @@ export default function Table2({ products, id, desc }) {
               ...item,
               cantidad: value,
               subtotal: value * item.price,
-            }
-          : item
-      )
-    );
-  };
-
-  const handleInventoryChange = (_id, value) => {
-    setData((prevData) =>
-      prevData.map((item) =>
-        item._id === _id
-          ? {
-              ...item,
-              inventario: value,
             }
           : item
       )
@@ -168,24 +86,12 @@ export default function Table2({ products, id, desc }) {
         </div>
       </div>
 
-      <div className="flex-row justify-flex-start gap-medium mx-1 my-1">
-        <p className="nameDescripcion btn-filter-fijo">Filtros</p>
-        {["Sustratos", "Fertilizantes", "Fungicida", "Insecticida", "Varios"].map((cat) => (
-          <p
-            key={cat}
-            onClick={() => changeCategory(cat)}
-            className={filter === cat ? "btn-filter-hover" : "nameTitle btn-filter"}
-          >
-            {cat}
-          </p>
-        ))}
-      </div>
-
-      <form onSubmit={handleSubmit} className="flex-row w-100">
+      <form action={formAction} className="flex-row w-100">
         <table className="table-per">
           <colgroup>
             <col style={{ width: "5%" }} />
             <col style={{ width: "45%" }} />
+
             <col style={{ width: "15%" }} />
             <col style={{ width: "10%" }} />
             <col style={{ width: "10%" }} />
@@ -195,6 +101,7 @@ export default function Table2({ products, id, desc }) {
             <tr className="table-header">
               <th>Código</th>
               <th>Nombre</th>
+
               <th>Precio</th>
               <th>Invent</th>
               <th>Solicitud</th>
@@ -203,28 +110,35 @@ export default function Table2({ products, id, desc }) {
           </thead>
           <tbody>
             {data
-              .filter((itm) => itm.category === filter)
-              .sort((a, b) => a.name.localeCompare(b.name))
+              .filter((itm) => itm.category !== filter) // Filtrar antes de ordenar
+              .sort((a, b) => a.name.localeCompare(b.name)) // Ordenar por name A-Z
               .map((itm) => (
                 <tr key={itm._id} className="table-row">
                   <td>
-                    <input type="text" name="sku" className="input-field" value={itm.productId} readOnly />
-                  </td>
-                  <td>
-                    <input type="text" className="input-field" value={itm.name} name="nombre" readOnly />
-                  </td>
-                  <td>
-                    <input type="text" className="input-field" value={itm.price} name="price" readOnly />
+                    <input
+                      type="text"
+                      name="sku"
+                      className="input-field"
+                      value={itm.productId}
+                      readOnly
+                    />
                   </td>
                   <td>
                     <input
-                      type="number"
-                      min="0"
-                      step="1"
-                      className="input-per"
-                      name="inventario"
-                      value={itm.inventario}
-                      onChange={(e) => handleInventoryChange(itm._id, Number(e.target.value))}
+                      type="text"
+                      className="input-field"
+                      value={itm.name}
+                      name="nombre"
+                      readOnly
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      className="input-field"
+                      value={itm.price}
+                      name="price"
+                      readOnly
                     />
                   </td>
                   <td>
@@ -233,9 +147,19 @@ export default function Table2({ products, id, desc }) {
                       min="0"
                       step="1"
                       className="input-per"
+                      name="inventario"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      min="1"
+                      step="1"
+                      className="input-per"
                       name="cantidad"
-                      value={itm.cantidad}
-                      onChange={(e) => handleChange(itm._id, Number(e.target.value))}
+                      onChange={(e) =>
+                        handleChange(itm._id, Number(e.target.value))
+                      }
                     />
                   </td>
                   <td>
@@ -245,15 +169,18 @@ export default function Table2({ products, id, desc }) {
               ))}
           </tbody>
         </table>
-        <input type="text" name="idCliente" defaultValue={id} className="display-none" />
-        <button type="submit"  className="button-full">Guardar pedido</button>
+
+        <input
+          type="text"
+          name="idCliente"
+          defaultValue={id}
+          className="display-none"
+        />
+        <button className="button-full">Guardar pedido</button>
       </form>
     </div>
   );
 }
-
-
-
 
 /*
 
