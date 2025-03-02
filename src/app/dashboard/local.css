@@ -704,5 +704,13 @@ tbody tr:hover {
 .icon-delete:hover{
   color: var(--textWhite) !important;
 }
+.icon-copy{
+  cursor: pointer;
+  margin-top: 0.4rem;
+}
+.icon-copy:hover{
+  cursor: pointer;
+  color: var(--textOrange);
+}
 
 

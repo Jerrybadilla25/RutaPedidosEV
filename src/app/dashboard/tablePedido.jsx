@@ -7,6 +7,8 @@ import { upDateStatus } from "@/app/dashboard/action";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import Opcion from "@/app/dashboard/option";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { toast } from 'sonner';
+import { FaRegCopy } from "react-icons/fa";
 
 export default function TablePedido({
   data,
@@ -114,7 +116,28 @@ export default function TablePedido({
       setStatus(event.target.value);
       //setStatusBol(!statusBol);
     }
-  };
+  }
+
+   // Función para copiar los códigos y cantidades al portapapeles
+   const copyCodesAndQuantities = () => {
+    // Crear un array con los datos en formato "sku: cantidad"
+    const dataToCopy = pedido.productos.map((itm) => `${itm.sku} ${itm.cantidad}`);
+
+    // Unir los elementos del array en un solo string, separados por saltos de línea
+    const textToCopy = dataToCopy.join('\n');
+
+    // Copiar el texto al portapapeles
+    navigator.clipboard
+        .writeText(textToCopy)
+        .then(() => {
+          toast.success('Copiado al portapapeles');
+        })
+        .catch((err) => {
+            console.error('Error al copiar al portapapeles:', err);
+            toast.error('Error al copiar al portapapeles');
+        })};
+
+  
 
   return (
     <div className="pedido">
@@ -341,6 +364,10 @@ export default function TablePedido({
               ))}
             </tbody>
           </table>
+          <p className="w-15">
+          <FaRegCopy className="icon-copy" onClick={copyCodesAndQuantities}/>
+            
+          </p>
         </div>
         <div className={`${dNone2} pedido-col`}>
           <p className="w-15">
