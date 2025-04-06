@@ -1,9 +1,17 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { FaRegCheckCircle } from "react-icons/fa";
+import Tr from "@/app/dashboard/form/editpedido/tr";
+import TrAdd from "@/app/dashboard/form/editpedido/trAdd";
 
-export default function FormeditPedido({ pedido }) {
+export default function FormeditPedido({ pedido, products }) {
+  const [addItem, setAddItem]= useState(false)
+
+  const addCampoNuevo=()=>{
+    setAddItem(!addItem)
+  }
   return (
     <div className="container-90">
       <div className="flex-column">
@@ -16,7 +24,7 @@ export default function FormeditPedido({ pedido }) {
           </p>
         </div>
 
-        <table className="">
+        <table>
           <thead>
             <tr>
               <th>Codigo</th>
@@ -24,34 +32,26 @@ export default function FormeditPedido({ pedido }) {
               <th>Cantidad</th>
               <th>Total</th>
               <th></th>
-              <td><IoMdAddCircleOutline /></td>
-              
+              <td>
+                <IoMdAddCircleOutline onClick={addCampoNuevo} />
+              </td>
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             {pedido.productos.map((itm, index) => (
-              <tr key={index}>
-                <td>{itm.sku}</td>
-                <td>{itm.nombre}</td>
-                <td>{itm.cantidad}</td>
-                <td>
-                  {(itm.price * itm.cantidad).toLocaleString("es-ES", {
-                    style: "currency",
-                    currency: "CRC",
-                  })}
-                </td>
-                <td><MdDeleteForever/></td>
-                <td><FaRegCheckCircle /></td>
-                
-                
-              </tr>
+              <Tr
+                key={index}
+                sku={itm.sku}
+                price={itm.price}
+                cantidad={itm.cantidad}
+                nombre={itm.nombre}
+                id={itm._id}
+              />
             ))}
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><MdDeleteForever/></td>
-            <td><FaRegCheckCircle /></td>
+            {
+              addItem===true && <TrAdd products={products}/>
+            }
+            
           </tbody>
         </table>
       </div>

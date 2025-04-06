@@ -186,6 +186,30 @@ p {
   appearance: none !important;
   background-color: rgba(255, 255, 255, 0.1); /* Fondo para el input editable */
 }
+.select-per {
+  color: white;
+  padding-left:0.75rem;
+  width: 90%;
+  background-color: transparent; /* Fondo oscuro para el select */
+  //border: 1px solid #555;
+  //border-radius: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+.option-per {
+  color: white;
+  padding-left:1rem;
+  width: 90%;
+  background-color: var(--backgroundBox); /* Fondo oscuro para el select */
+  border: 1px solid #555;
+  border-radius: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
 
 /* Button Styles */
 .button-full {
@@ -400,4 +424,8 @@ p {
 .editClient:hover{
   color: var(--textbluePlaceholder);
   cursor: pointer;
+}
+
+.add-item-table{
+  background-color: var(--textblue);
 }

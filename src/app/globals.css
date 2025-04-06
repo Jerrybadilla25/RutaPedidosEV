@@ -266,6 +266,9 @@ body2 {
 .my-3 {
   margin: 3rem;
 }
+.mt-3 {
+  margin-top: 3rem;
+}
 
 .red {
   background: red;
@@ -359,4 +362,11 @@ input[type="date"] {
   //border: 1px solid var(--textWhite);
   padding: 0.4rem 0.2rem;
   border-radius: 5px;
+}
+
+.editColor-green{
+  //background: var(--textGreen)
+}
+.editColor-orange{
+  background: var(--textOrange)
 }
