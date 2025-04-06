@@ -29,7 +29,6 @@ export default function TrAdd({ products }) {
 
   const handleNewCantidad = (e) => {
     const value = Number(e.target.value) || 0;
-    console.log(value);
     setCantidad(value);
   };
   const handleNewId = (id) => {
@@ -59,7 +58,7 @@ export default function TrAdd({ products }) {
           className="input-per"
           type="number"
           onChange={handleNewCantidad}
-          min="0" // Añadido para evitar números negativos
+          min="1" // Añadido para evitar números negativos
         />
       </td>
       <td></td>

@@ -14,8 +14,8 @@ export default function FormeditPedido({ pedido, products }) {
   }
   return (
     <div className="container-90">
-      <div className="flex-column">
-        <div className="">
+      <div className="flex-column table-container ">
+        <div className="mb-1">
           <p className="">
             <strong>Cliente: {pedido.idCliente}</strong>
           </p>
@@ -23,8 +23,10 @@ export default function FormeditPedido({ pedido, products }) {
             <strong>Nombre: {pedido.name}</strong>
           </p>
         </div>
-
-        <table>
+          <div>
+            <p><strong className="nameTitle mx-1">Editar</strong></p>
+          </div>
+        <table className="full-width-table" >
           <thead>
             <tr>
               <th>Codigo</th>

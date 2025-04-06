@@ -370,3 +370,14 @@ input[type="date"] {
 .editColor-orange{
   background: var(--textOrange)
 }
+
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* Para scroll horizontal si es necesario */
+}
+
+.full-width-table {
+  width: 96%;
+  min-width: 96%; /* Fuerza el 100% incluso con contenido largo */
+  border-collapse: collapse;
+}

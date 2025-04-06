@@ -6,18 +6,13 @@ import { FaRegCheckCircle } from "react-icons/fa";
 
 export default function Tr({ sku, nombre, price, cantidad, id, products }) {
   // Asegúrate de que cantidad nunca sea undefined/null
-  const [newCantidad, setNewCantidad] = useState(Number(cantidad) || 0);
+  const [newCantidad, setNewCantidad] = useState(cantidad);
   const [hasChanged, setHasChanged] = useState(false);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  // Efecto para sincronizar con cambios externos
-  useEffect(() => {
-    setNewCantidad(Number(cantidad) || 0);
-    setHasChanged(false);
-  }, [cantidad]);
-
+  
   const handleSendParams = () => {
     const params = new URLSearchParams(searchParams);
     params.delete("del");
@@ -33,10 +28,18 @@ export default function Tr({ sku, nombre, price, cantidad, id, products }) {
     setHasChanged(false);
   };
 
+  //escucha cuando cambia la cantidad
   const handleNewCantidad = (e) => {
-    const value = Number(e.target.value) || 0;
-    setNewCantidad(value);
-    setHasChanged(value !== (Number(cantidad) || 0));
+    const value = e.target.value;
+    if (value === 0) {
+      console.log({value})
+      setNewCantidad("");
+      //setHasChanged(value !== cantidad);
+    } else {
+      console.log({value})
+      setNewCantidad(value);
+      setHasChanged(value !== cantidad);
+    }
   };
 
   const deleteItem = () => {
@@ -61,9 +64,9 @@ export default function Tr({ sku, nombre, price, cantidad, id, products }) {
         <input
           className="input-per"
           type="number"
-          value={newCantidad}
+          value={newCantidad === 0 ? "" : newCantidad} // Muestra vacío si es 0
           onChange={handleNewCantidad}
-          min="0" // Añadido para evitar números negativos
+          min="1" // Impide números menores a 1 mediante las flechas/spinner
         />
       </td>
       <td>
@@ -77,9 +80,9 @@ export default function Tr({ sku, nombre, price, cantidad, id, products }) {
       </td>
       <td className={hasChanged ? "editColor-orange" : "editColor-green"}>
         {hasChanged && (
-          <FaRegCheckCircle 
-            onClick={handleSendParams} 
-            style={{ cursor: "pointer" }} 
+          <FaRegCheckCircle
+            onClick={handleSendParams}
+            style={{ cursor: "pointer" }}
           />
         )}
       </td>
