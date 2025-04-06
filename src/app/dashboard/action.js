@@ -135,6 +135,7 @@ async function fetchPedidos(query) {
   }
 }
 
+
 // Función para agregar nota y cambiar status
 export async function upDateStatus(state, formData) {
   const user = await getUser();
@@ -145,15 +146,33 @@ export async function upDateStatus(state, formData) {
   const dataParams = formData.get("dataParams");
   const updates = {};
 
+  // Siempre inicializamos $push para notas (si no existe)
+  updates.$push = {
+    notas: {
+      $each: [],
+      $position: 0,
+    },
+  };
+
+  // Agregar nota manual si existe
   if (nota) {
-    updates.$push = {
-      notas: {
-        $each: [{ nota: nota, creador: user.user, fechaCracion: new Date() }],
-        $position: 0,
-      },
-    };
+    updates.$push.notas.$each.push({
+      nota: nota,
+      creador: user.user,
+      fechaCracion: new Date(),
+    });
   }
 
+  // Agregar nota automática si el estado cambió
+  if (statusOrigen !== status) {
+    updates.$push.notas.$each.push({
+      nota: `Cambio de estado automático: de "${statusOrigen}" a "${status}"`,
+      creador: user.user,
+      fechaCracion: new Date(),
+    });
+  }
+
+  // Lógica de actualización de estado
   if (statusOrigen === "pending" && status === "delivered") {
     updates.$set = { status };
   } else if (
@@ -174,17 +193,16 @@ export async function upDateStatus(state, formData) {
     console.log("Estado no manejado");
   }
 
-  if (Object.keys(updates).length === 0) {
+  // Si no hay cambios relevantes, redirigir sin actualizar
+  if (Object.keys(updates).length === 0 || (updates.$set === undefined && updates.$push.notas.$each.length === 0)) {
     redirect(dataParams);
     return;
   }
 
   try {
     await Pedido.findByIdAndUpdate(id, updates, { new: true });
-    //redirect(dataParams);
   } catch (error) {
     console.error("Error al actualizar el pedido:", error);
-    //redirect(dataParams);
   }
   redirect(dataParams);
 }

@@ -223,7 +223,7 @@ export default function Table2({ products, id, desc }) {
                       step="1"
                       className="input-per"
                       name="inventario"
-                      value={itm.inventario}
+                      value={itm.inventario || ""}
                       onChange={(e) => handleInventoryChange(itm._id, Number(e.target.value))}
                     />
                   </td>
@@ -234,7 +234,7 @@ export default function Table2({ products, id, desc }) {
                       step="1"
                       className="input-per"
                       name="cantidad"
-                      value={itm.cantidad}
+                      value={itm.cantidad || ""}
                       onChange={(e) => handleChange(itm._id, Number(e.target.value))}
                     />
                   </td>
