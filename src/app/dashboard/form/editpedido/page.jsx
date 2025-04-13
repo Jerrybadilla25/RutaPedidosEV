@@ -36,7 +36,7 @@ export default async function EditPedido({ searchParams }) {
   const safePedidos = JSON.parse(JSON.stringify(Idpedido));
   const safeProducts = JSON.parse(JSON.stringify(productos));
 
-  if (usuario.user !== Idpedido.vendedor) {
+  if (usuario.user !== Idpedido.vendedor || Idpedido.status!=="pending") {
     return (
       <div>
         <Search />

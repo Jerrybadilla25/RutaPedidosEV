@@ -4,7 +4,7 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { MdDeleteForever } from "react-icons/md";
 import { FaRegCheckCircle } from "react-icons/fa";
 
-export default function TrAdd({ products }) {
+export default function TrAdd({ products, setAddItem }) {
   const [cantidad, setCantidad] = useState();
   const [idAdd, setIdAdd] = useState();
   const searchParams = useSearchParams();
@@ -25,6 +25,7 @@ export default function TrAdd({ products }) {
     }
 
     replace(`${pathname}?${params.toString()}`);
+    setAddItem(false)
   };
 
   const handleNewCantidad = (e) => {
@@ -64,6 +65,8 @@ export default function TrAdd({ products }) {
       <td></td>
       <td colSpan="2">
         <FaRegCheckCircle
+          color="#4caf50"
+            size="2em"
           onClick={handleSendParams}
           style={{ cursor: "pointer" }}
         />

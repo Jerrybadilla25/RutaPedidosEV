@@ -51,11 +51,12 @@ export default async function Historial({ searchParams }) {
   let dataHistory = [];
   //dataHistory = JSON.parse(JSON.stringify(await getHistoryClient(history)));
   if (history === "") {
-    dataHistory = await getDataPedidos(filterRango);
+    //dataHistory = await getDataPedidos(filterRango);
   } else {
     dataHistory = await getDataPedidos2(filterRango, history);
   }
 
+  console.log(dataHistory.length)
   return (
     <div>
       

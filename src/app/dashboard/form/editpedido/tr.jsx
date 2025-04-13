@@ -76,11 +76,17 @@ export default function Tr({ sku, nombre, price, cantidad, id, products }) {
         })}
       </td>
       <td>
-        <MdDeleteForever onClick={deleteItem} style={{ cursor: "pointer" }} />
+        <MdDeleteForever 
+        color="#8f2e27"
+        size="2em" 
+        onClick={deleteItem} 
+        style={{ cursor: "pointer" }} />
       </td>
-      <td className={hasChanged ? "editColor-orange" : "editColor-green"}>
+      <td className={hasChanged ? "" : "editColor-green"}>
         {hasChanged && (
           <FaRegCheckCircle
+            color="#4caf50"
+            size="2em"
             onClick={handleSendParams}
             style={{ cursor: "pointer" }}
           />

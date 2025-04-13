@@ -14,7 +14,7 @@ export async function getDataPedidos(filterRango) {
     const pedidos = await Pedidos.find({
       status: { $in: ["pending", "shipped", "delivered"] },
       createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
-    }).lean();
+    }).limit(6).lean();
 
     return pedidos;
   } catch (error) {
@@ -33,7 +33,7 @@ export async function getDataPedidos2(filterRango, history) {
       name: { $regex: history, $options: "i" },
       status: { $in: ["pending", "shipped", "delivered"] },
       createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
-    }).lean();
+    }).limit(6).lean();
 
     return pedidos;
   } catch (error) {
