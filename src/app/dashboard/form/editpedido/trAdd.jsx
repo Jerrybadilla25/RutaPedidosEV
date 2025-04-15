@@ -28,6 +28,8 @@ export default function TrAdd({ products, setAddItem }) {
     setAddItem(false)
   };
 
+  
+
   const handleNewCantidad = (e) => {
     const value = Number(e.target.value) || 0;
     setCantidad(value);
@@ -46,6 +48,7 @@ export default function TrAdd({ products, setAddItem }) {
           className="select-per"
           onChange={(e) => handleNewId(e.target.value)}
         >
+          <option value="">--Seleccione para agregar codigo--</option>
           {products.map((itm, index) => (
             <option key={index} value={itm._id} className="option-per">
               {itm.productId} {itm.name}

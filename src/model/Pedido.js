@@ -29,7 +29,7 @@ const newPedido = new Schema({
   totalAmount: { type: Number, required: true },
   status: {
     type: String,
-    enum: ["pendiente","aprobado", "alistado", "facturado","enviado", "cancelado"],
+    enum: ["pendiente","aprobado", "alistado", "facturado","enviado", "cancelado", "rechazado"],
     default: "pendiente",
   },
   

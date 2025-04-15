@@ -7,7 +7,7 @@ import { upDateStatus } from "@/app/dashboard/action";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import Opcion from "@/app/dashboard/option";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { toast } from 'sonner';
+import { toast } from "sonner";
 import { FaRegCopy } from "react-icons/fa";
 
 export default function TablePedido({
@@ -16,7 +16,7 @@ export default function TablePedido({
   valorAncla2,
   valorAncla3,
   rol,
-  user
+  user,
 }) {
   const [state, formAction, pending] = useActionState(upDateStatus, undefined);
   const [pedido, setPedido] = useState(data);
@@ -47,7 +47,7 @@ export default function TablePedido({
     replace(`${pathname}?${params.toString()}`);
   }
 
-  function deletePedido (idPedido){
+  function deletePedido(idPedido) {
     const params = new URLSearchParams(searchParams);
     params.delete("filter");
     params.delete("ancla");
@@ -110,36 +110,37 @@ export default function TablePedido({
   }
 
   const handleChange = (event) => {
-    console.log("aqui estoy")
-    console.log(event.target.value)
+    console.log("aqui estoy");
+    console.log(event.target.value);
     if (event.target.value === status) {
       setStatus(event.target.value);
     } else {
       setStatus(event.target.value);
       //setStatusBol(!statusBol);
     }
-  }
+  };
 
-   // Función para copiar los códigos y cantidades al portapapeles
-   const copyCodesAndQuantities = () => {
+  // Función para copiar los códigos y cantidades al portapapeles
+  const copyCodesAndQuantities = () => {
     // Crear un array con los datos en formato "sku: cantidad"
-    const dataToCopy = pedido.productos.map((itm) => `${itm.sku} ${itm.cantidad}`);
+    const dataToCopy = pedido.productos.map(
+      (itm) => `${itm.sku} ${itm.cantidad}`
+    );
 
     // Unir los elementos del array en un solo string, separados por saltos de línea
-    const textToCopy = dataToCopy.join('\n');
+    const textToCopy = dataToCopy.join("\n");
 
     // Copiar el texto al portapapeles
     navigator.clipboard
-        .writeText(textToCopy)
-        .then(() => {
-          toast.success('Copiado al portapapeles');
-        })
-        .catch((err) => {
-            console.error('Error al copiar al portapapeles:', err);
-            toast.error('Error al copiar al portapapeles');
-        })};
-
-  
+      .writeText(textToCopy)
+      .then(() => {
+        toast.success("Copiado al portapapeles");
+      })
+      .catch((err) => {
+        console.error("Error al copiar al portapapeles:", err);
+        toast.error("Error al copiar al portapapeles");
+      });
+  };
 
   return (
     <div className="pedido">
@@ -211,17 +212,14 @@ export default function TablePedido({
               Status: <span className="textblue bold">{pedido.status}</span>
             </p>
             <div className=" font-sx">
-              
-                <Opcion
-                  handleChange={handleChange}
-                  statusBol={statusBol}
-                  rol={rol}
-                  status={pedido.status}
-                />
-              
+              <Opcion
+                handleChange={handleChange}
+                statusBol={statusBol}
+                rol={rol}
+                status={pedido.status}
+              />
             </div>
           </div>
-          
 
           <div className="">
             <div className="pedido-sub-ancla">
@@ -257,17 +255,18 @@ export default function TablePedido({
               </p>
             </div>
           </div>
-          {
-            (user === pedido.vendedor || rol==="master") && (
-              <div onClick={()=>deletePedido(pedido._id)} className="delete-pedido">
-            <RiDeleteBin6Line className="icon-delete"/>
-            <p>
-              <span className="text-delete">Eliminar pedido</span>
-            </p>
-          </div>
-            )
-          }
-          
+          {(user === pedido.vendedor || rol === "master") &&
+            (status === "pendiente" || status === "aprobado") && (
+              <div
+                onClick={() => deletePedido(pedido._id)}
+                className="delete-pedido"
+              >
+                <RiDeleteBin6Line className="icon-delete" />
+                <p>
+                  <span className="text-delete">Eliminar pedido</span>
+                </p>
+              </div>
+            )}
 
           <div className="pedido-sub pedido-oculto">
             <input name="_id" id="_id" defaultValue={pedido._id} type="text" />
@@ -319,10 +318,6 @@ export default function TablePedido({
             </strong>
           </p>
 
-          
-          
-          
-
           <p>
             {pedido.notas.length === 0 ? (
               <strong className="font-sl pedido-button">
@@ -369,8 +364,7 @@ export default function TablePedido({
             </tbody>
           </table>
           <p className="w-15">
-          <FaRegCopy className="icon-copy" onClick={copyCodesAndQuantities}/>
-            
+            <FaRegCopy className="icon-copy" onClick={copyCodesAndQuantities} />
           </p>
         </div>
         <div className={`${dNone2} pedido-col`}>

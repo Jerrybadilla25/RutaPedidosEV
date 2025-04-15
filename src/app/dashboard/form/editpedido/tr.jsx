@@ -12,10 +12,23 @@ export default function Tr({ sku, nombre, price, cantidad, id, products }) {
   const pathname = usePathname();
   const { replace } = useRouter();
 
+  // Efecto para limpiar parámetros al cargar la página
+useEffect(() => {
+  const params = new URLSearchParams(searchParams);
+  // Lista de parámetros que quieres eliminar
+  const paramsToDelete = ["del", "cant", "dele", "qty", "add"];
+  
+  paramsToDelete.forEach(param => params.delete(param));
+  
+  replace(`${pathname}?${params.toString()}`);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [pathname, replace, searchParams]); // El array vacío asegura que se ejecute solo al montar el componente
+
   
   const handleSendParams = () => {
     const params = new URLSearchParams(searchParams);
     params.delete("del");
+    params.delete("yes");
     params.delete("cant");
     params.delete("dele");
     params.delete("qty"); //cantidad nuevo codigo
@@ -27,6 +40,8 @@ export default function Tr({ sku, nombre, price, cantidad, id, products }) {
     replace(`${pathname}?${params.toString()}`);
     setHasChanged(false);
   };
+
+  
 
   //escucha cuando cambia la cantidad
   const handleNewCantidad = (e) => {
@@ -54,7 +69,14 @@ export default function Tr({ sku, nombre, price, cantidad, id, products }) {
       params.set("dele", "yes");
     }
     replace(`${pathname}?${params.toString()}`);
+    params.delete("del");
+    params.delete("cant");
+    params.delete("dele");
+    params.delete("qty"); //cantidad nuevo codigo
+    params.delete("add"); //id producto nuevo
   };
+
+  
 
   return (
     <tr>

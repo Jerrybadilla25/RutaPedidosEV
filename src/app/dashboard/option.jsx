@@ -1,35 +1,60 @@
 "use client";
 import React from "react";
 
-
 export default function Pption({ statusBol, rol, status, handleChange }) {
-  
   return (
     <div className="pedido-radio-options">
       <div className="radio-group">
         {rol === "approver" && status === "pendiente" && (
-          <label className="radio-option">
-            <input
-              type="radio"
-              name="status"
-              value="aprobado"
-              onChange={handleChange}
-            />
-            Aprovado
-          </label>
+          <>
+            <label className="radio-option">
+              <input
+                type="radio"
+                name="status"
+                value="aprobado"
+                onChange={handleChange}
+              />
+              Aprovado
+            </label>
+            <label className="radio-option">
+              <input
+                type="radio"
+                name="status"
+                value="rechazado"
+                onChange={handleChange}
+              />
+              Rechazado
+            </label>
+          </>
         )}
 
-        {rol === "seller" && status === "pendiente" && (
-          <label className="radio-option">
-            <input
-              type="radio"
-              name="status"
-              value="cancelado"
-              onChange={handleChange}
-            />
-            Cancelado
-          </label>
-        )}
+        {rol === "seller" &&
+          (status === "pendiente" || status === "rechazado") && (
+            <>
+              {status === "pendiente" && (
+                <label className="radio-option">
+                  <input
+                    type="radio"
+                    name="status"
+                    value="cancelado"
+                    onChange={handleChange}
+                  />
+                  Cancelado
+                </label>
+              )}
+              {status === "rechazado" && (
+                <label className="radio-option">
+                  <input
+                    type="radio"
+                    name="status"
+                    value="pendiente"
+                    onChange={handleChange}
+                  />
+                  Reapertura
+                </label>
+              )}
+            </>
+          )}
 
         {rol === "picker" && status === "aprobado" && (
           <label className="radio-option">

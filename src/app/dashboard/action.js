@@ -177,28 +177,20 @@ export async function upDateStatus(state, formData) {
     updates.$push.notas.$each.push({
       nota: nota,
       creador: user.user,
-      fechaCracion: new Date(),
+      fechaCreacion: new Date(),
     });
   }
 
   
-  // Agregar nota automática si el estado cambió
-  /*
-  if (statusOrigen !== status) {
-    updates.$push.notas.$each.push({
-      nota: `Cambio de estado automático: de "${statusOrigen}" a "${status}"`,
-      creador: user.user,
-      fechaCracion: new Date(),
-    });
-  }
-  */
-
 
   // Lógica de actualización de estado
   if (user.role === "master") {
     updates.$set = { status, statusUpdateDate: new Date() };
     agregarNotaCambioEstado(updates, statusOrigen, status, user)
   } else if (statusOrigen === "pendiente" && status === "aprobado") {
+    updates.$set = { status, statusUpdateDate: new Date() };
+    agregarNotaCambioEstado(updates, statusOrigen, status, user)
+  }else if (statusOrigen === "rechazado" && status === "pendiente") {
     updates.$set = { status, statusUpdateDate: new Date() };
     agregarNotaCambioEstado(updates, statusOrigen, status, user)
   }
