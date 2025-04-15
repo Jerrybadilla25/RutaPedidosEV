@@ -15,7 +15,7 @@ export default function NavPrincipal({ role }) {
           <Link href="/dashboard">Dashboard</Link>
         </li>
 
-        {role !== "user" && (
+        {(role === "master" || role==="invoicer" || role==="seller") && (
           <li
             className={
               pathname === "/dashboard/form/pedido" ? "linkPer3" : "linkPer2"
@@ -25,7 +25,7 @@ export default function NavPrincipal({ role }) {
           </li>
         )}
 
-        {role !== "user" && (
+        {(role === "master" || role==="approver") && (
           <li
             className={
               pathname === "/dashboard/form/cliente" ? "linkPer3" : "linkPer2"
@@ -35,7 +35,7 @@ export default function NavPrincipal({ role }) {
           </li>
         )}
 
-        {(role === "master" || role === "facturacion") && (
+        {(role === "master" || role === "invoicer" || role==="approver") && (
           <li
             className={
               pathname === "/dashboard/form/articulo" ? "linkPer3" : "linkPer2"
@@ -53,19 +53,19 @@ export default function NavPrincipal({ role }) {
           <Link href="/dashboard/products">Productos</Link>
         </li>
 
-        {(role === "master" || role === "ventas") && (
+        {(role === "master" || role === "seller") && (
           <li
             className={
-              pathname === "/dashboard/history" ? "linPer3" : "linkPer2"
+              pathname === "/dashboard/history" ? "linkPer3" : "linkPer2"
             }
           >
             <Link href="/dashboard/history">Historial</Link>
           </li>
         )}
-        {(role === "master" || role === "ventas") && (
+        {(role === "master" || role === "seller" || role==="picker") && (
           <li
             className={
-              pathname === "/dashboard/form/editpedido" ? "linPer3" : "linkPer2"
+              pathname === "/dashboard/form/editpedido" ? "linkPer3" : "linkPer2"
             }
           >
             <Link href="/dashboard/form/editpedido">Editar</Link>

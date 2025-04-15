@@ -18,9 +18,10 @@ export default async function EditPedido({ searchParams }) {
   
 
 
-  
-  const Idpedido = await editPedido(query, dell, cant, dele, qty, add); 
   const usuario = await getUser();
+  const user= usuario.user
+  const Idpedido = await editPedido(query, dell, cant, dele, qty, add, user); 
+  
   const productos = await Products.find()
   
 
@@ -36,21 +37,22 @@ export default async function EditPedido({ searchParams }) {
   const safePedidos = JSON.parse(JSON.stringify(Idpedido));
   const safeProducts = JSON.parse(JSON.stringify(productos));
 
-  if (usuario.user !== Idpedido.vendedor || Idpedido.status!=="pending") {
+
+  if(usuario.user===Idpedido.vendedor || usuario.role ==="picker" && Idpedido.status!=="pendiente" || Idpedido.status!=="aprovado" ){
     return (
       <div>
         <Search />
-        <h5>No tiene permiso para editar este pedido</h5>
+        <Suspense fallback={<div>Cargando...</div>}>
+          <Form pedido={safePedidos} products={safeProducts} />
+        </Suspense>
       </div>
     );
   }
 
   return (
     <div>
-      <Search />
-      <Suspense fallback={<div>Cargando...</div>}>
-        <Form pedido={safePedidos} products={safeProducts} />
-      </Suspense>
-    </div>
-  );
+    <Search />
+    <h5>No tiene permiso para editar este pedido</h5>
+  </div>
+);
 }

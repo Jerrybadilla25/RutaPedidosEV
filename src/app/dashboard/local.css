@@ -714,3 +714,19 @@ tbody tr:hover {
 }
 
 
+.pedido-radio-options {
+  margin: 0.1rem 0;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}

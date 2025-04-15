@@ -7,7 +7,7 @@ const newUser = new Schema({
     fecha: { type: Date, default: Date.now},
     role: {
         type: String,
-        enum: ["master", "ventas", "logistica", "facturacion", "user"],
+        enum: ['seller', 'approver', 'picker', 'invoicer', 'shipper', 'master', 'user'],
         default: "user",
       },
    

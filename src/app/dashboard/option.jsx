@@ -1,48 +1,137 @@
 "use client";
 import React from "react";
 
+
 export default function Pption({ statusBol, rol, status, handleChange }) {
+  
   return (
-    <select
-      className="pedido-select"
-      name="status"
-      id="status"
-      onChange={handleChange}
-    >
-      <option value={status}>{status}</option>
+    <div className="pedido-radio-options">
+      <div className="radio-group">
+        {rol === "approver" && status === "pendiente" && (
+          <label className="radio-option">
+            <input
+              type="radio"
+              name="status"
+              value="aprobado"
+              onChange={handleChange}
+            />
+            Aprovado
+          </label>
+        )}
 
-        {
-            (rol==='ventas'&& status==='pending')&&(
-                <option value="cancelled">Cancelado</option>
-            )
-        }
-        {
-            (rol==='logistica' && status==='pending')&&(
-                <option value="delivered">Facturar</option>
-                
-            )
-        }
-        {
-            (rol==='facturacion' && status==='delivered')&&(
-                <option value="shipped">Enviar</option>
-                
-            )
-        }
-        {
-            (rol==='master')&&(
-                <>
-                <option value="pending">pendiente</option>
-                <option value="delivered">Facturar</option>
-                <option value="shipped">Enviar</option>
-                <option value="cancelled">cancelled</option>
-                </>
-                
-                
-            )
-        }
+        {rol === "seller" && status === "pendiente" && (
+          <label className="radio-option">
+            <input
+              type="radio"
+              name="status"
+              value="cancelado"
+              onChange={handleChange}
+            />
+            Cancelado
+          </label>
+        )}
 
+        {rol === "picker" && status === "aprobado" && (
+          <label className="radio-option">
+            <input
+              type="radio"
+              name="status"
+              value="alistado"
+              onChange={handleChange}
+            />
+            Alistado
+          </label>
+        )}
 
-      
-    </select>
+        {rol === "invoicer" && status === "alistado" && (
+          <label className="radio-option">
+            <input
+              type="radio"
+              name="status"
+              value="facturado"
+              onChange={handleChange}
+            />
+            Facturado
+          </label>
+        )}
+
+        {rol === "shipper" && status === "facturado" && (
+          <label className="radio-option">
+            <input
+              type="radio"
+              name="status"
+              value="enviado"
+              onChange={handleChange}
+            />
+            Enviado
+          </label>
+        )}
+
+        {rol === "master" && (
+          <>
+            <label className="radio-option">
+              <input
+                type="radio"
+                name="status"
+                value="pendiente"
+                onChange={handleChange}
+                //checked={status === "pendiente"}
+              />
+              Pendiente
+            </label>
+            <label className="radio-option">
+              <input
+                type="radio"
+                name="status"
+                value="aprobado"
+                onChange={handleChange}
+                //checked={status === "aprobado"}
+              />
+              Aprobado
+            </label>
+            <label className="radio-option">
+              <input
+                type="radio"
+                name="status"
+                value="alistado"
+                onChange={handleChange}
+                //checked={status === "alistado"}
+              />
+              Alistado
+            </label>
+            <label className="radio-option">
+              <input
+                type="radio"
+                name="status"
+                value="facturado"
+                onChange={handleChange}
+                //checked={status === "facturado"}
+              />
+              Facturado
+            </label>
+            <label className="radio-option">
+              <input
+                type="radio"
+                name="status"
+                value="enviado"
+                onChange={handleChange}
+                //checked={status === "enviado"}
+              />
+              Enviado
+            </label>
+            <label className="radio-option">
+              <input
+                type="radio"
+                name="status"
+                value="cancelado"
+                onChange={handleChange}
+                //checked={status === "cancelado"}
+              />
+              Cancelado
+            </label>
+          </>
+        )}
+      </div>
+    </div>
   );
 }

@@ -110,6 +110,8 @@ export default function TablePedido({
   }
 
   const handleChange = (event) => {
+    console.log("aqui estoy")
+    console.log(event.target.value)
     if (event.target.value === status) {
       setStatus(event.target.value);
     } else {
@@ -185,21 +187,6 @@ export default function TablePedido({
             </p>
           </div>
           <div className="pedido-sub">
-            <p className="w-3 font-sl">
-              Status: <span className="textblue bold">{pedido.status}</span>
-            </p>
-            <p className="w-3 font-sx">
-              <strong>
-                <Opcion
-                  handleChange={handleChange}
-                  statusBol={statusBol}
-                  rol={rol}
-                  status={pedido.status}
-                />
-              </strong>
-            </p>
-          </div>
-          <div className="pedido-sub">
             <p
               onClick={() => addTextArea()}
               className="w-1 font-sl button-nota"
@@ -218,6 +205,23 @@ export default function TablePedido({
               type="text"
             />
           </div>
+
+          <div className="pedido-sub">
+            <p className="w-3 font-sl">
+              Status: <span className="textblue bold">{pedido.status}</span>
+            </p>
+            <div className=" font-sx">
+              
+                <Opcion
+                  handleChange={handleChange}
+                  statusBol={statusBol}
+                  rol={rol}
+                  status={pedido.status}
+                />
+              
+            </div>
+          </div>
+          
 
           <div className="">
             <div className="pedido-sub-ancla">
@@ -254,7 +258,7 @@ export default function TablePedido({
             </div>
           </div>
           {
-            (user === pedido.vendedor) && (
+            (user === pedido.vendedor || rol==="master") && (
               <div onClick={()=>deletePedido(pedido._id)} className="delete-pedido">
             <RiDeleteBin6Line className="icon-delete"/>
             <p>
@@ -379,7 +383,7 @@ export default function TablePedido({
                 <span className="nota-punto ">•</span>
                 <span className="nota-contenido font-sl">
                   <strong className="font-sl">{itm.creador}</strong> -{" "}
-                  {new Date(itm.fechaCracion).toLocaleDateString("es-ES", {
+                  {new Date(itm.fechaCreacion).toLocaleDateString("es-ES", {
                     day: "2-digit",
                     month: "short",
                     year: "numeric",

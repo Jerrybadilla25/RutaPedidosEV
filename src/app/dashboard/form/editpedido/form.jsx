@@ -6,7 +6,7 @@ import { FaRegCheckCircle } from "react-icons/fa";
 import Tr from "@/app/dashboard/form/editpedido/tr";
 import TrAdd from "@/app/dashboard/form/editpedido/trAdd";
 
-export default function FormeditPedido({ pedido, products }) {
+export default function FormeditPedido({ pedido, products, usuario }) {
   const [addItem, setAddItem] = useState(false);
 
   const addCampoNuevo = () => {
@@ -34,7 +34,7 @@ export default function FormeditPedido({ pedido, products }) {
              </tr>
             </thead>
             <tbody>
-              <TrAdd products={products} setAddItem={setAddItem} />
+              <TrAdd products={products} setAddItem={setAddItem}  />
             </tbody>
           </table>
         )}

@@ -16,31 +16,38 @@ export async function handleIconClick(filterName) {
 // funcion para eliminar pedidos
 export async function deletePedido(id) {
   try {
-    let data = await Pedido.findById(id);
+    // 1. Verificar usuario y obtener el pedido
+    const user = await getUser();
+    const pedido = await Pedido.findById(id);
 
-    if (!data) {
+    if (!pedido) {
       return { msj: "El pedido no existe", success: false };
     }
 
-    if (data.status === "pending" || data.status === "cancelled") {
-      let cliente = await Cliente.findOne({ clientId: data.idCliente });
-
-      if (cliente) {
-        await Cliente.updateOne(
-          { _id: cliente._id },
-          { $pull: { items: id } }
-        );
+    // 2. Si NO es master, validar el estado del pedido
+    if (user.role !== "master") {
+      const estadosEliminables = ["pendiente", "cancelado"];
+      if (!estadosEliminables.includes(pedido.status)) {
+        return {
+          msj: "Solo se pueden eliminar pedidos pendientes o cancelados",
+          success: false,
+        };
       }
-
-      await Pedido.findByIdAndDelete(id);
-
-      return { msj: "Pedido eliminado correctamente", success: true };
     }
 
-    return { msj: "El pedido no puede eliminarse", success: false };
+    // 3. Eliminar referencia en cliente (si existe)
+    const cliente = await Cliente.findOne({ clientId: pedido.idCliente });
+    if (cliente) {
+      await Cliente.updateOne({ _id: cliente._id }, { $pull: { items: id } });
+    }
+
+    // 4. Eliminar el pedido
+    await Pedido.findByIdAndDelete(id);
+    console.log("Pedido eliminado correctamente");
+    return { msj: "Pedido eliminado correctamente", success: true };
   } catch (error) {
-    console.log(error);
-    return { msj: "Error eliminando el pedido", success: false };
+    console.error("Error eliminando pedido:", error);
+    return { msj: "Error al procesar la eliminación", success: false };
   }
 }
 
@@ -100,17 +107,27 @@ async function getPedidosRol(rol, filterRango, seller) {
         return await fetchPedidos({
           createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
         });
-      case "facturacion":
+      case "approver":
         return await fetchPedidos({
-          status: "delivered",
+          status: "pendiente",
           createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
         });
-      case "logistica":
+      case "picker":
         return await fetchPedidos({
-          status: "pending",
+          status: "aprobado",
           createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
         });
-      case "ventas":
+      case "invoicer":
+        return await fetchPedidos({
+          status: "alistado",
+          createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
+        });
+      case "shipper":
+        return await fetchPedidos({
+          status: "facturado",
+          createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
+        });
+      case "seller":
         return (
           await fetchPedidos({
             vendedor: seller,
@@ -135,7 +152,6 @@ async function fetchPedidos(query) {
   }
 }
 
-
 // Función para agregar nota y cambiar status
 export async function upDateStatus(state, formData) {
   const user = await getUser();
@@ -145,6 +161,8 @@ export async function upDateStatus(state, formData) {
   const statusOrigen = formData.get("statusOrigen");
   const dataParams = formData.get("dataParams");
   const updates = {};
+
+  
 
   // Siempre inicializamos $push para notas (si no existe)
   updates.$push = {
@@ -163,7 +181,9 @@ export async function upDateStatus(state, formData) {
     });
   }
 
+  
   // Agregar nota automática si el estado cambió
+  /*
   if (statusOrigen !== status) {
     updates.$push.notas.$each.push({
       nota: `Cambio de estado automático: de "${statusOrigen}" a "${status}"`,
@@ -171,30 +191,41 @@ export async function upDateStatus(state, formData) {
       fechaCracion: new Date(),
     });
   }
+  */
+
 
   // Lógica de actualización de estado
-  if (statusOrigen === "pending" && status === "delivered") {
-    updates.$set = { status };
-  } else if (
-    statusOrigen === "pending" &&
-    (status === "shipped" || status === "cancelled")
-  ) {
+  if (user.role === "master") {
     updates.$set = { status, statusUpdateDate: new Date() };
-  } else if (statusOrigen === "delivered" && status === "pending") {
-    updates.$set = { status };
-  } else if (
-    statusOrigen === "delivered" &&
-    (status === "cancelled" || status === "shipped")
-  ) {
+    agregarNotaCambioEstado(updates, statusOrigen, status, user)
+  } else if (statusOrigen === "pendiente" && status === "aprobado") {
     updates.$set = { status, statusUpdateDate: new Date() };
-  } else if (statusOrigen === "cancelled" || statusOrigen === "shipped") {
-    console.log("No se permite actualizar desde 'cancelled' o 'shipped'");
+    agregarNotaCambioEstado(updates, statusOrigen, status, user)
+  }
+  else if (statusOrigen === "aprobado" && status === "alistado") {
+    updates.$set = { status, statusUpdateDate: new Date() };
+    agregarNotaCambioEstado(updates, statusOrigen, status, user)
+  } 
+  else if (statusOrigen === "alistado" && status === "facturado") {
+    updates.$set = { status };
+    agregarNotaCambioEstado(updates, statusOrigen, status, user)
+  } 
+  else if (statusOrigen === "facturado" && status === "enviado") {
+    updates.$set = { status, statusUpdateDate: new Date() };
+    agregarNotaCambioEstado(updates, statusOrigen, status, user)
+  } 
+  else if (statusOrigen === "pendiente" || status === "cancelado") {
+    updates.$set = { status, statusUpdateDate: new Date() };
+    agregarNotaCambioEstado(updates, statusOrigen, status, user)
   } else {
     console.log("Estado no manejado");
   }
 
   // Si no hay cambios relevantes, redirigir sin actualizar
-  if (Object.keys(updates).length === 0 || (updates.$set === undefined && updates.$push.notas.$each.length === 0)) {
+  if (
+    Object.keys(updates).length === 0 ||
+    (updates.$set === undefined && updates.$push.notas.$each.length === 0)
+  ) {
     redirect(dataParams);
     return;
   }
@@ -205,4 +236,18 @@ export async function upDateStatus(state, formData) {
     console.error("Error al actualizar el pedido:", error);
   }
   redirect(dataParams);
+}
+
+
+function agregarNotaCambioEstado(updates, statusOrigen, status, user) {
+  // Verificar si hubo cambio de estado
+  if (statusOrigen !== status) {
+    updates.$push.notas.$each.push({
+      nota: `Cambio de estado automático: de "${statusOrigen}" a "${status}"`,
+      creador: user.user,
+      fechaCreacion: new Date(),
+    });
+  }
+  
+  return updates;
 }

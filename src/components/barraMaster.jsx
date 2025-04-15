@@ -43,17 +43,23 @@ export default function BarraMaster({ users }) {
             <option className="option-role" value="master">
               Master
             </option>
-            <option className="option-role" value="ventas">
-              Ventas
+            <option className="option-role" value="seller">
+            seller
             </option>
-            <option className="option-role" value="logistica">
-              Logística
+            <option className="option-role" value="picker">
+            picker
             </option>
-            <option className="option-role" value="facturacion">
-              Facturación
+            <option className="option-role" value="approver">
+            approver
+            </option>
+            <option className="option-role" value="shipper">
+            shipper
+            </option>
+            <option className="option-role" value="invoicer">
+            invoicer
             </option>
             <option className="option-role" value="user">
-              Usuario
+            user
             </option>
           </select>
 

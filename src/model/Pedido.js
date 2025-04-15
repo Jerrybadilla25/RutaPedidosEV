@@ -23,14 +23,14 @@ const newPedido = new Schema({
     {
       nota: {type: String},
       creador: {type: String},
-      fechaCracion: {type: Date}
+      fechaCreacion: {type: Date}
     },
   ],
   totalAmount: { type: Number, required: true },
   status: {
     type: String,
-    enum: ["pending", "shipped", "delivered", "cancelled"],
-    default: "pending",
+    enum: ["pendiente","aprobado", "alistado", "facturado","enviado", "cancelado"],
+    default: "pendiente",
   },
   
   shippingAddress: {
