@@ -38,7 +38,7 @@ export default async function TableCliente({ query }) {
                
                 <div>
                   <p>
-                    <span className="">
+                    <span className="nameDescripcion">
                       {itm.address.provincia},  {itm.address.canton},   {itm.address.distrito} <br />
                     </span>
                     <span className="nameDescripcion">{itm.address.direccion}</span>

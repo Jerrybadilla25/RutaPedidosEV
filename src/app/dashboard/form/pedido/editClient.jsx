@@ -16,6 +16,6 @@ export default function EditClient({ ids }) {
   };
   return <div 
   onClick={() => handleSearchId(ids)}
-  className="editClient"
+  className="editClient text-white"
   >Editar cliente</div>;
 }

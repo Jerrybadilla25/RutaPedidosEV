@@ -127,26 +127,32 @@ export default function Table2({ products, id, desc }) {
         <h2 className="nameDescripcion mb-1 w-25">Tomar pedido</h2>
         <div className="flex-column w-25">
           {desc !== 0 && (
-            <p>
-              <strong className="nameDescripcion">Total:</strong>{" "}
-              {data
-                .reduce((acc, item) => acc + item.subtotal, 0)
-                .toLocaleString("es-ES", {
-                  style: "currency",
-                  currency: "CRC",
-                })}
-            </p>
+             <p>
+             <strong className="nameDescripcion">Total:</strong>{" "}
+             <strong className="nameDescripcion">
+               {data
+               .reduce((acc, item) => acc + item.subtotal, 0)
+               .toLocaleString("es-ES", {
+                 style: "currency",
+                 currency: "CRC",
+               })}
+             </strong>
+            
+           </p>
           )}
           {desc !== 0 && (
             <p>
-              <strong>Descuento: </strong>
-              {(
+              <strong className="nameDescripcion">Descuento: </strong>
+              <strong className="nameDescripcion">
+                 {(
                 (data.reduce((acc, item) => acc + item.subtotal, 0) * desc) /
                 100
               ).toLocaleString("es-ES", {
                 style: "currency",
                 currency: "CRC",
-              })}
+              })} 
+              </strong>
+            
             </p>
           )}
           <p

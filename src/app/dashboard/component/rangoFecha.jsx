@@ -52,21 +52,23 @@ const DateInput = () => {
     <div className="flex-row box-rango">
       <div className="flex-column">
         <div className="flex-row mb-0">
-          <span className="textDate">De</span>
+          <span className="textDate text-white">De</span>
           <input
             type="date"
             name="dataIn"
             value={dates.dataIn}
             onChange={handleInputChange1}
+            className="text-white"
           />
         </div>
         <div className="flex-row">
-          <span className="textDate">A</span>
+          <span className="textDate text-white">A</span>
           <input
             type="date"
             name="dataOut"
             value={dates.dataOut}
             onChange={handleInputChange1}
+            className="text-white"
           />
         </div>
       </div>

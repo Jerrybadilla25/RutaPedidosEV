@@ -268,7 +268,7 @@ nav ul {
   .ancla-item {
     width: 25px;
     height: 25px;
-    border: 1px solid var(--backgroundSutil);
+    border: 2px solid var(--backgroundSutil);
     padding: 0.3rem;
     margin: 0.2rem;
     font-size: 10px;
@@ -430,8 +430,9 @@ nav ul {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  //color: var(--textblue);
-  font-size: 12px;
+  color: var(--textWhite);
+  font-size: 13px;
+  font-weigth: bold;
 
 }
 
@@ -684,6 +685,7 @@ tbody tr:hover {
 }
 
 .delete-pedido{
+  color: var(--textWhite);
   display: flex;
   flex-direction: row;
   gap: 0.25rem;

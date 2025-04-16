@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import { ThemeProvider } from '@/app/ThemeContext';
 import "./globals.css";
 import './local.css'
 import { Toaster } from "sonner";
@@ -25,8 +26,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {children}
-        <Toaster position="top-center"/>
+        <ThemeProvider>
+          {children}
+         <Toaster position="top-center"/>
+        </ThemeProvider>
+        
         </body>
     </html>
   );

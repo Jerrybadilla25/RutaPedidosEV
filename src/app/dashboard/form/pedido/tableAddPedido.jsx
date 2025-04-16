@@ -6,7 +6,7 @@ export default function tableAddPedido({ clientId, products }) {
       
       <div className="container-head-cliente box-1">
       <div>
-        <h1 className="title">Datos del Cliente</h1>
+        <h1 className=" text-white">Datos del Cliente</h1>
       </div>
         <div className="flex-row justify-flex-start gap-large  mb-2 box-line ">
           <div className="">
@@ -37,8 +37,8 @@ export default function tableAddPedido({ clientId, products }) {
         <div className="flex-row justify-flex-start mb-2">
         <div>
           <p className="nameTitle">Direccion</p>
-          <p>
-            <span className="nameDescripcion">
+          <p >
+            <span className="text-white">
             {clientId.address.provincia} {clientId.address.canton} {clientId.address.distrito} <br />
             </span>
             <span className="nameDescripcion">{clientId.address.direccion}</span>

@@ -2,30 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Tema oscuro (nuevo) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --backgroundBox: #242424;
-  --backgroundBoxSutil: #3d3b3b;
-  --backgroundSutil: #ffffff1a;
-  --textblue: #3baaff;
-  --textbluePlaceholder: #9fa6ab;
-  --textOrange: #f57b27;
-  --textWhite: #ccc;
-  --textError: #e01e09;
-  --textBlack: #ffffff;
-  --textGreen: #4caf50; /* Verde brillante */
-  --textYellow: #5c5519; /* Amarillo cálido */
-  --textRed: #8f2e27; /* Rojo suave */
+  --background: #121212;        /* Fondo principal oscuro */
+  --foreground: #1e1e1e;        /* Elementos secundarios oscuros */
+  --backgroundBox: #2d2d2d;     /* Contenedores oscuros */
+  --backgroundBoxSutil: #696060; /* Contenedores sutiles oscuros */
+  --backgroundSutil: #292727;  /* Transparencias claras sobre oscuro */
+  --textblue: #0c87eb;          /* Azul claro vibrante */
+  --textbluePlaceholder: #757575;/* Gris azulado para placeholders */
+  --textOrange: #f59405;        /* Naranja suave */
+  --textWhite: #e0e0e0;         /* Texto gris claro */
+  --textError: #f44336;         /* Rojo error vibrante */
+  --textBlack: #ffffff;         /* Texto blanco (antes negro) */
+  --textGreen: #12cc1a;         /* Verde suave */
+  --textYellow: #fff176;        /* Amarillo claro */
+  --textRed: #e33030;          /* Rojo suave */
 }
 
+/* Tema claro (nuevo) */
+[data-theme='light'] {
+  --background: #f5f5f5;        /* Fondo principal claro */
+  --foreground: #ffffff;        /* Elementos secundarios blancos */
+  --backgroundBox: #e0e0e0;     /* Contenedores grises claros */
+  --backgroundBoxSutil: #eeeeee;/* Contenedores sutiles claros */
+  --backgroundSutil: #0000000d; /* Transparencias oscuras sobre claro */
+  --textblue: #1976d2;          /* Azul intenso */
+  --textbluePlaceholder: #9e9e9e;/* Gris para placeholders */
+  --textOrange: #fb8c00;        /* Naranja intenso */
+  --textWhite: #424242;         /* Texto gris oscuro */
+  --textError: #d32f2f;         /* Rojo error */
+  --textBlack: #000000;         /* Texto negro */
+  --textGreen: #388e3c;         /* Verde intenso */
+  --textYellow: #fbc02d;        /* Amarillo vibrante */
+  --textRed: #e53935;           /* Rojo intenso */
+}
+
+/*
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #050708;
     --foreground: #ededed;
   }
 }
-
+*/
 body {
   margin: 0;
   padding: 0;
@@ -78,6 +98,12 @@ body2 {
 }
 .text-warning {
   color: var(--textOrange);
+}
+.text-white {
+  color: var(--textWhite);
+}
+.text-black {
+  color: var(--textBlack);
 }
 
 
@@ -303,6 +329,7 @@ body2 {
 
 .nameDescripcion {
   font-weight: bold;
+  color: var(--textWhite);
 }
 .nameTitle {
   font-size: 14px;

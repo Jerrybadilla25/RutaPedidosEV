@@ -22,7 +22,7 @@ export default function Search() {
   return (
     <div className="flex-row justify-center mb-1">
       <div className="search">
-        <h4 className="searchTitle">Buscar cliente</h4>
+        <h4 className="searchTitle text-white">Buscar cliente</h4>
       </div>
       
       {/* Contenedor del input de búsqueda */}

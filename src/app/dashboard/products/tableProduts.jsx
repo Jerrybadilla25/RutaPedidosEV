@@ -3,7 +3,7 @@
 
 export default function TableProducts({ productos }) {
   return (
-    <div className="table-per">
+    <div className="table-per text-white">
       <table >
       <thead>
       <tr className="table-tr">

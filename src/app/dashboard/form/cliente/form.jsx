@@ -7,7 +7,7 @@ export default function ClientForm({ cliente }) {
   const [state, formAction, pending] = useActionState(addClientBd, undefined);
 
   return (
-    <div className="form-container">
+    <div className="form-container text-white">
       <div className="mb-1">
         <h1 className="text-h1">Registro de clientes</h1>
         <h3 className="text-h3">Ingrese los datos del nuevo cliente.</h3>

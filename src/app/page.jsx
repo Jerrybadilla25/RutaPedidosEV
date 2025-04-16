@@ -2,7 +2,7 @@ import Link from "next/link";
 //import { cookies } from "next/headers";
 import { GrLogin } from "react-icons/gr";
 import BotonLogOut from "@/components/botonLogOut";
-import Register from "@/components/botonRegister";
+//import Register from "@/components/botonRegister";
 import BarraMaster from "@/components/barraMaster";
 import { getUser } from "@/utils/dal";
 import User from "@/model/User";
@@ -58,7 +58,7 @@ export default async function Homepage() {
       <header className="flex-row justify-between align-center altura-header">
         <div className="logo-principal">
           {user ? (
-            <Link href="/dashboard" className="hover:text-gray-300">
+            <Link href="/dashboard" className="">
               Mi Aplicacion
             </Link>
           ) : (

@@ -147,7 +147,7 @@ export default function TablePedido({
       <form action={formAction}>
         <div className="pedido-col">
           <div className="pedido-sub">
-            <p className="w-1 font-sl">Fecha:</p>
+            <p className="w-1 font-sl text-white">Fecha:</p>
             <p className="w-1 font-sx">
               <strong>
                 {new Date(pedido.createdAt).toLocaleDateString("es-ES", {
@@ -159,25 +159,25 @@ export default function TablePedido({
             </p>
           </div>
           <div className="pedido-sub">
-            <p className="w-1 font-sl">ID Pedido:</p>
+            <p className="w-1 font-sl text-white">ID Pedido:</p>
             <p className="w-1 font-sx">
               <strong>{pedido.orderId}</strong>
             </p>
           </div>
           <div className="pedido-sub">
-            <p className="w-4 font-sl">Cliente:</p>
+            <p className="w-4 font-sl text-white">Cliente:</p>
             <p className="w-4 font-sx">
               <strong>{pedido.name}</strong>
             </p>
           </div>
           <div className="pedido-sub">
-            <p className="w-1 font-sl">Cliente Id:</p>
+            <p className="w-1 font-sl text-white">Cliente Id:</p>
             <p className="w-1 font-sx">
               <strong>{pedido.idCliente}</strong>
             </p>
           </div>
           <div className="pedido-sub">
-            <p className="w-2 font-sl">Total:</p>
+            <p className="w-2 font-sl text-white">Total:</p>
             <p className="w-2 font-sx">
               <strong>
                 {pedido.totalAmount.toLocaleString("es-ES", {
@@ -208,10 +208,10 @@ export default function TablePedido({
           </div>
 
           <div className="pedido-sub">
-            <p className="w-3 font-sl">
+            <p className="w-3 font-sl text-white">
               Status: <span className="textblue bold">{pedido.status}</span>
             </p>
-            <div className=" font-sx">
+            <div className=" font-sx text-white">
               <Opcion
                 handleChange={handleChange}
                 statusBol={statusBol}
@@ -222,7 +222,7 @@ export default function TablePedido({
           </div>
 
           <div className="">
-            <div className="pedido-sub-ancla">
+            <div className="pedido-sub-ancla text-white">
               <p
                 className={
                   valorAncla1?.id === pedido._id && valorAncla1.posicion === 1
@@ -285,10 +285,10 @@ export default function TablePedido({
           )}
         </div>
         <div className={`${textArea}`}>
-          <label className="nota-label" htmlFor="">
+          <label className="nota-label text-white" htmlFor="">
             Nota
           </label>
-          <textarea name="nota" id="nota"></textarea>
+          <textarea name="nota" id="nota" className="text-white"></textarea>
           {statusNota !== true && (
             <div className="pedido-sub-button">
               <p className=""></p>
@@ -297,7 +297,7 @@ export default function TablePedido({
           )}
         </div>
         <div className="pedido-col">
-          <p className="font-sx">
+          <p className="font-sx text-white">
             <strong>Dirección de Envío:</strong>{" "}
             {`${pedido.shippingAddress.direccion}, ${pedido.shippingAddress.distrito}, ${pedido.shippingAddress.canton}, ${pedido.shippingAddress.provincia}`}
           </p>
@@ -335,10 +335,10 @@ export default function TablePedido({
         </div>
 
         <div className={`${dNone} `}>
-          <p className="w-15">
+          <p className="w-15 text-white">
             <strong>Pedido:</strong>
           </p>
-          <table className="w-75">
+          <table className="w-75 text-white">
             <thead>
               <tr>
                 <th>Codigo</th>
@@ -363,12 +363,12 @@ export default function TablePedido({
               ))}
             </tbody>
           </table>
-          <p className="w-15">
+          <p className="w-15 text-white">
             <FaRegCopy className="icon-copy" onClick={copyCodesAndQuantities} />
           </p>
         </div>
         <div className={`${dNone2} pedido-col`}>
-          <p className="w-15">
+          <p className="w-15 text-white">
             <strong>Notas:</strong>
           </p>
           <ul className="lista-notas w-75">
@@ -389,7 +389,7 @@ export default function TablePedido({
           </ul>
         </div>
       </form>
-      <p className="font-sl">
+      <p className="font-sl text-white">
         Vendedor: <strong>{pedido.vendedor}</strong>
         
       </p>
