@@ -37,8 +37,7 @@ export default async function EditPedido({ searchParams }) {
   const safePedidos = JSON.parse(JSON.stringify(Idpedido));
   const safeProducts = JSON.parse(JSON.stringify(productos));
 
-
-  if(usuario.user===Idpedido.vendedor || usuario.role ==="picker" && Idpedido.status!=="pendiente" || Idpedido.status!=="aprovado" ){
+  if((usuario.user === Idpedido.vendedor || usuario.role === "picker") && (Idpedido.status === "pendiente" || Idpedido.status === "aprobado")){
     return (
       <div>
         <Search />
@@ -52,7 +51,9 @@ export default async function EditPedido({ searchParams }) {
   return (
     <div>
     <Search />
-    <h5>No tiene permiso para editar este pedido</h5>
+    <h5 className='roboto'>No tiene permiso para editar este pedido, porque el status es
+      <span className='nameTitle bold font-xl mx-1'>   {Idpedido.status}</span>
+       </h5>
   </div>
 );
 }

@@ -49,13 +49,16 @@ body2 {
 }
 
 .font-sm {
-  font-size: 10px !important;
+  font-size: 0.5rem !important;
 }
 .font-sl {
-  font-size: 12px !important;
+  font-size: 0.7rem !important;
 }
 .font-sx {
-  font-size: 14px !important;
+  font-size: 0.8rem!important;
+}
+.font-xl {
+  font-size: 1.2rem!important;
 }
 .bold {
   font-weight: bold;

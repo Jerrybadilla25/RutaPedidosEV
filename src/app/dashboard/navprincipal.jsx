@@ -30,7 +30,7 @@ export default function NavPrincipal({ role }) {
           </li>
         )}
 
-        {(role === "master" || role==="approver") && (
+        {(role === "master" || role==="approver" || role==="seller" || role==="invoicer")  && (
           <li
             className={
               pathname === "/dashboard/form/cliente"

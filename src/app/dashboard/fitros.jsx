@@ -71,24 +71,29 @@ const FilterBar = ({ filtro, numberAncla }) => {
 
   const filters = [
     {
-      name: "pending",
+      name: "pendiente",
       icon: <FaCheck />,
-      action: () => handleIconClick("pending"),
+      action: () => handleIconClick("pendiente"),
     },
     {
-      name: "shipped",
+      name: "enviado",
       icon: <LiaShippingFastSolid />,
-      action: () => handleIconClick("shipped"),
+      action: () => handleIconClick("enviado"),
     },
     {
-      name: "cancelled",
+      name: "cancelado",
       icon: <MdOutlineCancel />,
-      action: () => handleIconClick("cancelled"),
+      action: () => handleIconClick("cancelado"),
     },
     {
-      name: "delivered",
+      name: "facturado",
       icon: <PiInvoiceFill />,
-      action: () => handleIconClick("delivered"),
+      action: () => handleIconClick("facturado"),
+    },
+    {
+      name: "alistado",
+      icon: <PiInvoiceFill />,
+      action: () => handleIconClick("alistado"),
     },
     //{ name: "Usuarios", icon: <FaUser /> },
     //{ name: "A-Z", icon: <GrDescend /> },

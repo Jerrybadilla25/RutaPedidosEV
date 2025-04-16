@@ -132,9 +132,8 @@ export default async function Homepage({ searchParams }) {
     <Suspense fallback={<SqueletonTable />}>
       {/* Componente de filtros con información del filtro y número de anclas */}
       <Filtros filtro={filter} numberAncla={ancla.length} />
-      <div className="flex-row justify-flex-end">
-        <span className="nameTitle mx-1 ">Usuario:</span>
-        <h3 className="nameTitle roboto">{session.user}</h3>
+      <div className="my-2">
+    
       </div>
       
       {/* Renderiza cada pedido como un componente TablaPedido */}

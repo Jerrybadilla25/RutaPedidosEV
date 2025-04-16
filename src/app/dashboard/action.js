@@ -131,6 +131,7 @@ async function getPedidosRol(rol, filterRango, seller) {
         return (
           await fetchPedidos({
             vendedor: seller,
+            status: { $ne: "enviado" },  // Excluye pedidos con status "enviado"
             createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
           })
         ).reverse();

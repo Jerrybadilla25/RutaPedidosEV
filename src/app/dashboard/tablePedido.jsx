@@ -171,9 +171,9 @@ export default function TablePedido({
             </p>
           </div>
           <div className="pedido-sub">
-            <p className="w-1 font-sl">Telefono:</p>
+            <p className="w-1 font-sl">Cliente Id:</p>
             <p className="w-1 font-sx">
-              <strong>{pedido.cel}</strong>
+              <strong>{pedido.idCliente}</strong>
             </p>
           </div>
           <div className="pedido-sub">
@@ -389,9 +389,9 @@ export default function TablePedido({
           </ul>
         </div>
       </form>
-      <p className="font-sm">
-        Vendedor: <strong>{}</strong>
-        {pedido.vendedor}{" "}
+      <p className="font-sl">
+        Vendedor: <strong>{pedido.vendedor}</strong>
+        
       </p>
     </div>
   );

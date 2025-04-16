@@ -14,7 +14,7 @@ export default function Pption({ statusBol, rol, status, handleChange }) {
                 value="aprobado"
                 onChange={handleChange}
               />
-              Aprovado
+              Aprobado
             </label>
             <label className="radio-option">
               <input
