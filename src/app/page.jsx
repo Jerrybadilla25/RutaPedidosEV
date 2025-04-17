@@ -55,10 +55,10 @@ export default async function Homepage() {
 
   return (
     <div className="container-100">
-      <header className="flex-row justify-between align-center altura-header">
+      <header className="flex-row justify-between align-center altura-header ">
         <div className="logo-principal">
           {user ? (
-            <Link href="/dashboard" className="">
+            <Link href="/dashboard" className="text-white">
               Mi Aplicacion
             </Link>
           ) : (

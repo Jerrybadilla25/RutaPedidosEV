@@ -42,7 +42,7 @@ export default function TrAdd({ products, setAddItem }) {
   
 
   return (
-    <tr >
+    <tr className="text-white">
       <td colSpan="2">
         <select
           className="select-per"

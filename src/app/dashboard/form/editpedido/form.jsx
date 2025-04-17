@@ -17,16 +17,16 @@ export default function FormeditPedido({ pedido, products, usuario }) {
       <div className="flex-column table-container ">
         <div className="mb-1">
           <p className="">
-            <strong>Cliente: {pedido.idCliente}</strong>
+            <strong className="text-white">Cliente: {pedido.idCliente}</strong>
           </p>
           <p className="">
-            <strong>Nombre: {pedido.name}</strong>
+            <strong className="text-white">Nombre: {pedido.name}</strong>
           </p>
         </div>
         {addItem === true && (
-          <table className="full-width-table">
+          <table className="full-width-table ">
             <thead>
-             <tr>
+             <tr className="text-white">
              <th colSpan="2" className="text-warning">Agregar articulo</th>
               <th className="text-warning">Cantidad</th>
               <th></th>
@@ -45,7 +45,7 @@ export default function FormeditPedido({ pedido, products, usuario }) {
         </div>
         <table className="full-width-table">
           <thead>
-            <tr>
+            <tr className="text-white">
               <th>Codigo</th>
               <th>Producto</th>
               <th>Cantidad</th>

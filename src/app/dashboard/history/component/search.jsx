@@ -54,6 +54,7 @@ export default function SearchClient() {
             onChange={(e) => debouncedSearch(e.target.value)}
             defaultValue={searchParams.get("history")?.toString()}
             name="historia"
+            className="text-white"
           />
         </div>
        

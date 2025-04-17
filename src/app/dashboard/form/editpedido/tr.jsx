@@ -79,7 +79,7 @@ useEffect(() => {
   
 
   return (
-    <tr>
+    <tr className="text-white">
       <td>{sku}</td>
       <td>{nombre}</td>
       <td>

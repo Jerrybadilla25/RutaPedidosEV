@@ -8,7 +8,7 @@ export default function SignUpForm (){
   const [state, formAction, pending] = useActionState(signup, undefined)
 
     return (
-      <div className="full-screen-center">
+      <div className="full-screen-center text-white">
       <form action={formAction} className="flex-form-border W-30">
         <h1 className="mb-3">Your Company</h1>
         <div className="mb-2">Login to your account on Your Company.</div>

@@ -131,7 +131,7 @@ async function getPedidosRol(rol, filterRango, seller) {
         return (
           await fetchPedidos({
             vendedor: seller,
-            status: { $ne: "enviado" },  // Excluye pedidos con status "enviado"
+            status: { $ne: "enviado" }, // Excluye pedidos con status "enviado"
             createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
           })
         ).reverse();
@@ -161,9 +161,8 @@ export async function upDateStatus(state, formData) {
   const nota = formData.get("nota");
   const statusOrigen = formData.get("statusOrigen");
   const dataParams = formData.get("dataParams");
-  const updates = {};
 
-  
+  const updates = {};
 
   // Siempre inicializamos $push para notas (si no existe)
   updates.$push = {
@@ -173,45 +172,11 @@ export async function upDateStatus(state, formData) {
     },
   };
 
-  // Agregar nota manual si existe
-  if (nota) {
-    updates.$push.notas.$each.push({
-      nota: nota,
-      creador: user.user,
-      fechaCreacion: new Date(),
-    });
-  }
-
-  
-
-  // Lógica de actualización de estado
-  if (user.role === "master") {
-    updates.$set = { status, statusUpdateDate: new Date() };
-    agregarNotaCambioEstado(updates, statusOrigen, status, user)
-  } else if (statusOrigen === "pendiente" && status === "aprobado") {
-    updates.$set = { status, statusUpdateDate: new Date() };
-    agregarNotaCambioEstado(updates, statusOrigen, status, user)
-  }else if (statusOrigen === "rechazado" && status === "pendiente") {
-    updates.$set = { status, statusUpdateDate: new Date() };
-    agregarNotaCambioEstado(updates, statusOrigen, status, user)
-  }
-  else if (statusOrigen === "aprobado" && status === "alistado") {
-    updates.$set = { status, statusUpdateDate: new Date() };
-    agregarNotaCambioEstado(updates, statusOrigen, status, user)
-  } 
-  else if (statusOrigen === "alistado" && status === "facturado") {
-    updates.$set = { status };
-    agregarNotaCambioEstado(updates, statusOrigen, status, user)
-  } 
-  else if (statusOrigen === "facturado" && status === "enviado") {
-    updates.$set = { status, statusUpdateDate: new Date() };
-    agregarNotaCambioEstado(updates, statusOrigen, status, user)
-  } 
-  else if (statusOrigen === "pendiente" || status === "cancelado") {
-    updates.$set = { status, statusUpdateDate: new Date() };
-    agregarNotaCambioEstado(updates, statusOrigen, status, user)
+  //validar nota manual y nota automatica
+  if (nota && status === null) {
+    addNotaManual(status, statusOrigen, nota, user, updates);
   } else {
-    console.log("Estado no manejado");
+    addNotaYStatus(status, statusOrigen, nota, user, updates);
   }
 
   // Si no hay cambios relevantes, redirigir sin actualizar
@@ -220,7 +185,6 @@ export async function upDateStatus(state, formData) {
     (updates.$set === undefined && updates.$push.notas.$each.length === 0)
   ) {
     redirect(dataParams);
-    return;
   }
 
   try {
@@ -231,7 +195,6 @@ export async function upDateStatus(state, formData) {
   redirect(dataParams);
 }
 
-
 function agregarNotaCambioEstado(updates, statusOrigen, status, user) {
   // Verificar si hubo cambio de estado
   if (statusOrigen !== status) {
@@ -241,6 +204,45 @@ function agregarNotaCambioEstado(updates, statusOrigen, status, user) {
       fechaCreacion: new Date(),
     });
   }
-  
+
   return updates;
+}
+
+function addNotaManual(status, statusOrigen, nota, user, updates) {
+  // Agregar nota manual si existe
+  if (nota && status === null) {
+    updates.$push.notas.$each.push({
+      nota: nota,
+      creador: user.user,
+      fechaCreacion: new Date(),
+    });
+  }
+}
+
+function addNotaYStatus(status, statusOrigen, nota, user, updates) {
+  // Lógica de actualización de estado
+  if (user.role === "master") {
+    updates.$set = { status, statusUpdateDate: new Date() };
+    agregarNotaCambioEstado(updates, statusOrigen, status, user);
+  } else if (statusOrigen === "pendiente" && status === "aprobado") {
+    updates.$set = { status, statusUpdateDate: new Date() };
+    agregarNotaCambioEstado(updates, statusOrigen, status, user);
+  } else if (statusOrigen === "rechazado" && status === "pendiente") {
+    updates.$set = { status, statusUpdateDate: new Date() };
+    agregarNotaCambioEstado(updates, statusOrigen, status, user);
+  } else if (statusOrigen === "aprobado" && status === "alistado") {
+    updates.$set = { status, statusUpdateDate: new Date() };
+    agregarNotaCambioEstado(updates, statusOrigen, status, user);
+  } else if (statusOrigen === "alistado" && status === "facturado") {
+    updates.$set = { status };
+    agregarNotaCambioEstado(updates, statusOrigen, status, user);
+  } else if (statusOrigen === "facturado" && status === "enviado") {
+    updates.$set = { status, statusUpdateDate: new Date() };
+    agregarNotaCambioEstado(updates, statusOrigen, status, user);
+  } else if (statusOrigen === "pendiente" || status === "cancelado") {
+    updates.$set = { status, statusUpdateDate: new Date() };
+    agregarNotaCambioEstado(updates, statusOrigen, status, user);
+  } else {
+    console.log("Estado no manejado");
+  }
 }

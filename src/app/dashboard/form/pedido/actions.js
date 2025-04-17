@@ -11,7 +11,7 @@ export async function getClientePedido(query) {
     await connectDB();
     const clientes = await Cliente.find({
       name: { $regex: query, $options: "i" },
-    }).lean();
+    }).limit(5).lean();
     const clientesReverse = clientes.reverse();
     return clientesReverse;
   } catch (error) {

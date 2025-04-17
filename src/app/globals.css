@@ -14,7 +14,7 @@
   --textOrange: #f59405;        /* Naranja suave */
   --textWhite: #e0e0e0;         /* Texto gris claro */
   --textError: #f44336;         /* Rojo error vibrante */
-  --textBlack: #ffffff;         /* Texto blanco (antes negro) */
+  --textBlack: #0d0c0c;         /* Texto blanco (antes negro) */
   --textGreen: #12cc1a;         /* Verde suave */
   --textYellow: #fff176;        /* Amarillo claro */
   --textRed: #e33030;          /* Rojo suave */
@@ -56,11 +56,11 @@ body {
     --background,
     #fff
   ); /* Usa colores CSS variables si lo deseas */
-  color: var(--foreground, #000);
+  //color: var(--foreground, #000);
 }
 
 body2 {
-  color: var(--foreground);
+  //color: var(--foreground);
   background: var(--background);
 }
 
@@ -186,12 +186,16 @@ body2 {
   font-size: 12px;
   font-weight: bold;
   font-family: Roboto;
-  border: 2px solid var(--backgroundSutil);
+  border: 2px solid var(--backgroundBox);
   border-radius: 5px;
+  background-color: var(--textGreen);
+  color: var(--textBlack);
+
 }
 .btn-out:hover{
-  color: var(--textOrange);
-  border: 2px solid var(--textOrange);
+  //color: var(--textOrange);
+  background-color: var(--textbluePlaceholder);
+  border: 2px solid var(--textBlack);
 }
 
 /* Flexbox: Justificación */

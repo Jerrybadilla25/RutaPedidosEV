@@ -5,33 +5,32 @@ export default async function TablaPedidos({ dataHistory }) {
   const datos = await unificarClientes(dataHistory);
 
   return (
-    <div className="box-history-container">
+    <div className="box-history-container text-white">
       <h1 className="roboto text-warning">Historial de Productos</h1>
       {datos.map((itm) => (
         <div key={itm._id}>
           <div className="box-history">
             <div className="flex-row justify-between gap-medium ">
               <p className="flex-column">
-                <strong className="nameTitle font-sm">Id Cliente </strong>
+                <strong className="nameTitle font-sl">Id Cliente </strong>
                 <strong>{itm.idCliente}</strong>
               </p>
               <p className="flex-column">
-                <strong className="nameTitle font-sm">Nombre </strong>
+                <strong className="nameTitle font-sl">Nombre </strong>
                 <strong>{itm.name}</strong>
               </p>
               <p className="flex-column">
-                <strong className="nameTitle font-sm">Contacto </strong>
+                <strong className="nameTitle font-sl">Contacto </strong>
                 <strong>{itm.contact}</strong>
               </p>
               <p className="flex-column">
-                <strong className="nameTitle font-sm"> Status </strong>
+                <strong className="nameTitle font-sl"> Status </strong>
                 <strong>{itm.status}</strong>
               </p>
               <p className="flex-column">
-                <strong className="nameTitle font-sm">Direccion</strong>
+                <strong className="nameTitle font-sl">Direccion</strong>
                 <strong>
-                  {itm.shippingAddress.provincia}, {itm.shippingAddress.canton},{" "}
-                  {itm.shippingAddress.distrito}{" "}
+                  {itm.shippingAddress.canton}
                 </strong>
               </p>
             </div>

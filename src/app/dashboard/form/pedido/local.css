@@ -73,6 +73,7 @@
   font-weight: 500;
 }
 .searchInput {
+  color: var(--textWhite) !important;
   all: unset;
   background: var(--backgroundSutil);
   padding: 10px 15px;

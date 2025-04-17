@@ -17,7 +17,7 @@ export default async function Header({role}) {
         <span className="font-sl mx-1">rol</span>
         <span className="font-sl text-succes">{roll}</span>
       </div>
-      <ThemeToogle/>
+      
       <div className="flex-row">
         <BotonLogOut />
         {
@@ -25,6 +25,7 @@ export default async function Header({role}) {
                 <BotonRegister />
             )
         }
+        <ThemeToogle/>
       </div>
     </div>
   );

@@ -2,6 +2,6 @@
 
 export default function Cargando() {
   return (
-    <div>cargando...</div>
+    <div className="text-white">cargando...</div>
   )
 }

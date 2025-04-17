@@ -8,7 +8,7 @@ export default function SignInForm() {
     <div className="full-screen-center">
      
         
-        <form action={formAction} className="flex-form-border">
+        <form action={formAction} className="flex-form-border text-white">
         <h1 className="mb-3">Your Company</h1>
           <div className="mb-2">Login to your account on Your Company.</div>
 
