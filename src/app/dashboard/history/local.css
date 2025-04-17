@@ -12,7 +12,7 @@
   }
   
   .box-search {
-    background-color: var(--backgroundBoxSutil);
+    background-color: var(--backgroundSutil);
     padding: 0.5rem 0rem;
     border: 1px solid var(--backgroundSutil);
     border-radius: 5px;

@@ -106,7 +106,7 @@ const FilterBar = ({ filtro, numberAncla }) => {
   ];
 
   return (
-    <div className="filter-bar ">
+    <div className="filter-bar">
       {filters.map((filter, index) => (
         <div
           key={index}

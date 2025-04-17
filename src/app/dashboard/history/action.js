@@ -12,7 +12,7 @@ export async function getDataPedidos(filterRango) {
     const seller = roll.user;
 
     const pedidos = await Pedidos.find({
-      status: { $in: ["pendiente", "enviado", "facturado"] },
+      status: { $in: ["pendiente","aprobado", "alistado", "facturado","enviado"] },
       createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
     }).limit(6).lean();
 
@@ -31,7 +31,7 @@ export async function getDataPedidos2(filterRango, history) {
 
     const pedidos = await Pedidos.find({
       name: { $regex: history, $options: "i" },
-      status: { $in: ["pendiente", "enviado", "facturado"] },
+      status: { $in: ["pendiente","aprobado", "alistado", "facturado","enviado"] },
       createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
     }).limit(6).lean();
 

@@ -188,7 +188,7 @@ export default function Table2({ products, id, desc }) {
       </div>
 
       <form onSubmit={handleSubmit} className="flex-row w-100">
-        <table className="table-per">
+        <table className="table-per ">
           <colgroup>
             <col style={{ width: "5%" }} />
             <col style={{ width: "45%" }} />
@@ -198,7 +198,7 @@ export default function Table2({ products, id, desc }) {
             <col style={{ width: "15%" }} />
           </colgroup>
           <thead>
-            <tr className="table-header">
+            <tr className="table-header {">
               <th>Código</th>
               <th>Nombre</th>
               <th>Precio</th>
@@ -207,12 +207,12 @@ export default function Table2({ products, id, desc }) {
               <th>Sub total</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="">
             {data
               .filter((itm) => itm.category === filter)
               .sort((a, b) => a.name.localeCompare(b.name))
               .map((itm) => (
-                <tr key={itm._id} className="table-row">
+                <tr key={itm._id} className="table-row{">
                   <td>
                     <input type="text" name="sku" className="input-field" value={itm.productId} readOnly />
                   </td>

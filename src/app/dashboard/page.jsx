@@ -133,7 +133,7 @@ export default async function Homepage({ searchParams }) {
       {/* Componente de filtros con información del filtro y número de anclas */}
       <Filtros filtro={filter} numberAncla={ancla.length} />
       <div className="my-2">
-    
+      
       </div>
       
       {/* Renderiza cada pedido como un componente TablaPedido */}

@@ -144,8 +144,8 @@ p {
 }
 
 .table-header {
-  background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil */
-  color: white;
+  background-color: var(--backgroundSutil); /* Fondo sutil */
+  color: var(--textWhite);
 }
 
 .table-header th {
@@ -170,7 +170,7 @@ p {
   padding: 0.3rem 0.75rem;;
   //border: 1px solid white;
   background-color: transparent;
-  color: white;
+  color: var(--textWhite);
   border-radius: 5px;
   text-align: left;
   
@@ -274,6 +274,7 @@ p {
   //border-radius: 5px
 }
 
+/*
 .text-white div p {
   color: var(--textWhite);
   font-size: 12px;
@@ -281,7 +282,11 @@ p {
   padding: 2px 5px;
   border-radius: 5px;
 }
+*/
 
+.texto-blanco{
+  color:var(--textWhite) !important;
+}
 .text-orange div p {
   color: var(--textOrange);
   font-size: 12px;

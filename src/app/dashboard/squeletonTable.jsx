@@ -3,7 +3,7 @@ import React from 'react'
 export default function SqueletonTable() {
   return (
     <div className="pedido">
-    <form>
+    <form className='text-white'>
       <div className="pedido-col">
         <div className="pedido-sub">
           <p className="w-1 font-sl">Fecha:</p>

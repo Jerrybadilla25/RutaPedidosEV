@@ -117,7 +117,7 @@ nav ul {
   display: block; /* Hace que los enlaces ocupen todo el ancho */
   //background: red;
   text-decoration: none;
-  color: white; /* Color del texto */
+  color: var(--textWhite); /* Color del texto */
   margin: 15px; /* Espaciado interno */
   padding: 15px;
   border-left: 2px solid var(--backgroundSutil);
@@ -126,9 +126,9 @@ nav ul {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 .linkPer:hover {
-  color: #84eb07;
-  //background-color: #171616;
-  border-left: 2px solid #41a31a;
+  color: var(--textOrange); /* Color del texto */
+  background-color: var(--background);
+  border-left: 2px solid var(--textOrange);
 }
 
 .text-color-green {
@@ -187,13 +187,13 @@ nav ul {
   
   .navSecundario a {
     text-decoration: none;
-    color: #ccc; /* Default text color */
+    color: var(--textWhite); /* Default text color */
     font-size: 14px;
     //transition: color 0.3s ease;
   }
   
   .navSecundario .text-color-green {
-    color: green; /* Active link color */
+    color: var(--textOrange); /* Active link color */
   }
   
   .navSecundario a:hover {
@@ -204,7 +204,7 @@ nav ul {
   .linkPer2 {
     display: block; /* Hace que los enlaces ocupen todo el ancho */
     text-decoration: none;
-    color: white; /* Color del texto */
+    color: var(--textWhite); /* Color del texto */
     margin: 10px 15px; /* Espaciado interno */
     padding: 5px 10px;
     //border-bottom: 2px solid var(--backgroundSutil);
@@ -212,7 +212,7 @@ nav ul {
     //transition: background-color 0.3s ease, color 0.3s ease;
   }
   .linkPer2:hover {
-    background-color: #171616;
+    background-color: var(--background);
     //border-bottom: 1px solid var(--textOrange);
   }
   
