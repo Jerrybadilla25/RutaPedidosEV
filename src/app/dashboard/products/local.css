@@ -1,6 +1,7 @@
 table {
     border-collapse : collapse;
     width: 100%;
+    margin: 10px;
 }
 
 th, td {
@@ -9,22 +10,21 @@ th, td {
 }
 
 .table-per{
-    padding: 10px 10px 25px 10px;
-    width:90%;
+    padding: 10px 10px 10px 10px;
+    width:100%;
     heigth: 100%;
-    margin: 20px;
-    
+    margin: 10px;
     border-radius: 15px;
-   
 }
+
 
 
 
 @media (max-width: 768px) { /* Para pantallas pequeñas */
     .table-per{
-        padding: 10px 10px 25px 10px;
-        width:96%;
-        margin: 20px;
+        padding: 10px 10px 10px 10px;
+        width:100%;
+        margin: 10px;
         
         border-radius: 15px; 
     }
@@ -51,3 +51,25 @@ th, td {
     border-bottom: solid 1px var(--textOrange);
 
 }
+
+
+
+/*estilos busqueda*/
+
+.busqueda-titulo{
+    padding: 0.5rem;
+    color: var(--textWhite);
+}
+.busqueda-entrada{
+    padding: 0.5rem;
+    color: var(--textWhite);
+    background-color: var(--backgroundBox); /* Fondo para el input editable */
+    border-radius: 0.5rem;
+    border: 1px solid var(--backgroundBoxSutil); /* Opcional: Cambiar el borde al enfocar */
+    
+}
+.busqueda-entrada:focus{
+  outline: none;       /* Elimina el contorno predeterminado */
+  border: 1px solid var(--backgroundBoxSutil); /* Opcional: Cambiar el borde al enfocar */
+}
+

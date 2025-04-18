@@ -105,6 +105,7 @@ async function getPedidosRol(rol, filterRango, seller) {
     switch (rol) {
       case "master":
         return await fetchPedidos({
+          status: { $ne: "enviado" }, // Excluye pedidos con status "enviado"
           createdAt: { $gte: filterRango.dataIn, $lte: filterRango.dataOut },
         });
       case "approver":
@@ -144,6 +145,7 @@ async function getPedidosRol(rol, filterRango, seller) {
   }
 }
 
+//llama los pedidos es un callback
 async function fetchPedidos(query) {
   try {
     return JSON.parse(JSON.stringify(await Pedido.find(query).lean()));

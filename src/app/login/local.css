@@ -9,11 +9,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box; /* Asegura que padding no afecte el tamaño total */
+  background: var(--background);
 }
 
 .flex-form-border {
   width: 30%;
-  border: 1px solid var(--backgroundSutil);
+  border: 1px solid var(--backgroundBox);
   border-radius: 10px;
   background: var(--backgroundSutil);
   padding: 1.5rem;
@@ -30,11 +31,16 @@
   border: 1px solid var(--textblue);
   color: var(--textblue);
 }
+.btn-blue:hover {
+  //background: var(--textblue);
+  border: 1px solid var(--textOrange);
+  color: var(--textOrange);
+}
 
-.input-logo {
-  background-color: var(--background); /* Fondo rojo */
+.input-login {
+  background: var(--background); /* Fondo rojo */
   color: var(--textOrange); /* Color del texto azul */
-  border: none; /* Sin bordes */
+  border: 1px solid var(--backgroundBox);
   outline: none; /* Sin contorno al hacer focus */
   padding: 5px 15px; /* Espaciado interno */
   font-size: 16px; /* Tamaño del texto */
@@ -45,7 +51,7 @@
 
 /* Efecto hover */
 .input-logo:hover {
-  background-color: var(--backgroundBox); /* Fondo más oscuro en hover */
+  background: var(--backgroundBox); /* Fondo más oscuro en hover */
   color: lightblue; /* Texto más claro en hover */
 }
 

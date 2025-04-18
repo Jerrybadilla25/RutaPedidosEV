@@ -1,9 +1,11 @@
-//import "../../globals.css";
-//import "../../dashboard/local.css";
+import Serach from '@/app/dashboard/products/search'
 
 export default function TableProducts({ productos }) {
+
   return (
-    <div className="table-per text-white">
+    <div className="flex-row">
+      <Serach/>
+      <div className="table-per text-white">
       <table >
       <thead>
       <tr className="table-tr">
@@ -26,6 +28,7 @@ export default function TableProducts({ productos }) {
       ))}
       </tbody>
     </table>
+    </div>
     </div>
   );
 }

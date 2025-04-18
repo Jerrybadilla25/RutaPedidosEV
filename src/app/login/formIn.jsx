@@ -24,7 +24,7 @@ export default function SignInForm() {
                 type="email"
                 name="email"
                 id="email"
-                className="input-logo W-100"
+                className="input-login W-100"
                 placeholder="name@company.com"
                 autoComplete="on"
               />
@@ -45,7 +45,7 @@ export default function SignInForm() {
                 name="password"
                 id="password"
                 placeholder="••••••••••"
-                className="input-logo W-100"
+                className="input-login W-100"
               />
             </div>
             <div className="flex-row">
