@@ -78,8 +78,8 @@
   }
   
   .table-full thead {
-    background-color: var(--backgroundBoxSutil); /* Fondo sutil para encabezado */
-    color: var(--foreground); /* Texto del encabezado */
+    background-color: var(--backgroundSutil); /* Fondo sutil para encabezado */
+    color: var(--textWhite); /* Texto del encabezado */
   }
   
   .table-full th {

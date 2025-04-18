@@ -10,15 +10,15 @@ export default async function Header({role}) {
   
   return (
     <div className="flex-row justify-between header text-white">
-      <h1>Header</h1>
+      <h1 className="bold roboto">Header</h1>
       <div className="flex-row justify-flex-end">
-        <span className="font-sl">{user}   :</span>
+        <span className="roboto-sm bold">{user}   :</span>
         
-        <span className="font-sl mx-1">rol</span>
-        <span className="font-sl text-succes">{roll}</span>
+        <span className="roboto-sm bold mx-1">rol</span>
+        <span className="roboto-sm bold text-succes">{roll}</span>
       </div>
       
-      <div className="flex-row">
+      <div className="flex-row gap-small">
         <BotonLogOut />
         {
             (role==='master') && (

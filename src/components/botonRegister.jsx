@@ -5,8 +5,9 @@ import Link from "next/link";
 
 export default function BotonRegister() {
   return (
-    <Link href="/register" className="btn-out">
-      <p>Register</p>
+    <Link href="/register" className="btn-reg" >
+      <p >Register</p>
     </Link>
   );
 }
+

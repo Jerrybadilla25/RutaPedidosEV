@@ -170,7 +170,7 @@ p {
   padding: 0.3rem 0.75rem;;
   //border: 1px solid white;
   background-color: transparent;
-  color: white;
+  color: var(--textWhite);
   border-radius: 5px;
   text-align: left;
   
@@ -185,10 +185,10 @@ p {
   -moz-appearance: textfield !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  background-color: rgba(255, 255, 255, 0.1); /* Fondo para el input editable */
+  background-color: var(--background); /* Fondo para el input editable */
 }
 .select-per {
-  color: white;
+  color: var(--textWhite);
   padding-left:0.75rem;
   width: 90%;
   background-color: transparent; /* Fondo oscuro para el select */
@@ -200,10 +200,10 @@ p {
   cursor: pointer;
 }
 .option-per {
-  color: white;
+  color: var(--textWhite);
   padding-left:1rem;
   width: 90%;
-  background-color: var(--backgroundBox); /* Fondo oscuro para el select */
+  background-color: var(--background); /* Fondo oscuro para el select */
   border: 1px solid #555;
   border-radius: 4px;
   appearance: none;
@@ -217,8 +217,8 @@ p {
   display: block;
   width: 100%;
   padding: 10px;
-  background-color: white;
-  color: black;
+  background-color: var(--textWhite);
+  color: var(--textblue);
   font-weight: bold;
   text-align: center;
   border: none;

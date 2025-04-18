@@ -87,6 +87,10 @@ body2 {
   font-family: Roboto;
   font-size: 1.2rem;
 }
+.roboto-sm {
+  font-family: Roboto;
+  font-size: 0.8rem;
+}
 .textblue {
   color: var(--textblue);
 }
@@ -190,13 +194,35 @@ body2 {
   border-radius: 5px;
   background-color: var(--backgroundSutil);
   color: var(--textWhite);
-
 }
 .btn-out:hover{
   //color: var(--textOrange);
   background-color: var(--textbluePlaceholder);
-  border: 2px solid var(--textBlack);
+  border: 2px solid var(--textbluePlaceholder);
 }
+
+.btn-reg{
+  width: 5rem;
+  padding: 0rem 0.5rem;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: Roboto;
+  border: 2px solid var(--backgroundBox);
+  border-radius: 5px;
+  background-color: var(--backgroundSutil);
+  color: var(--textWhite);
+}
+
+.btn-reg:hover,
+.btn-reg:hover p {
+  background-color: var(--textbluePlaceholder);
+}
+
+.btn-reg:hover {
+  border: 2px solid var(--textbluePlaceholder);
+}
+
+
 
 /* Flexbox: Justificación */
 .justify-center {

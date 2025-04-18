@@ -222,16 +222,16 @@ function addNotaManual(status, statusOrigen, nota, user, updates) {
 function addNotaYStatus(status, statusOrigen, nota, user, updates) {
   // Lógica de actualización de estado
   if (user.role === "master") {
-    updates.$set = { status, statusUpdateDate: new Date() };
+    updates.$set = { status, updatedAt: new Date() };
     agregarNotaCambioEstado(updates, statusOrigen, status, user);
   } else if (statusOrigen === "pendiente" && status === "aprobado") {
-    updates.$set = { status, statusUpdateDate: new Date() };
+    updates.$set = { status, updatedAt: new Date() };
     agregarNotaCambioEstado(updates, statusOrigen, status, user);
   } else if (statusOrigen === "rechazado" && status === "pendiente") {
-    updates.$set = { status, statusUpdateDate: new Date() };
+    updates.$set = { status, updatedAt: new Date() };
     agregarNotaCambioEstado(updates, statusOrigen, status, user);
   } else if (statusOrigen === "aprobado" && status === "alistado") {
-    updates.$set = { status, statusUpdateDate: new Date() };
+    updates.$set = { status, updatedAt: new Date() };
     agregarNotaCambioEstado(updates, statusOrigen, status, user);
   } else if (statusOrigen === "alistado" && status === "facturado") {
     updates.$set = { status };
@@ -240,7 +240,7 @@ function addNotaYStatus(status, statusOrigen, nota, user, updates) {
     updates.$set = { status, statusUpdateDate: new Date() };
     agregarNotaCambioEstado(updates, statusOrigen, status, user);
   } else if (statusOrigen === "pendiente" || status === "cancelado") {
-    updates.$set = { status, statusUpdateDate: new Date() };
+    updates.$set = { status, updatedAt: new Date() };
     agregarNotaCambioEstado(updates, statusOrigen, status, user);
   } else {
     console.log("Estado no manejado");

@@ -20,6 +20,7 @@ const ProgressBar = ({ startDate, endDate }) => {
     setProgress(percentage);
     setElapsedTime(elapsedDuration);
 
+
     if (percentage >= 100) {
       setTotalTime(elapsedDuration);
     }

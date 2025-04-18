@@ -252,7 +252,8 @@ nav ul {
     flex-direction: column;
     margin: 5px;
     padding: 5px;
-    background-color: var(--backgroundSutil)
+    background-color: var(--backgroundSutil);
+    border: 1px solid var(--backgroundBox);
     
   }
   .pedido-sub-ancla {
