@@ -110,7 +110,6 @@ export default function TablePedido({
   }
 
   const handleChange = (event) => {
-    console.log("aqui estoy");
     console.log(event.target.value);
     if (event.target.value === status) {
       setStatus(event.target.value);
@@ -142,6 +141,20 @@ export default function TablePedido({
       });
   };
 
+  //copiar numero de pedido y numero de cliente
+  const copyCodes = (num) => {
+    // Copiar el texto al portapapeles
+    navigator.clipboard
+      .writeText(num)
+      .then(() => {
+        toast.success("Copiado al portapapeles");
+      })
+      .catch((err) => {
+        console.error("Error al copiar al portapapeles:", err);
+        toast.error("Error al copiar al portapapeles");
+      });
+  };
+
   return (
     <div className="pedido">
       <form action={formAction}>
@@ -158,24 +171,31 @@ export default function TablePedido({
               </strong>
             </p>
           </div>
+
           <div className="pedido-sub">
             <p className="w-1 font-sl text-white">ID Pedido:</p>
-            <p className="w-1 font-sx">
+            <div className="flex-row justify-between w-1">
               <strong>{pedido.orderId}</strong>
-            </p>
+              <FaRegCopy className="icon-copy-one" onClick={()=>copyCodes(pedido.orderId)} />
+            </div>
           </div>
+
           <div className="pedido-sub">
             <p className="w-4 font-sl text-white">Cliente:</p>
             <p className="w-4 font-sx">
               <strong>{pedido.name}</strong>
             </p>
           </div>
+
           <div className="pedido-sub">
-            <p className="w-1 font-sl text-white">Cliente Id:</p>
-            <p className="w-1 font-sx">
+            <p className="w-2 font-sl text-white">Cliente Id:</p>
+            <div className="flex-row justify-between w-2">
               <strong>{pedido.idCliente}</strong>
-            </p>
+              <FaRegCopy className="icon-copy-one" onClick={()=>copyCodes(pedido.idCliente)} />
+            </div>
           </div>
+
+
           <div className="pedido-sub">
             <p className="w-2 font-sl text-white">Total:</p>
             <p className="w-2 font-sx">
@@ -312,7 +332,7 @@ export default function TablePedido({
           <p>
             <strong
               onClick={() => displayNone()}
-              className="font-sl pedido-button"
+              className="font-sx pedido-button"
             >
               {dNone === "pedido-oculto" ? "Ver detalle..." : "ocultar detalle"}
             </strong>
@@ -326,7 +346,7 @@ export default function TablePedido({
             ) : (
               <strong
                 onClick={() => displayNone2()}
-                className="font-sl pedido-button"
+                className="font-sx pedido-button"
               >
                 {dNone2 === "pedido-oculto" ? "Ver notas..." : "ocultar notas"}
               </strong>
@@ -375,8 +395,8 @@ export default function TablePedido({
             {pedido.notas.map((itm, index) => (
               <li key={index} className="nota-item">
                 <span className="nota-punto ">•</span>
-                <span className="nota-contenido font-sl">
-                  <strong className="font-sl">{itm.creador}</strong> -{" "}
+                <span className="nota-contenido font-sx">
+                  <strong className="font-sx textblue">{itm.creador}</strong> -{" "}
                   {new Date(itm.fechaCreacion).toLocaleDateString("es-ES", {
                     day: "2-digit",
                     month: "short",
@@ -391,7 +411,6 @@ export default function TablePedido({
       </form>
       <p className="font-sl text-white">
         Vendedor: <strong>{pedido.vendedor}</strong>
-        
       </p>
     </div>
   );

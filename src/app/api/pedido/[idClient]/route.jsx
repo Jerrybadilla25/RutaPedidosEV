@@ -13,8 +13,8 @@ export async function POST(request, { params }) {
     const body = await request.json();
     const { clienteId, productos, sessionInfo } = body;
 
-    console.log("ID Cliente:", clienteId);
-    console.log("Datos de la sesión:", sessionInfo);
+    //console.log("ID Cliente:", clienteId);
+    //console.log("Datos de la sesión:", sessionInfo);
 
     const bdSave = await addPedidotBd(clienteId, productos);
 

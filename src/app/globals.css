@@ -332,6 +332,12 @@ body2 {
 .red {
   background: red;
 }
+.w-15{
+  width: 10%;
+}
+.w-75{
+  width: 85%;
+}
 
 .W-100 {
   width: 100%;

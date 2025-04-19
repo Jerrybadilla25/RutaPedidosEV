@@ -28,7 +28,12 @@ export default function RootLayout({ children }) {
       <body>
         <ThemeProvider>
           {children}
-         <Toaster position="top-center"/>
+         <Toaster 
+         position="top-center"
+         toastOptions={{
+          duration: 1000
+         }}
+         />
         </ThemeProvider>
         
         </body>

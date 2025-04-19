@@ -56,7 +56,6 @@ export default async function Historial({ searchParams }) {
     dataHistory = await getDataPedidos2(filterRango, history);
   }
 
-  console.log(dataHistory.length)
   return (
     <div>
       

@@ -58,7 +58,7 @@ export async function getDataPedidosFilter(filter, filterRango) {
     const rol = roll.role;
     const seller = roll.user;
 
-    if (rol !== "ventas") {
+    if (rol !== "seller") {
       const pedidos = JSON.parse(
         JSON.stringify(
           await Pedido.find({

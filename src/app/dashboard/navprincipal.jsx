@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function NavPrincipal({ role }) {
-  console.log({ role });
+  
   const pathname = usePathname();
   return (
     <nav className="navPer">

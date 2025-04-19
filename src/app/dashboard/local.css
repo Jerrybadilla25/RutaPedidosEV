@@ -326,6 +326,10 @@ nav ul {
     width: 150px;
     
   }
+  .w-5{
+    width: 150px;
+    
+  }
 
   .pedido-oculto{
     display: none;
@@ -514,12 +518,7 @@ tbody tr:hover {
   cursor: pointer; /* Cambia el cursor al pasar por encima */
 }
 
-.w-15{
-  width: 15%;
-}
-.w-75{
-  width: 75%;
-}
+
 
 .lista-notas {
   //border: 1px solid red;
@@ -715,6 +714,15 @@ tbody tr:hover {
 .icon-copy:hover{
   cursor: pointer;
   color: var(--textOrange);
+}
+.icon-copy-one{
+  cursor: pointer;
+  margin-top: 0.15rem;
+  color: var(--textWhite);
+}
+.icon-copy-one:hover{
+  cursor: pointer;
+  color: var(--textblue);
 }
 
 
